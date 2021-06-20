@@ -17,6 +17,7 @@ const o1 = mergeWithRules(use_rule)(common, {
 const o2 = merge(o1, {
     mode: 'development',
     devServer: {
+        host: '0.0.0.0', // allow local devices
         port: process.env.CLIENT_PORT,
         proxy: {
             '/socket.io': {

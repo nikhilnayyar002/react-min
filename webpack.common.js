@@ -23,10 +23,11 @@ let resoleAliasObj = {};
 module.exports = {
     entry: "./src/index.js",
     output: {
-        path: path.resolve(__dirname, 'dist/assets'),
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
         publicPath: '/',
-        clean: true
+        clean: true,
+        assetModuleFilename: 'assets/[name].[contenthash].[ext]'
     },
     resolve: {
         alias:resoleAliasObj
@@ -43,7 +44,7 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpe?g|gif|eot|woff|woff2|ttf)$/i,
                 type: 'asset/resource'
             },
             {
