@@ -1,19 +1,35 @@
 require('dotenv-flow').config()
+
+const path = require('path')
 // const webpack = require("webpack")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
+const jsconfig = require('./jsconfig.json')
+
+let resoleAliasObj = {};
+(function() {
+    let paths = jsconfig?.compilerOptions?.paths ?? {}
+    for (let p in paths) {
+        let a = p.substring(0, p.length - 2)
+        if(paths[p].length) {
+            let b = paths[p][0]
+            let c = b.substring(0, b.length - 1)
+            resoleAliasObj[a]= path.resolve(__dirname, c)
+        }
+    }
+})();
 
 module.exports = {
-    entry: `${__dirname}/src/index.js`,
+    entry: "./src/index.js",
     output: {
-        path: `${__dirname}/dist`,
+        path: path.resolve(__dirname, 'dist/assets'),
         filename: '[name].[contenthash].js',
         publicPath: '/',
         clean: true
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        alias:resoleAliasObj
     },
     module: {
         rules: [
@@ -41,11 +57,10 @@ module.exports = {
         ],
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: `${__dirname}/src/index.html`,
-            filename: "index.html",
-            // favicon: `${__dirname}/src/favicon.ico`,
+            template: './src/index.html',
+            filename: "./index.html",
+            // favicon: './src/favicon.ico',
             inject: 'body'
         }),
         // new webpack.EnvironmentPlugin(['APP_ID']),
