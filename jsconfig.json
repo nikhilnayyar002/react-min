@@ -1,3 +1,10 @@
 {
-  "exclude": ["node_modules"]
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@assets/*": [
+        "./assets/*"
+      ]
+    }
+  }
 }
