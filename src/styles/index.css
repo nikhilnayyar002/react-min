@@ -26,13 +26,6 @@ body {
   padding: 1rem;
 }
 
-.container-main .slick-slider {
-  background-color: brown;
-  padding: 1rem;
-}
-.container-main .slick-slider .slick-dots {
-  position: static;
-}
 .container-main .slicky-content{
   background-color: coral;
   height: 7rem;

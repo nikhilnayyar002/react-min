@@ -1,33 +1,27 @@
 import 'antd/dist/antd.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick"
 import "@styles/index.css";
 
-import React from 'react';
+import $ from 'jquery'; 
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Input } from 'antd';
-import Slider from "react-slick";
-
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
 
 function App() {
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false
-    };
+    useEffect(() => {
+        $(document).ready(function () {
+            $('.your-class').slick({
+                arrows:false
+            });
+        });
+    }, []);
+
     return (
         <div className="App container">
             <div className="container-main">
-                <Slider {...settings}>
+                <div className="your-class">
                     <div className="slicky-content">
                         <h3>1</h3>
                     </div >
@@ -37,7 +31,7 @@ function App() {
                     <div className="slicky-content">
                         <h3>3</h3>
                     </div>
-                </Slider>
+                </div>
             </div>
             <div className="container-footer">
                 <Input.TextArea
@@ -49,3 +43,10 @@ function App() {
         </div>
     )
 }
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
