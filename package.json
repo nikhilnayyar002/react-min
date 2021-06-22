@@ -1,8 +1,9 @@
 {
-  "name": "slick-test",
+  "name": "base-setup",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "watch": "webpack --watch --config webpack.dev.js",
