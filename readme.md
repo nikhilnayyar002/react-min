@@ -1,4 +1,4 @@
 # Webpack - Babel Setup
 
-This is the base setup.
-Please checkout other branches derived from this setup.
+This is near to base setup for any other project.
+I only added react dependencies.
