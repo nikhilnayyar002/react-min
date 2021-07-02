@@ -43,10 +43,5 @@
     "webpack-merge": "^5.8.0"
   },
   "author": "",
-  "license": "ISC",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+  "license": "ISC"
 }

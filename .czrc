@@ -1,0 +1,17 @@
+{
+  "path": "./node_modules/cz-conventional-changelog",
+  "maxHeaderWidth": 50,
+  "types": {
+    "revert": {"description":"Reverts"},
+    "feat": {"description": "Features"},
+    "fix": {"description": "Bug Fixes"},
+    "docs": {"description":"Docs"},
+    "style": {"description":"Styling"},
+    "refactor": {"description":"Code Refactoring"},
+    "perf": {"description":"Performance Improvements"},
+    "test": {"description":"Tests"},
+    "build": {"description":"Build System"},
+    "ci": {"description":"CI"},
+    "enhance": {"description": "Enhancements"}
+  }
+}
