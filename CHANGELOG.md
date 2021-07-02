@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/nikhilnayyar002/slickjs-react-antd/compare/v1.1.0...v1.2.0) (2021-07-02)
+
+
+### ⛏️ Build System
+
+* add, update config files ([f9469d9](https://github.com/nikhilnayyar002/slickjs-react-antd/commit/f9469d91bb23b385e96cc5d31cdc52dafe845dcb))
+  - add .czrc file and remove config from package.json
+  - .versionrc file: add enhance type, add emoji to display in changelog
+
 ## [1.1.0](https://github.com/nikhilnayyar002/slickjs-react-antd/compare/v1.0.0...v1.1.0) (2021-07-01)
 
 
