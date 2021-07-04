@@ -4,7 +4,6 @@ const path = require('path')
 // const webpack = require("webpack")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
-const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 const jsconfig = require('./jsconfig.json')
 
@@ -26,7 +25,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
-        publicPath: '/',
+        publicPath: 'auto',
         clean: true,
         assetModuleFilename: 'assets/[name].[contenthash].[ext]'
     },
@@ -41,8 +40,8 @@ module.exports = {
             // },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: [{loader: 'babel-loader'}]
             },
             {
                 test: /\.(png|jpe?g|gif|eot|woff|woff2|ttf)$/i,
@@ -79,7 +78,6 @@ module.exports = {
             // set the current working directory for displaying module paths
             cwd: process.cwd(),
         }),
-        new ESLintPlugin(),
-        new CleanTerminalPlugin()
+        new ESLintPlugin()
     ]
 }

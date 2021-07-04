@@ -1,10 +1,17 @@
 import "@styles/index.css";
 
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 function App() {
-    return "Hello World"
+    const [state] = useState(Date.now())
+
+    return (
+        <div>
+            <div>Hello WORLD</div>
+            <div>{state}</div>
+        </div>
+    )
 }
 
 ReactDOM.render(
