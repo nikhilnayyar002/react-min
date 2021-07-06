@@ -1,4 +1,4 @@
-require('dotenv-flow').config()
+require("./dotenv")
 
 const path = require('path')
 // const webpack = require("webpack")
@@ -6,6 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 const jsconfig = require('./jsconfig.json')
+
+const OUTPUT_DIR = "dist"
+const SOURCE_DIR = "src"
+const PUBLIC_DIR = "public"
+const ASSET_INLINE_CONDITION_MAX_SIZE = 6 // in KB
 
 let resoleAliasObj = {};
 (function () {
@@ -21,35 +26,35 @@ let resoleAliasObj = {};
 })();
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: path.resolve(__dirname, SOURCE_DIR, "index.js"),
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[contenthash].js',
-        publicPath: 'auto',
+        path: path.resolve(__dirname, OUTPUT_DIR),
+        publicPath: '/',
         clean: true,
-        assetModuleFilename: 'assets/[name].[contenthash].[ext]'
     },
     resolve: {
         alias: resoleAliasObj
     },
     module: {
         rules: [
-            // {
-            //     test: /\.html$/,
-            //     use: [{ loader: 'html-loader' }]
-            // },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: [{loader: 'babel-loader'}]
+                include: path.resolve(__dirname, SOURCE_DIR),
+                use: [{ loader: 'babel-loader' }]
             },
             {
-                test: /\.(png|jpe?g|gif|eot|woff|woff2|ttf)$/i,
+                test: /\.(eot|woff|woff2|ttf)$/i,
                 type: 'asset/resource'
             },
             {
-                test: /\.svg/i,
-                type: 'asset/inline'
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: ASSET_INLINE_CONDITION_MAX_SIZE * 1024 // bytes
+                    }
+                }
             },
             {
                 test: /\.css$/,
@@ -59,17 +64,17 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
-            filename: "./index.html",
-            // favicon: './src/favicon.ico',
+            template: path.resolve(__dirname, PUBLIC_DIR, "index.html"),
+            filename: path.resolve(__dirname, OUTPUT_DIR, "index.html"),
+            favicon: path.resolve(__dirname, PUBLIC_DIR, "favicon.ico"),
             inject: 'body'
         }),
         // new webpack.EnvironmentPlugin(['APP_ID']),
         new CircularDependencyPlugin({
             // exclude detection of files based on a RegExp
-            exclude: /a\.js|node_modules/,
+            exclude: /node_modules/,
             // include specific files based on a RegExp
-            include: /src/,
+            include: new RegExp(SOURCE_DIR),
             // add errors to webpack instead of warnings
             failOnError: true,
             // allow import cycles that include an asyncronous import,
@@ -78,6 +83,9 @@ module.exports = {
             // set the current working directory for displaying module paths
             cwd: process.cwd(),
         }),
-        new ESLintPlugin()
+        new ESLintPlugin({
+            exclude: path.resolve(__dirname, "node_modules"),
+            files: path.resolve(__dirname, SOURCE_DIR),
+        })
     ]
 }

@@ -5,6 +5,13 @@ const common = require('./webpack.common')
 const { use_options_rule, use_rule } = require('./webpack.rules')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
+const CSS_BUNDLES_FILENAME_FORMAT = '[name].[contenthash].css'
+const CSS_BUNDLES_CHUNK_FILENAME_FORMAT = '[id].[contenthash].[ext]'
+const ASSETS_DIR = "assets"
+const JS_BUNDLES_FILENAME_FORMAT = '[name].[contenthash].js'
+const JS_BUNDLES_CHUNK_FILENAME_FORMAT = '[id].[contenthash].js'
+const ASSET_BUNDLES_FILENAME_FORMAT = '[name].[contenthash].[ext]'
+
 // const o1 = mergeWithRules(use_options_rule)(common, {
 //     module: {
 //         rules: [
@@ -26,10 +33,16 @@ const o2 = mergeWithRules(use_rule)(common, {
     },
 })
 const o3 = merge(o2, {
+    output: {
+        filename: JS_BUNDLES_FILENAME_FORMAT,
+        chunkFilename: JS_BUNDLES_CHUNK_FILENAME_FORMAT,
+        assetModuleFilename: `${ASSETS_DIR}/${ASSET_BUNDLES_FILENAME_FORMAT}`,
+    },
     mode: 'production',
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            filename: CSS_BUNDLES_FILENAME_FORMAT,
+            chunkFilename: CSS_BUNDLES_CHUNK_FILENAME_FORMAT
         }),
     ],
     optimization: {
@@ -48,6 +61,7 @@ const o3 = merge(o2, {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
                     chunks: 'all',
+                    enforce: true
                 },
                 // styles: {
                 //     name: 'styles',
