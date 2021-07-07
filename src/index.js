@@ -1,22 +1,8 @@
 import "@styles/index.css";
+import "jquery/dist/jquery.slim"
 
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-
-function App() {
-    const [state] = useState(Date.now())
-
-    return (
-        <div>
-            <div>Hello WORLD</div>
-            <div>{state}</div>
-        </div>
-    )
-}
-
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+import(/* webpackExports: ["default"] */"./app").then(({default:App})=>{
+    import(/* webpackExports: ["default"] */"./app2").then(({default:render})=>{
+        render(App)
+    })
+})

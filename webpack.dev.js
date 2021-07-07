@@ -1,34 +1,16 @@
-require("./dotenv")
-
+const path = require('path')
 const { mergeWithRules, merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const { use_rule, use_options_rule } = require('./webpack.rules')
+const { webpack: wConfig } = require('./config')
+const webpack = require("webpack")
+
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
-const chalk = require('chalk');
-const nets = require('os').networkInterfaces();
+const EventHooksPlugin = require('event-hooks-webpack-plugin')
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin")
 
-const SERVER_DOMAIN = process.env.SERVER_DOMAIN
-const CLIENT_PORT = process.env.CLIENT_PORT
-const CLIENT_IP_ADDRESSES = (function () {
-    const temp = []
-    for (const name of Object.keys(nets))
-        for (const net of nets[name])
-            if (net.family === 'IPv4')
-                temp.push(`http://${net.internal ? "localhost" : net.address}:${CLIENT_PORT}`)
-    return temp
-})();
-const PROXY = {
-    '/socket.io': {
-        target: SERVER_DOMAIN,
-        ws: true
-    },
-    '/api': {
-        target: SERVER_DOMAIN,
-    },
-}
-const GENERATE_SOURCE_MAP = false
-const WEBPACK_LOGS_TYPE = 'minimal'
+/********************************************************************* */
 
 const o1 = mergeWithRules(use_options_rule)(common, {
     module: {
@@ -38,9 +20,9 @@ const o1 = mergeWithRules(use_options_rule)(common, {
                 use: [{
                     loader: 'babel-loader',
                     options: {
+                        ...wConfig.getBabelLoaderDefaultOptions("development"),
                         plugins: [
-                            // ... other plugins
-                            require.resolve('react-refresh/babel'),
+                            wConfig.dev.hmr ? require.resolve('react-refresh/babel') : false,
                         ].filter(Boolean),
                     }
                 }]
@@ -58,26 +40,56 @@ const o2 = mergeWithRules(use_rule)(o1, {
         ],
     },
 })
+
+/********************************************************************* */
+
 const o3 = merge(o2, {
     mode: 'development',
     output: {
-        filename: 'main.js',
-        pathinfo: false, // optimization
+        filename: '[name].bundle.js',
+        chunkFilename: '[id].chunk.js',
     },
-    devtool: GENERATE_SOURCE_MAP ? "inline-source-map" : false,
-    devServer: {
-        host: '0.0.0.0',
-        port: CLIENT_PORT,
-        proxy: PROXY,
-        stats: WEBPACK_LOGS_TYPE
-    },
+    devtool: wConfig.dev.sourceMaps ? "inline-source-map" : false,
+    devServer: wConfig.dev.devServer,
     plugins: [
+        new EventHooksPlugin({
+            environment: () => console.log("@Starting..."),
+            compilation: () => console.log("@Compiling..."),
+            done: () => console.log("@done!"),
+        }),
         new CleanTerminalPlugin({
-            message: chalk.green(`${CLIENT_IP_ADDRESSES.join("\n")}`),
+            message: `${["Client is available at:", ...wConfig.dev.clientIPAddresses].join("\n")}`,
             beforeCompile: true
         }),
-        new ReactRefreshWebpackPlugin(),
-    ]
+        ...(
+            wConfig.dev.hmr ? [
+                new webpack.HotModuleReplacementPlugin(),
+                new ReactRefreshWebpackPlugin({
+                    exclude: /node_modules/,
+                    include: path.resolve(__dirname, wConfig.dir.source)
+                })
+            ] : []
+        ),
+    ].filter(Boolean),
+    optimization: {
+        minimize: false,
+        runtimeChunk: 'single',
+        chunkIds: 'named',
+        // moduleIds: 'deterministic',
+        splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+                vendorInitial: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'initial',
+                },
+                vendorAsync: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'async',
+                },
+            },
+        },
+    }
 })
 
-module.exports = o3
+module.exports = process.env.SPEED_MEASURE === "true" ? new SpeedMeasurePlugin().wrap(o3) : o3

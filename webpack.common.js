@@ -1,47 +1,40 @@
-require("./dotenv")
+require('dotenv-flow').config() // load .env files
 
 const path = require('path')
-// const webpack = require("webpack")
+const webpack = require("webpack")
+const { webpack: wConfig, environmentVariablesInApp } = require('./config')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
-const jsconfig = require('./jsconfig.json')
 
-const OUTPUT_DIR = "dist"
-const SOURCE_DIR = "src"
-const PUBLIC_DIR = "public"
-const ASSET_INLINE_CONDITION_MAX_SIZE = 6 // in KB
-
-let resoleAliasObj = {};
-(function () {
-    let paths = jsconfig?.compilerOptions?.paths ?? {}
-    for (let p in paths) {
-        let a = p.substring(0, p.length - 2)
-        if (paths[p].length) {
-            let b = paths[p][0]
-            let c = b.substring(0, b.length - 1)
-            resoleAliasObj[a] = path.resolve(__dirname, c)
-        }
-    }
-})();
+/********************************************************************* */
 
 module.exports = {
-    entry: path.resolve(__dirname, SOURCE_DIR, "index.js"),
+    entry: path.resolve(__dirname, wConfig.dir.source, "index.js"),
+    experiments: {
+        outputModule: wConfig.outputESModule,
+    },
     output: {
-        path: path.resolve(__dirname, OUTPUT_DIR),
+        path: path.resolve(__dirname, wConfig.dir.output),
         publicPath: '/',
         clean: true,
+        module: wConfig.outputESModule,
+        pathinfo: false, // optimization
     },
     resolve: {
-        alias: resoleAliasObj
+        alias: wConfig.alias
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                include: path.resolve(__dirname, SOURCE_DIR),
-                use: [{ loader: 'babel-loader' }]
+                include: path.resolve(__dirname, wConfig.dir.source),
+                use: [{
+                    loader: 'babel-loader',
+                    options: wConfig.getBabelLoaderDefaultOptions("production")
+                }]
             },
             {
                 test: /\.(eot|woff|woff2|ttf)$/i,
@@ -52,7 +45,7 @@ module.exports = {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: ASSET_INLINE_CONDITION_MAX_SIZE * 1024 // bytes
+                        maxSize: wConfig.inlineAssetMaxSize * 1024 // bytes
                     }
                 }
             },
@@ -64,9 +57,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, PUBLIC_DIR, "index.html"),
-            filename: path.resolve(__dirname, OUTPUT_DIR, "index.html"),
-            favicon: path.resolve(__dirname, PUBLIC_DIR, "favicon.ico"),
+            template: path.resolve(__dirname, wConfig.dir.public, "index.html"),
+            filename: path.resolve(__dirname, wConfig.dir.output, "index.html"),
+            favicon: path.resolve(__dirname, wConfig.dir.public, "favicon.ico"),
             inject: 'body'
         }),
         // new webpack.EnvironmentPlugin(['APP_ID']),
@@ -74,7 +67,7 @@ module.exports = {
             // exclude detection of files based on a RegExp
             exclude: /node_modules/,
             // include specific files based on a RegExp
-            include: new RegExp(SOURCE_DIR),
+            include: new RegExp(wConfig.dir.source),
             // add errors to webpack instead of warnings
             failOnError: true,
             // allow import cycles that include an asyncronous import,
@@ -85,7 +78,8 @@ module.exports = {
         }),
         new ESLintPlugin({
             exclude: path.resolve(__dirname, "node_modules"),
-            files: path.resolve(__dirname, SOURCE_DIR),
-        })
+            files: path.resolve(__dirname, wConfig.dir.source),
+        }),
+        new webpack.EnvironmentPlugin(environmentVariablesInApp),
     ]
 }
