@@ -27,7 +27,7 @@ const o2 = merge(o1, {
     mode: 'production',
     output: {
         filename: '[name].[contenthash].js',
-        chunkFilename:'[id].[contenthash].js',
+        chunkFilename: '[id].[contenthash].js',
         assetModuleFilename: `${wConfig.dir.assets}/[name].[contenthash].[ext]`,
     },
     plugins: [
@@ -56,6 +56,7 @@ const o2 = merge(o1, {
                 vendorsAsync: {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'async',
+                    minSize: 1024, // https://github.com/webpack/webpack/issues/13768
                 },
                 styles: wConfig.prod.combineStyleSheets ? {
                     name: "styles",

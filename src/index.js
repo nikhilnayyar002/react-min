@@ -1,8 +1,24 @@
 import "@styles/index.css";
-import "jquery/dist/jquery.slim"
 
-import(/* webpackExports: ["default"] */"./app").then(({default:App})=>{
-    import(/* webpackExports: ["default"] */"./app2").then(({default:render})=>{
-        render(App)
-    })
-})
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+
+const unixEpochInMs= Date.now()
+
+function App() {
+    const [state] = useState(unixEpochInMs)
+
+    return (
+        <div>
+            <div>Hello WORLD</div>
+            <div>{state}</div>
+        </div>
+    )
+}
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
