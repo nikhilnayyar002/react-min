@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/nikhilnayyar002/react-min/compare/v1.2.0...v1.3.0) (2021-07-21)
+
+
+### ⛏️ Build System
+
+* config updates & react-refresh support ([392a32f](https://github.com/nikhilnayyar002/react-min/commit/392a32f1c44341281799f0c08e2363d147a151a6))
+* misc ([ed57bd5](https://github.com/nikhilnayyar002/react-min/commit/ed57bd5892d81cd7584c12ce55c598472fcbdba0), [19e6191](https://github.com/nikhilnayyar002/react-min/commit/19e6191134194473a6c0c6f0bad91b46c16bfe36))
+* misc updates, show local ip addresses ([3bc9876](https://github.com/nikhilnayyar002/react-min/commit/3bc9876e2943ba4f101d97a20834e28344ceedc1))
+
 ## [1.2.0](https://github.com/nikhilnayyar002/slickjs-react-antd/compare/v1.1.0...v1.2.0) (2021-07-02)
 
 
