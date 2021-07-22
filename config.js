@@ -81,6 +81,9 @@ module.exports = {
                 ]
             ]
         }),
+        generateIntialVendorChunk: true,
+        generateAsyncVendorChunk: true,
+        asyncVendorChunkMinSize: 1024, // https://github.com/webpack/webpack/issues/13768
         dev: {
             clientIPAddresses: getClientIPAddresses(clientPort, devHttpsMode),
             sourceMaps: false,
@@ -106,7 +109,6 @@ module.exports = {
         },
         prod: {
             combineStyleSheets: false,
-            combineAllNodeModulesDeps: true
         }
     },
     environmentVariablesInApp: [], // strings

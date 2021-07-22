@@ -75,18 +75,18 @@ const o3 = merge(o2, {
         minimize: false,
         runtimeChunk: 'single',
         chunkIds: 'named',
-        // moduleIds: 'deterministic',
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                vendorInitial: {
+                vendorsInitial: wConfig.generateIntialVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'initial',
-                },
-                vendorAsync: {
+                } : false,
+                vendorsAsync: wConfig.generateAsyncVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'async',
-                },
+                    minSize: wConfig.asyncVendorChunkMinSize
+                } : false,
             },
         },
     }

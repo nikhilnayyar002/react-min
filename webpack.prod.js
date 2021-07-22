@@ -49,15 +49,15 @@ const o2 = merge(o1, {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                vendorsInitial: {
+                vendorsInitial: wConfig.generateIntialVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'initial',
-                },
-                vendorsAsync: {
+                } : false,
+                vendorsAsync: wConfig.generateAsyncVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'async',
-                    minSize: 1024, // https://github.com/webpack/webpack/issues/13768
-                },
+                    minSize: wConfig.asyncVendorChunkMinSize
+                } : false,
                 styles: wConfig.prod.combineStyleSheets ? {
                     name: "styles",
                     type: "css/mini-extract",
