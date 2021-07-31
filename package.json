@@ -30,7 +30,7 @@
     "css-minimizer-webpack-plugin": "^3.0.2",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv-flow": "^3.2.0",
-    "eslint": "^7.31.0",
+    "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-webpack-plugin": "^2.5.4",
     "event-hooks-webpack-plugin": "^2.2.0",
