@@ -10,8 +10,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 ## Important Discussions
 * [Webpack generating duplicate code to save number of requests](https://github.com/webpack/webpack/issues/13768)
 
-## Packages
-
+## Build Packages
 - babel
   - core: "@babel/core"
   - general preset: "@babel/preset-env"
@@ -34,7 +33,8 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
   - Plugins
     - react-refresh
       - core: "@pmmmwh/react-refresh-webpack-plugin"
-      - peer: "react-refresh"
+      - peer
+        - "react-refresh"
     - "circular-dependency-plugin"
     - "clean-terminal-webpack-plugin"
     - "css-minimizer-webpack-plugin"
@@ -44,6 +44,8 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
     - "mini-css-extract-plugin"
     - "terser-webpack-plugin"
     - Temporary use - "speed-measure-webpack-plugin"
+  - peer
+    - "acorn"
   - Loaders
     - "babel-loader"
     - "css-loader"
