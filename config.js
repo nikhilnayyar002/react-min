@@ -86,7 +86,7 @@ module.exports = {
         asyncVendorChunkMinSize: 1024, // https://github.com/webpack/webpack/issues/13768
         dev: {
             clientIPAddresses: getClientIPAddresses(clientPort, devHttpsMode),
-            sourceMaps: false,
+            sourceMaps: true,
             hmr: hotModuleReload,
             devServer: {
                 host: '0.0.0.0',

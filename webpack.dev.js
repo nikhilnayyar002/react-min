@@ -49,7 +49,7 @@ const o3 = merge(o2, {
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js',
     },
-    devtool: wConfig.dev.sourceMaps ? "inline-source-map" : false,
+    devtool: wConfig.dev.sourceMaps ? "eval-source-map" : false,
     devServer: wConfig.dev.devServer,
     plugins: [
         new EventHooksPlugin({
