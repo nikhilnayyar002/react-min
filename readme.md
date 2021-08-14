@@ -1,4 +1,7 @@
 # Webpack - Babel Setup
+[![License: MIT](https://img.shields.io/badge/License-free-blue.svg)](LICENSE)
+![Make a pull request](https://img.shields.io/badge/PRs-welcome-blue.svg)
+![Maintained](https://img.shields.io/badge/Maintained-Yes-green.svg)
 
 This is near to base setup for any other project.
 I only added react dependencies.
@@ -50,3 +53,20 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
     - "babel-loader"
     - "css-loader"
     - "style-loader"
+
+## Important cmds
+
+```
+npm view <package>
+npm view <package> peerDependencies
+npm view <package> versions 
+npm view <package> versions --json
+npm i <package>@latest
+npm outdated  
+npm update
+npm audit
+npm audit fix
+npm list
+npm list --depth=0
+npm list <package>
+```
