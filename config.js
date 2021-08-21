@@ -90,21 +90,21 @@ module.exports = {
             hmr: hotModuleReload,
             devServer: {
                 host: '0.0.0.0',
-                noInfo: true,
                 hot: hotModuleReload,
                 port: clientPort,
                 proxy: {
                     '/socket.io': { target: proxyServerOrigin1, ws: true },
                     '/api': { target: proxyServerOrigin1 },
                 },
-                stats: {
-                    errors: true,
-                    errorDetails: "auto",
-                    errorStack: true,
-                    warnings: true
-                },
                 https: devHttpsMode,
                 compress: false,
+                devMiddleware: {
+                    stats: {
+                        all: false,
+                        errors: true,
+                        warnings: true
+                    },
+                },
             }
         },
         prod: {

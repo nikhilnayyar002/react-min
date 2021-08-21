@@ -51,6 +51,9 @@ const o3 = merge(o2, {
     },
     devtool: wConfig.dev.sourceMaps ? "eval-source-map" : false,
     devServer: wConfig.dev.devServer,
+    infrastructureLogging: {
+        level: 'none',
+    },
     plugins: [
         new EventHooksPlugin({
             environment: () => console.log("@Starting..."),
