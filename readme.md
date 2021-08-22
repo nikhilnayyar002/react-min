@@ -1,7 +1,4 @@
 # Webpack - Babel Setup
-[![License: MIT](https://img.shields.io/badge/License-free-blue.svg)](LICENSE)
-![Make a pull request](https://img.shields.io/badge/PRs-welcome-blue.svg)
-![Maintained](https://img.shields.io/badge/Maintained-Yes-green.svg)
 
 This is near to base setup for any other project.
 I only added react dependencies.
