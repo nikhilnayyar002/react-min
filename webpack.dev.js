@@ -3,7 +3,6 @@ const { mergeWithRules, merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const { use_rule, use_options_rule } = require('./webpack.rules')
 const { webpack: wConfig } = require('./config')
-const webpack = require("webpack")
 
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
@@ -66,7 +65,6 @@ const o3 = merge(o2, {
         }),
         ...(
             wConfig.dev.hmr ? [
-                new webpack.HotModuleReplacementPlugin(),
                 new ReactRefreshWebpackPlugin({
                     exclude: /node_modules/,
                     include: path.resolve(__dirname, wConfig.dir.source)
