@@ -2,23 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.3.1](https://github.com/nikhilnayyar002/react-min/compare/v1.3.0...v1.3.1) (2021-08-14)
-
-
-### 🔥 Enhancements
-
-* **source-map:** enable source-map in dev ([d3bafaf](https://github.com/nikhilnayyar002/react-min/commit/d3bafaf3182aa5a089bf06313d3927b4d52050a2)), closes [#1](https://github.com/nikhilnayyar002/react-min/issues/1)
-
-
-### ⛏️ Build System
-
-* common config to generate vendor chunks ([01d56b6](https://github.com/nikhilnayyar002/react-min/commit/01d56b67ee6f25ac7768567306b0b9e6132f918f))
-* update dependencies ([ea6e6a0](https://github.com/nikhilnayyar002/react-min/commit/ea6e6a0a3f0eb13bc3f28359e1cea5ed5e0c33c7)) ([45e26de](https://github.com/nikhilnayyar002/react-min/commit/45e26de0d1483f72e2dae2961b2debba419bcbc7)) ([f219374](https://github.com/nikhilnayyar002/react-min/commit/f219374f6ac4e47cabed56fced6d44be0560e953)) ([eb9708e](https://github.com/nikhilnayyar002/react-min/commit/eb9708ec67ccc16c85690905fcff11805e94b32e)) ([f102b42](https://github.com/nikhilnayyar002/react-min/commit/f102b4299ff14c0335e47f7eb2004f2a9ad1d7df)) ([94c34de](https://github.com/nikhilnayyar002/react-min/commit/94c34decb20a179d58cdde6b81a831304ccbc08f))
-
-### 📝 Docs
-
-* **readme.md:** add sections: Important cmds, Important Discussions, Packages. Add batches ([2e2386e](https://github.com/nikhilnayyar002/react-min/commit/2e2386e280bbdf5f0d3ea4bfce8d95b7479127a6)) ([df56dbc](https://github.com/nikhilnayyar002/react-min/commit/df56dbc2cf2e42248b21272eb67d0c7cbc8f4785))
-
 ## [1.3.0](https://github.com/nikhilnayyar002/react-min/compare/v1.2.0...v1.3.0) (2021-07-21)
 
 
