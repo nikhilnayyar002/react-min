@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/nikhilnayyar002/react-min/compare/v1.3.1...v1.4.0) (2021-09-04)
+
+
+### ⛏️ Build System
+
+* update major packages, update devServer config ([da8f744](https://github.com/nikhilnayyar002/react-min/commit/da8f744e3c701800c7cd52ccbc97ec264490ae38)) ([0a55ccc](https://github.com/nikhilnayyar002/react-min/commit/0a55ccc324cf20c15179ecefe01b342925c7c9a0))
+
+
+### 🔥 Enhancements
+
+* config warnings, update packages & doc ([e6f8c16](https://github.com/nikhilnayyar002/react-min/commit/e6f8c168f825150013d852d11899eb30657e38ea))
+* common config to generate vendor chunks ([01d56b6](https://github.com/nikhilnayyar002/react-min/commit/01d56b67ee6f25ac7768567306b0b9e6132f918f))
+* **source-map:** enable source-map in dev ([d3bafaf](https://github.com/nikhilnayyar002/react-min/commit/d3bafaf3182aa5a089bf06313d3927b4d52050a2)), closes [#1](https://github.com/nikhilnayyar002/react-min/issues/1)
+
+### 📝 Docs
+
+* update [readme.md](readme.md)
+
+
+### ↩️ Reverts
+
+* **release-1.3.1:** remove 1.3.1 from changelog ([cb83267](https://github.com/nikhilnayyar002/react-min/commit/cb83267f71fae38cc29bf2bed36c93b6e865d03d))
+
 ## [1.3.0](https://github.com/nikhilnayyar002/react-min/compare/v1.2.0...v1.3.0) (2021-07-21)
 
 
