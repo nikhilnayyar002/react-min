@@ -3,6 +3,11 @@
 This is near to base setup for any other project.
 I only added react dependencies.
 
+## Setup
+
+* `git clone `
+* `npm ci`
+
 ## Commit Guidelines
 
 This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-version](https://github.com/conventional-changelog/standard-version) for generating releases, tags & changelogs.
@@ -31,19 +36,20 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
   - "webpack-dev-server"
   - "webpack-merge"
   - Plugins
-    - react-refresh
-      - core: "@pmmmwh/react-refresh-webpack-plugin"
-      - peer
-        - "react-refresh"
-    - "circular-dependency-plugin"
-    - "clean-terminal-webpack-plugin"
-    - "css-minimizer-webpack-plugin"
-    - "eslint-webpack-plugin"
-    - "event-hooks-webpack-plugin"
-    - "html-webpack-plugin"
-    - "mini-css-extract-plugin"
-    - "terser-webpack-plugin"
-    - Temporary use - "speed-measure-webpack-plugin"
+    - **important**
+      - @pmmmwh/react-refresh-webpack-plugin
+        - peer
+          - "react-refresh"
+      - "circular-dependency-plugin"
+      - "css-minimizer-webpack-plugin"
+      - "eslint-webpack-plugin"
+      - "html-webpack-plugin"
+      - "mini-css-extract-plugin"
+      - "terser-webpack-plugin"
+    - **not important**
+      - "event-hooks-webpack-plugin"
+      - "speed-measure-webpack-plugin"
+      - "clean-terminal-webpack-plugin"
   - peer
     - "acorn"
   - Loaders

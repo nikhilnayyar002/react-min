@@ -105,6 +105,12 @@ module.exports = {
                         warnings: true
                     },
                 },
+                client: {
+                    overlay: {
+                        errors: true,
+                        warnings: false
+                    },
+                },
             }
         },
         prod: {
