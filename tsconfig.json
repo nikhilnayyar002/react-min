@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "outDir": "dist",
         "baseUrl": ".",
         "paths": {
             "@styles/*": [
@@ -29,6 +30,7 @@
         "noEmit": false
     },
     "include": [
-        "src"
+        "src/**/*",
+        "index.d.ts"
     ]
 }
