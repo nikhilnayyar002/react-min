@@ -14,7 +14,7 @@ const o1 = mergeWithRules(use_options_rule)(webpackCommonConfig, {
     module: {
         rules: [
             {
-                test: /\.(jsx|js)$/,
+                test: /\.(ts|tsx|jsx|js)$/,
                 use: [{
                     loader: 'babel-loader',
                     options: {

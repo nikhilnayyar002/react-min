@@ -1,6 +1,6 @@
 require("dotenv-flow").config() // load .env files
-const jsConfig = require("./jsconfig.json")
-const { getClientIPAddresses, getWebpackAliasFromJsConfig } = require("./wm-helper")
+const tsConfig = require("./tsconfig.json")
+const { getClientIPAddresses, getWebpackAliasFromTsConfig } = require("./wm-helper")
 
 /************************************************************************************************* */
 
@@ -34,11 +34,11 @@ const wmConfig = {
     outputDirHtmlFileName: "index.html",
     outputDirFavicomFileName: "favicon.ico",
     webpack: {
-        entryFilename: "index.js",
+        entryFilename: "index.tsx",
         inlineAssetMaxSize: 6 * 1024, // in Bytes
         resolve: {
-            alias: getWebpackAliasFromJsConfig(jsConfig),
-            extensions: ["jsx", '.js'],
+            alias: getWebpackAliasFromTsConfig(tsConfig),
+            extensions: ['.tsx', '.ts', "jsx", '.js'],
         },
         outputESModule, // ouput ECMAScript module syntax whenever possible.
         generateIntialVendorChunk: true,
@@ -96,7 +96,8 @@ const wmConfig = {
                         modules: outputESModule ? false : "auto",
                         bugfixes: true
                     }
-                ]
+                ],
+                "@babel/preset-typescript"
             ]
         })
     }

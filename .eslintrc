@@ -1,4 +1,9 @@
 {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
     "env": {
         "browser": true,
         "es2021": true,
@@ -7,6 +12,7 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended"
     ],
@@ -15,13 +21,12 @@
         "requireConfigFile": false
     },
     "rules": {
-        "no-use-before-define": [
+        "@typescript-eslint/no-use-before-define": [
             "error",
             {
                 "functions": false
             }
         ],
-        "no-unused-vars": "warn",
         "react/react-in-jsx-scope": "off"
     },
     "globals": {

@@ -13,7 +13,7 @@ const path = require('path')
 // webpack path alias:
 //  "@styles": path.resolve(__dirname, 'src/utilities/'),
 //
-exports.getWebpackAliasFromJsConfig = (tsConfig) => {
+exports.getWebpackAliasFromTsConfig = (tsConfig) => {
     let webpackAlias = {};
     const baseUrl = tsConfig?.compilerOptions?.baseUrl
     if (!baseUrl) throw "tsconfig.json baseUrl missing"
