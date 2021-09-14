@@ -4,6 +4,9 @@
     "paths": {
       "@styles/*": [
         "src/styles/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
       ]
     },
     "module": "ESNext",

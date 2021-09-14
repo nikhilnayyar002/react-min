@@ -37,7 +37,7 @@ module.exports = {
                 type: 'asset/resource'
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
@@ -45,6 +45,30 @@ module.exports = {
                     }
                 }
             },
+            /** svg
+             *  https://react-svgr.com/docs/webpack/#handle-svg-in-css-sass-or-less
+             *  https://github.com/gregberge/svgr/issues/551#issuecomment-883073902
+             *  https://webpack.js.org/configuration/module/#ruleoneof
+             */
+            {
+                test: /\.svg$/,
+                oneOf: [
+                    {
+                        issuer: /\.[jt]sx?$/,
+                        resourceQuery: /react/, // *.svg?react
+                        use: ['@svgr/webpack']
+                    },
+                    {
+                        type: 'asset',
+                        parser: {
+                            dataUrlCondition: {
+                                maxSize: wmConfig.webpack.inlineAssetMaxSize
+                            }
+                        }
+                    },
+                ],
+            },
+            /** */
             {
                 test: /\.css$/,
                 use: [{ loader: 'css-loader' }]
