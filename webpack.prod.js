@@ -1,8 +1,7 @@
-
 const { mergeWithRules, merge } = require('webpack-merge')
-const common = require('./webpack.common')
+const webpackCommonConfig = require('./webpack.common')
 const { use_rule } = require('./webpack.rules')
-const { webpack: wConfig } = require('./config')
+const wmConfig = require('./wm-config')
 
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -10,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin")
 
 /********************************************************************* */
 
-const o1 = mergeWithRules(use_rule)(common, {
+const o1 = mergeWithRules(use_rule)(webpackCommonConfig, {
     module: {
         rules: [
             {
@@ -28,7 +27,7 @@ const o2 = merge(o1, {
     output: {
         filename: '[name].[contenthash].js',
         chunkFilename: '[id].[contenthash].js',
-        assetModuleFilename: `${wConfig.dir.assets}/[name].[contenthash].[ext]`,
+        assetModuleFilename: `${wmConfig.assetsDirInsideOutputDir}/[name].[contenthash].[ext]`, // https://webpack.js.org/guides/asset-modules/#custom-output-filename
     },
     plugins: [
         new MiniCssExtractPlugin({
@@ -49,16 +48,16 @@ const o2 = merge(o1, {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                vendorsInitial: wConfig.generateIntialVendorChunk ? {
+                vendorsInitial: wmConfig.webpack.generateIntialVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'initial',
                 } : false,
-                vendorsAsync: wConfig.generateAsyncVendorChunk ? {
+                vendorsAsync: wmConfig.webpack.generateAsyncVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'async',
-                    minSize: wConfig.asyncVendorChunkMinSize
+                    minSize: wmConfig.webpack.asyncVendorChunkMinSize
                 } : false,
-                styles: wConfig.prod.combineStyleSheets ? {
+                styles: wmConfig.webpack.prod.combineStyleSheets ? {
                     name: "styles",
                     type: "css/mini-extract",
                     chunks: "all",

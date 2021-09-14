@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@assets/*": [
-        "src/assets/*"
-      ],
       "@styles/*": [
         "src/styles/*"
       ]
-    }
-  }
+    },
+    "module": "ESNext",
+    "target": "ES6"
+  },
+  "include": [
+    "src"
+  ]
 }

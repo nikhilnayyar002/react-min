@@ -1,39 +1,35 @@
-require('dotenv-flow').config() // load .env files
-
 const path = require('path')
-const webpack = require("webpack")
-const { webpack: wConfig, environmentVariablesInApp } = require('./config')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const ESLintPlugin = require("eslint-webpack-plugin")
+const wmConfig = require('./wm-config')
+const CircularDependencyPlugin = require("circular-dependency-plugin")
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin')
-const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 /********************************************************************* */
 
 module.exports = {
-    entry: path.resolve(__dirname, wConfig.dir.source, "index.js"),
+    entry: path.resolve(__dirname, wmConfig.sourceDir, wmConfig.webpack.entryFilename),
     experiments: {
-        outputModule: wConfig.outputESModule,
+        outputModule: wmConfig.webpack.outputESModule, // https://webpack.js.org/configuration/output/#outputmodule
     },
     output: {
-        path: path.resolve(__dirname, wConfig.dir.output),
+        path: path.resolve(__dirname, wmConfig.outputDir),
         publicPath: '/',
-        clean: true,
-        module: wConfig.outputESModule,
-        pathinfo: false, // optimization
+        clean: true, // clean the output dir before generating new output
+        module: wmConfig.webpack.outputESModule, // https://webpack.js.org/configuration/output/#outputmodule
+        pathinfo: false, // https://webpack.js.org/guides/build-performance/#output-without-path-info
     },
-    resolve: {
-        alias: wConfig.alias
-    },
+    resolve: wmConfig.webpack.resolve,
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
-                include: path.resolve(__dirname, wConfig.dir.source),
+                include: path.resolve(__dirname, wmConfig.sourceDir),
                 use: [{
                     loader: 'babel-loader',
-                    options: wConfig.getBabelLoaderDefaultOptions("production")
+                    options: wmConfig.babel.getBabelLoaderDefaultOptions()
                 }]
             },
             {
@@ -45,29 +41,28 @@ module.exports = {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: wConfig.inlineAssetMaxSize * 1024 // bytes
+                        maxSize: wmConfig.webpack.inlineAssetMaxSize
                     }
                 }
             },
             {
                 test: /\.css$/,
                 use: [{ loader: 'css-loader' }]
-            },
+            }
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, wConfig.dir.public, "index.html"),
-            filename: path.resolve(__dirname, wConfig.dir.output, "index.html"),
-            favicon: path.resolve(__dirname, wConfig.dir.public, "favicon.ico"),
-            inject: 'body'
+            template: path.resolve(__dirname, wmConfig.publicDir, wmConfig.publicDirHtmlFileName),
+            filename: path.resolve(__dirname, wmConfig.outputDir, wmConfig.outputDirHtmlFileName),
+            favicon: path.resolve(__dirname, wmConfig.publicDir, wmConfig.outputDirFavicomFileName),
+            inject: 'body' // inject bundle's inside body tag at the end
         }),
-        // new webpack.EnvironmentPlugin(['APP_ID']),
         new CircularDependencyPlugin({
             // exclude detection of files based on a RegExp
             exclude: /node_modules/,
             // include specific files based on a RegExp
-            include: new RegExp(wConfig.dir.source),
+            include: new RegExp(wmConfig.sourceDir),
             // add errors to webpack instead of warnings
             failOnError: true,
             // allow import cycles that include an asyncronous import,
@@ -78,8 +73,9 @@ module.exports = {
         }),
         new ESLintPlugin({
             exclude: path.resolve(__dirname, "node_modules"),
-            files: path.resolve(__dirname, wConfig.dir.source),
+            files: path.resolve(__dirname, wmConfig.sourceDir),
+            extensions: wmConfig.webpack.resolve.extensions
         }),
-        new webpack.EnvironmentPlugin(environmentVariablesInApp),
+        new webpack.EnvironmentPlugin(wmConfig.webpack.environmentVariablesInApp),
     ]
 }

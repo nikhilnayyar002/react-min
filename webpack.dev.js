@@ -1,28 +1,27 @@
 const path = require('path')
+const { use_options_rule, use_rule } = require('./webpack.rules')
 const { mergeWithRules, merge } = require('webpack-merge')
-const common = require('./webpack.common')
-const { use_rule, use_options_rule } = require('./webpack.rules')
-const { webpack: wConfig } = require('./config')
-
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
-const EventHooksPlugin = require('event-hooks-webpack-plugin')
+const EventHooksPlugin = require("event-hooks-webpack-plugin")
+const CleanTerminalPlugin = require("clean-terminal-webpack-plugin")
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
+const wmConfig = require('./wm-config')
+const webpackCommonConfig = require('./webpack.common')
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin")
 
 /********************************************************************* */
 
-const o1 = mergeWithRules(use_options_rule)(common, {
+const o1 = mergeWithRules(use_options_rule)(webpackCommonConfig, {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(jsx|js)$/,
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        ...wConfig.getBabelLoaderDefaultOptions("development"),
+                        ...wmConfig.babel.getBabelLoaderDefaultOptions("development"),
                         plugins: [
-                            wConfig.dev.hmr ? require.resolve('react-refresh/babel') : false,
-                        ].filter(Boolean),
+                            wmConfig.webpack.dev.hmr && require.resolve('react-refresh/babel')
+                        ].filter(Boolean)
                     }
                 }]
             }
@@ -48,8 +47,8 @@ const o3 = merge(o2, {
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js',
     },
-    devtool: wConfig.dev.sourceMaps ? "eval-source-map" : false,
-    devServer: wConfig.dev.devServer,
+    devtool: wmConfig.webpack.dev.sourceMaps ? "eval-source-map" : false,
+    devServer: wmConfig.webpack.dev.devServer,
     infrastructureLogging: {
         level: 'warn',
     },
@@ -60,17 +59,10 @@ const o3 = merge(o2, {
             done: () => console.log("@done!"),
         }),
         new CleanTerminalPlugin({
-            message: `${["Client is available at:", ...wConfig.dev.clientIPAddresses].join("\n")}`,
+            message: `${["Client is available at:", ...wmConfig.webpack.dev.clientIPAddresses].join("\n")}`,
             beforeCompile: true
         }),
-        ...(
-            wConfig.dev.hmr ? [
-                new ReactRefreshWebpackPlugin({
-                    exclude: /node_modules/,
-                    include: path.resolve(__dirname, wConfig.dir.source)
-                })
-            ] : []
-        ),
+        wmConfig.webpack.dev.hmr && new ReactRefreshWebpackPlugin()
     ].filter(Boolean),
     optimization: {
         minimize: false,
@@ -79,18 +71,18 @@ const o3 = merge(o2, {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                vendorsInitial: wConfig.generateIntialVendorChunk ? {
+                vendorsInitial: wmConfig.webpack.generateIntialVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'initial',
                 } : false,
-                vendorsAsync: wConfig.generateAsyncVendorChunk ? {
+                vendorsAsync: wmConfig.webpack.generateAsyncVendorChunk ? {
                     test: /[\\/]node_modules[\\/]/,
                     chunks: 'async',
-                    minSize: wConfig.asyncVendorChunkMinSize
+                    minSize: wmConfig.webpack.asyncVendorChunkMinSize
                 } : false,
             },
         },
     }
 })
 
-module.exports = process.env.SPEED_MEASURE === "true" ? new SpeedMeasurePlugin().wrap(o3) : o3
+module.exports = env => env.speedMeasure ? new SpeedMeasurePlugin().wrap(o3) : o3
