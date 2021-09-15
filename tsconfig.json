@@ -30,7 +30,7 @@
         "noEmit": false
     },
     "include": [
-        "src/**/*",
+        "src",
         "index.d.ts"
     ]
 }
