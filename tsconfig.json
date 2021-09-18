@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "@styles/*": [

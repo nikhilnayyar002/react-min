@@ -1,6 +1,6 @@
 require("dotenv-flow").config() // load .env files
-const jsConfig = require("./jsconfig.json")
-const { getClientIPAddresses, getWebpackAliasFromJsConfig } = require("./wm-helper")
+const tsConfig = require("./tsconfig.json")
+const { getClientIPAddresses, getWebpackAliasFromTsConfig } = require("./wm-helper")
 
 /************************************************************************************************* */
 
@@ -37,7 +37,7 @@ const wmConfig = {
         entryFilename: "index.js",
         inlineAssetMaxSize: 6 * 1024, // in Bytes
         resolve: {
-            alias: getWebpackAliasFromJsConfig(jsConfig),
+            alias: getWebpackAliasFromTsConfig(tsConfig),
             extensions: ["jsx", '.js'],
         },
         outputESModule, // ouput ECMAScript module syntax whenever possible.
