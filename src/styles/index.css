@@ -10,3 +10,10 @@ body,
 body {
   margin: 0;
 }
+
+#css-svg-sample {
+  background-image: url(@assets/react.svg);
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+}

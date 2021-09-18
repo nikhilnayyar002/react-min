@@ -11,3 +11,6 @@ declare module "*.pjpeg"
 declare module "*.pjp"
 declare module "*.svg"
 declare module "*.webp"
+
+/** svg as react component */
+declare module "*.svg?react"
