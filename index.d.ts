@@ -14,3 +14,7 @@ declare module "*.webp"
 
 /** svg as react component */
 declare module "*.svg?react"
+
+/** other */
+
+declare module "*.txt"

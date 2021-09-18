@@ -72,7 +72,11 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [{ loader: 'css-loader' }]
-            }
+            },
+            {
+                test: /\.txt$/,
+                type: 'asset/source',
+            },
         ],
     },
     plugins: [

@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
-        "outDir": "dist",
+        "allowJs": true,
+        "noEmit": true,
         "baseUrl": ".",
         "paths": {
-            "@styles/*": [
-                "src/styles/*"
-            ],
-            "@assets/*": [
-                "src/assets/*"
-            ]
+          "@styles/*": [
+            "src/styles/*"
+          ],
+          "@assets/*": [
+            "src/assets/*"
+          ]
         },
         "module": "ESNext",
         "target": "ES6",
@@ -20,7 +21,6 @@
         "sourceMap": true,
         "jsx": "preserve",
         "moduleResolution": "node",
-        "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
         "strict": true,
@@ -29,8 +29,7 @@
         "noImplicitThis": true,
         "noImplicitAny": true,
         "noFallthroughCasesInSwitch": true,
-        "isolatedModules": true,
-        "noEmit": false
+        "isolatedModules": true
     },
     "include": [
         "src",
