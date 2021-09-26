@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/nikhilnayyar002/react-min/compare/v2.0.0...v3.0.0) (2021-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **commit:** .versionrc has been replace with .versionrc.js and commit types has been reduced
+from 11 to 6
+
+### ✨ Features
+
+* **commit:** refractor standard commit config ([5cc3cc7](https://github.com/nikhilnayyar002/react-min/commit/5cc3cc7f098210b0b131ed8d47e335f71bd0cf5a))
+
 ## [2.0.0](https://github.com/nikhilnayyar002/react-min/compare/v1.4.0...v2.0.0) (2021-09-26)
 
 
