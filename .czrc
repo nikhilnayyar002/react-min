@@ -2,16 +2,35 @@
   "path": "./node_modules/cz-conventional-changelog",
   "maxHeaderWidth": 50,
   "types": {
-    "revert": {"description":"Reverts"},
-    "feat": {"description": "Features"},
-    "fix": {"description": "Bug Fixes"},
-    "docs": {"description":"Docs"},
-    "style": {"description":"Styling"},
-    "refactor": {"description":"Code Refactoring"},
-    "perf": {"description":"Performance Improvements"},
-    "test": {"description":"Tests"},
-    "build": {"description":"Build System"},
-    "ci": {"description":"CI"},
-    "enhance": {"description": "Enhancements"}
+    "feat": {
+      "description": "Features",
+      "_icon": "✨",
+      "_hidden": "false"
+    },
+    "fix": {
+      "description": "Bug Fixes",
+      "_icon": "🛠️",
+      "_hidden": "false"
+    },
+    "docs": {
+      "description": "Docs",
+      "_icon": "📝",
+      "_hidden": "true"
+    },
+    "perf": {
+      "description": "Performance",
+      "_icon": "⚡️",
+      "_hidden": "false"
+    },
+    "test": {
+      "description": "Tests",
+      "_icon": "☑️",
+      "_hidden": "true"
+    },
+    "chore": {
+      "description": "Chore",
+      "_icon": "⛏️",
+      "_hidden": "true"
+    }
   }
 }
