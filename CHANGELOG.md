@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/nikhilnayyar002/react-min/compare/v2.0.0...v3.0.0) (2021-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **commit:** .versionrc has been replace with .versionrc.js and commit types has been reduced
+from 11 to 6
+
+### ✨ Features
+
+* **commit:** refractor standard commit config ([5cc3cc7](https://github.com/nikhilnayyar002/react-min/commit/5cc3cc7f098210b0b131ed8d47e335f71bd0cf5a))
+
+## [2.0.0](https://github.com/nikhilnayyar002/react-min/compare/v1.4.0...v2.0.0) (2021-09-26)
+
+
+### Notes
+
+Migration guide -
+* you can now have custom `src` and `public` folder in root. `public` folder must have `index.html` file. `src` folder must have `index.js` or `index.ts` file depending upon you are using javascript or typescript. If you want to see an example where `src` and `public` folder are included check this out these branches below - 
+  * [react-min-src](https://github.com/nikhilnayyar002/react-min/tree/react-min-src)
+  * [react-min-ts-src](https://github.com/nikhilnayyar002/react-min/tree/react-min-ts-src)
+* .gitignore now ignores `.env.*.local` files. 
+* `config.js` has been split up into into `wm-config.js` & `wm-helper.js`.
+* `getBabelLoaderDefaultOptions` which was earlier nested in `webpack` has been moved inside `babel` in `wm-config.js`. Lot of other properties has been modified as well but concept remains almost same. New options has been added such as `resolve` etc. `devServer` option also modified.
+
+### ⚠ BREAKING CHANGES
+
+* src and public folder are removed.
+* .gitignore .env.*.local files, split config.js into wm-config.js & wm-helper.js.
+
+### 🔥 Enhancements
+
+* refractor, update, add eslint react-hook ([bb33d10](https://github.com/nikhilnayyar002/react-min/commit/bb33d10dd767bc5644f85a2ae9237f0fbb95d387))
+  * eslint
+    - add "plugin:react-hooks/recommended"
+    - update ignorePatterns to only lint files in src
+  * update package.json - remove packages (cross-env, acorn)
+  * refractor react-min config
+
+
+### 🐛 Bug Fixes
+
+* **jsconfig.json:** replace with tsconfig.json ([23c4e63](https://github.com/nikhilnayyar002/react-min/commit/23c4e63a81ade65853505c639c5233527550dd84))
+
+
+### ✨ Features
+
+* **asset-txt:** import raw text file content ([72cf4c6](https://github.com/nikhilnayyar002/react-min/commit/72cf4c625d37841e27578392be17d9c9d6c8fb5c))
+* remove public and src folder ([88618f4](https://github.com/nikhilnayyar002/react-min/commit/88618f45a57d87a19600771b1799e171d364ad2f))
+* **svg-component:** add svg as component support ([6ff9774](https://github.com/nikhilnayyar002/react-min/commit/6ff97748c0e06519b60d8885faff45c276d0aa92))
+
 ## [1.4.0](https://github.com/nikhilnayyar002/react-min/compare/v1.3.1...v1.4.0) (2021-09-04)
 
 
