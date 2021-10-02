@@ -24,7 +24,16 @@ const o1 = mergeWithRules(use_options_rule)(webpackCommonConfig, {
                         ].filter(Boolean)
                     }
                 }]
-            }
+            },
+            {
+                test: /\.css$/,
+                use: [{
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: wmConfig.webpack.dev.styleSourceMaps,
+                    },
+                }]
+            },
         ],
     },
 })

@@ -59,6 +59,7 @@ const wmConfig = {
         dev: {
             clientIPAddresses: getClientIPAddresses(clientPort, devHttpsMode),
             sourceMaps: true,
+            styleSourceMaps: false, // sourcemaps for css, sass etc
             hmr: hotModuleReload,
             devServer: {
                 host: '0.0.0.0',
