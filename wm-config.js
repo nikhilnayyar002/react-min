@@ -9,6 +9,15 @@ const clientPort = 3000
 const devHttpsMode = false
 const hotModuleReload = true
 const outputESModule = true
+const typescript = false
+const entryFilenameJs = "index.js"
+const entryFilenameTs = "index.tsx"
+/**
+ * if no extenstion is present in module path then following extentions will be tried to resolve the module as a file.
+ * https://webpack.js.org/concepts/module-resolution/#module-paths
+ * https://stackoverflow.com/questions/34678314/webpack-cant-find-module-if-file-named-jsx
+ */
+const extensions = ['.tsx', '.ts', "jsx", '.js']
 
 const browserslist = {
     "production": [
@@ -26,19 +35,22 @@ const browserslist = {
 /************************************************************************************************* */
 
 const wmConfig = {
+    typescript,
     outputDir: "build",
     sourceDir: "src",
     publicDir: "public",
-    assetsDirInsideOutputDir: "assets",
+    assetsDirInsideOutputDir: "assets", // Eg: if value is "assets" & outputDir is "build" then folder will be "build/assets"
     publicDirHtmlFileName: "index.html",
     outputDirHtmlFileName: "index.html",
     outputDirFavicomFileName: "favicon.ico",
+    entryFilenameJs,
+    entryFilenameTs,
     webpack: {
-        entryFilename: "index.js",
+        entryFilename: typescript ? entryFilenameTs : entryFilenameJs,
         inlineAssetMaxSize: 6 * 1024, // in Bytes
         resolve: {
             alias: getWebpackAliasFromTsConfig(tsConfig),
-            extensions: ["jsx", '.js'],
+            extensions,
         },
         outputESModule, // ouput ECMAScript module syntax whenever possible.
         generateIntialVendorChunk: true,
@@ -79,6 +91,7 @@ const wmConfig = {
         environmentVariablesInApp: [], // strings, add env variables to be available inside web application as process.env.[VAR]
     },
     babel: {
+        testFilesRegex: new RegExp(`\\.(${extensions.map(v => v.slice(1)).join("|")})$`),
         getBabelLoaderDefaultOptions: (mode = "production") => ({
             cacheDirectory: true,
             cacheCompression: false,
@@ -96,8 +109,9 @@ const wmConfig = {
                         modules: outputESModule ? false : "auto",
                         bugfixes: true
                     }
-                ]
-            ]
+                ],
+                typescript && "@babel/preset-typescript"
+            ].filter(Boolean)
         })
     }
 }

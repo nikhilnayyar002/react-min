@@ -24,7 +24,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(jsx|js)$/,
+                test: wmConfig.babel.testFilesRegex,
                 exclude: /node_modules/,
                 include: path.resolve(__dirname, wmConfig.sourceDir),
                 use: [{
