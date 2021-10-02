@@ -34,6 +34,23 @@ const o1 = mergeWithRules(use_options_rule)(webpackCommonConfig, {
                     },
                 }]
             },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: wmConfig.webpack.dev.styleSourceMaps,
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: wmConfig.webpack.dev.styleSourceMaps,
+                        },
+                    },
+                ]
+            },
         ],
     },
 })
@@ -43,7 +60,11 @@ const o2 = mergeWithRules(use_rule)(o1, {
             {
                 test: /\.css$/,
                 use: [{ loader: "style-loader" }]
-            }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [{ loader: "style-loader" }]
+            },
         ],
     },
 })
