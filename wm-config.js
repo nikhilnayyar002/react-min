@@ -2,14 +2,19 @@ require("dotenv-flow").config() // load .env files
 const tsConfig = require("./tsconfig.json")
 const { getClientIPAddresses, getWebpackAliasFromTsConfig } = require("./wm-helper")
 
-/************************************************************************************************* */
+/** *************************************************************************************************
+ *  dont change the values of variables. These are updated by feature commands
+ */
+ const typescript = false
+ const sass = false
+/** */
 
+/************************************************************************************************* */
 const proxyServerOrigin1 = "http://localhost:5000"
 const clientPort = 3000
 const devHttpsMode = false
 const hotModuleReload = true
 const outputESModule = true
-const typescript = false
 const entryFilenameJs = "index.js"
 const entryFilenameTs = "index.tsx"
 /**
@@ -18,7 +23,6 @@ const entryFilenameTs = "index.tsx"
  * https://stackoverflow.com/questions/34678314/webpack-cant-find-module-if-file-named-jsx
  */
 const extensions = ['.tsx', '.ts', "jsx", '.js']
-
 const browserslist = {
     "production": [
         ">0.2%",
@@ -31,7 +35,6 @@ const browserslist = {
         "last 1 safari version"
     ]
 }
-
 /************************************************************************************************* */
 
 const wmConfig = {
@@ -59,6 +62,7 @@ const wmConfig = {
         dev: {
             clientIPAddresses: getClientIPAddresses(clientPort, devHttpsMode),
             sourceMaps: true,
+            styleSourceMaps: false, // sourcemaps for css, sass etc
             hmr: hotModuleReload,
             devServer: {
                 host: '0.0.0.0',

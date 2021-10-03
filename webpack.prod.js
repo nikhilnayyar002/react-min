@@ -15,7 +15,11 @@ const o1 = mergeWithRules(use_rule)(webpackCommonConfig, {
             {
                 test: /\.css$/,
                 use: [{ loader: MiniCssExtractPlugin.loader }]
-            }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [{ loader: MiniCssExtractPlugin.loader }]
+            },
         ],
     },
 })

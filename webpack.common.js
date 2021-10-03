@@ -77,6 +77,10 @@ module.exports = {
                 test: /\.txt$/,
                 type: 'asset/source',
             },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [{ loader: 'css-loader' }, { loader: 'sass-loader' }]
+            },
         ],
     },
     plugins: [
