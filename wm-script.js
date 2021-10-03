@@ -3,34 +3,56 @@ const execSync = require('child_process').execSync;
 
 const configFileName = "wm-config.js"
 
-const myArgs = process.argv.slice(2);
-if (!myArgs[0]) return
+const args = process.argv.slice(2);
+if (!args[0]) return
 
-const configFileStr = fs.readFileSync(configFileName, "utf8");
-
-// **************************************************************
-const enableFeatSassArg = "enable-feat-sass"
-const disableFeatSassArg = "disable-feat-sass"
-const enableFeatTypescriptArg = "enable-feat-typescript"
-const disableFeatTypescriptArg = "disable-feat-typescript"
-const updateFeatAllArg = "update-feat-all"
+let configFileStr
+readConfigFile()
 
 // **************************************************************
 
-const sassDeps = {
-    "sass-loader": "12.1.0",
-    "sass": "1.42.1",
+const features = {
+    sass: {
+        name: "sass",
+        args: {
+            enableFeat: "enable-feat-sass",
+            disableFeat: "disable-feat-sass"
+        },
+        deps: {
+            "sass-loader": "12.1.0",
+            "sass": "1.42.1",
+        }
+    },
+    typescript: {
+        name: "typescript",
+        args: {
+            enableFeat: "enable-feat-typescript",
+            disableFeat: "disable-feat-typescript"
+        },
+        deps: {
+            "@types/react": "17.0.26",
+            "@types/react-dom": "17.0.9",
+            "@babel/preset-typescript": "7.15.0",
+            "@typescript-eslint/eslint-plugin": "4.32.0",
+            "@typescript-eslint/parser": "4.32.0",
+            "typescript": "4.4.3",
+        }
+    }
 }
-const typescriptDeps = {
-    "@types/react": "17.0.26",
-    "@types/react-dom": "17.0.9",
-    "@babel/preset-typescript": "7.15.0",
-    "@typescript-eslint/eslint-plugin": "4.32.0",
-    "@typescript-eslint/parser": "4.32.0",
-    "typescript": "4.4.3",
+const globalArgs = {
+    updateFeatAll: "update-feat-all"
 }
 
 // **************************************************************
+
+function readConfigFile() {
+    configFileStr = fs.readFileSync(configFileName, "utf8");
+}
+function writeConfigFile(newConfigFileStr) {
+    fs.writeFileSync(configFileName, newConfigFileStr, "utf8")
+    readConfigFile()
+}
+
 function returnDepsStringForNpmInstall(deps) {
     return Object.keys(deps).join(" ")
 }
@@ -40,10 +62,14 @@ function returnDepsStringForNpmInstallWithVersion(deps) {
 
 function setOptionInConfig(setValue, arr, trueVal, falseVal) {
     const [line, currentValue] = arr
-    const newLine = line.replace(currentValue, setValue ? trueVal : falseVal)
-    const newConfigFileStr = configFileStr.replace(line, newLine)
+    const newValue = setValue ? trueVal : falseVal
+    if (newValue === currentValue)
+        return false
 
-    fs.writeFileSync(configFileName, newConfigFileStr, "utf8")
+    const newLine = line.replace(currentValue, newValue)
+    const newConfigFileStr = configFileStr.replace(line, newLine)
+    writeConfigFile(newConfigFileStr)
+    return true
 }
 
 function npmInstall(install, deps) {
@@ -59,53 +85,65 @@ function getBooleanOption(name) {
         return arr.slice(0, 2)
 }
 
+function setFeature(featureName, enable, oldOption, trueVal, falseVal, installCallback) {
+    console.log(enable ? "Enabling" : "Disabling", "feature", featureName)
+
+    const result = setOptionInConfig(enable, oldOption, trueVal, falseVal)
+    if (result)
+        enable ? installCallback(true) : installCallback(false)
+    else
+        console.log("Feature is already", enable ? "enabled" : "disabled")
+}
+
 // **************************************************************
 
-function getTypescript() {
-    return getBooleanOption("typescript")
-}
 function getSass() {
-    return getBooleanOption("sass")
+    return getBooleanOption(features.sass.name)
+}
+function getTypescript() {
+    return getBooleanOption(features.typescript.name)
 }
 function installSass(install) {
-    npmInstall(install, sassDeps)
+    npmInstall(install, features.sass.deps)
 }
 function installTypescript(install) {
-    npmInstall(install, typescriptDeps)
+    npmInstall(install, features.typescript.deps)
 }
 
 // **************************************************************
 
-if ([enableFeatSassArg, disableFeatSassArg].includes(myArgs[0])) {
-    const enableSass = myArgs[0] === enableFeatSassArg
-    setOptionInConfig(enableSass, getSass(), "true", "false")
-    enableSass ? installSass(true) : installSass(false)
-}
-else if ([enableFeatTypescriptArg, disableFeatTypescriptArg].includes(myArgs[0])) {
-    const enableTypescript = myArgs[0] === enableFeatTypescriptArg
-    setOptionInConfig(enableTypescript, getTypescript(), "true", "false")
-    enableTypescript ? installTypescript(true) : installTypescript(false)
-}
-else if (myArgs[0] === updateFeatAllArg) {
-    const updateList = {}
+args.forEach(arg => {
+    if ([features.sass.args.enableFeat, features.sass.args.disableFeat].includes(arg)) {
+        setFeature(features.sass.name, arg === features.sass.args.enableFeat, getSass(), "true", "false", installSass)
+    }
+    else if ([features.typescript.args.enableFeat, features.typescript.args.disableFeat].includes(arg)) {
+        setFeature(features.typescript.name, arg === features.typescript.args.enableFeat, getTypescript(), "true", "false", installTypescript)
+    }
+    else if (arg === globalArgs.updateFeatAll) {
+        const updateList = {}
 
-    const packageJson = fs.readFileSync('package.json', "utf8")
-    const devDependencies = JSON.parse(packageJson).devDependencies
-    if (!devDependencies) return
+        const packageJson = fs.readFileSync('package.json', "utf8")
+        const devDependencies = JSON.parse(packageJson).devDependencies
+        if (!devDependencies) return
 
-    if (getTypescript()[1] === "true")
-        for (let type in typescriptDeps)
-            if (devDependencies[type] && devDependencies[type] != typescriptDeps[type])
-                updateList[type] = typescriptDeps[type]
+        function checkUpdatesForDeps(deps) {
+            for (let type in deps)
+                if (devDependencies[type] && devDependencies[type] != deps[type])
+                    updateList[type] = deps[type]
+        }
 
-    if (getSass()[1] === "true")
-        for (let type in sassDeps)
-            if (devDependencies[type] && devDependencies[type] != sassDeps[type])
-                updateList[type] = sassDeps[type]
+        if (getSass()[1] === "true")
+            checkUpdatesForDeps(features.sass.deps)
 
-    if (Object.keys(updateList).length)
-        npmInstall(true, updateList)
-}
-else {
-    throw "invalid option passed"
-}
+        if (getTypescript()[1] === "true")
+            checkUpdatesForDeps(features.typescript.deps)
+
+        if (Object.keys(updateList).length)
+            npmInstall(true, updateList)
+        else
+            console.log("No packages to update")
+    }
+    else {
+        throw "invalid argument passed"
+    }
+})
