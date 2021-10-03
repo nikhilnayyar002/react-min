@@ -92,7 +92,9 @@ const wmConfig = {
         prod: {
             combineStyleSheets: false,
         },
-        environmentVariablesInApp: [], // strings, add env variables to be available inside web application as process.env.[VAR]
+        // strings, add env variables to be available inside web application as process.env.[VAR]
+        environmentVariablesInApp: [
+        ].concat(Object.keys(process.env).filter(v => v.startsWith("REACT_MIN_"))),
     },
     babel: {
         testFilesRegex: new RegExp(`\\.(${extensions.map(v => v.slice(1)).join("|")})$`),
