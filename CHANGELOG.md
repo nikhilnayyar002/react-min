@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/nikhilnayyar002/react-min/compare/v3.0.0...v4.0.0) (2021-10-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* .eslintrc -> .eslintrc.js, entryFilenameJs & entryFilenameTs options added in
+wm-config.js
+
+### ✨ Features
+
+* **env-var:** auto add REACT_MIN_* vars ([eaf546c](https://github.com/nikhilnayyar002/react-min/commit/eaf546c2da3dcc983a80de39e592caac1f6b86b7))
+* **sourcemaps:** config style sourcemaps ([9604338](https://github.com/nikhilnayyar002/react-min/commit/9604338185146ffaf183fbf8652b80eec03d48dc))
+* **typescript:** add typesript support ([2d5e753](https://github.com/nikhilnayyar002/react-min/commit/2d5e7539ad5f6710a49420597bdc5411dc71b969))
+* **typings:** add index.d.ts for custom types ([45f87a7](https://github.com/nikhilnayyar002/react-min/commit/45f87a7f98c2cb566b9c7fa15748cdc0b45e527c))
+* **wm-script:** on/off/update extra features ([8166f46](https://github.com/nikhilnayyar002/react-min/commit/8166f46b7cb898361aa1736e6e1010cb8c69ce10)), pass multiple args ([79cf827](https://github.com/nikhilnayyar002/react-min/commit/79cf82742a5dd4c7e6f3e65e5a78a29950efcf25))
+
+
+### 🛠️ Bug Fixes
+
+* **.czrc:** change boolean strings to boolean ([051b62f](https://github.com/nikhilnayyar002/react-min/commit/051b62f5cd6f785797b9cc124a1fb1f460ee4b37))
+* **deps:** update packages ([c902f9f](https://github.com/nikhilnayyar002/react-min/commit/c902f9f2b215d422c0bb032baaa5047521ac72b4)), ([645d42c](https://github.com/nikhilnayyar002/react-min/commit/645d42c15565dedbfc376e6eae9fbd40a61563de))
+* **wm-script:** dont update package when not req ([ce9fa0e](https://github.com/nikhilnayyar002/react-min/commit/ce9fa0e0253652b0a5ae74760ba57207b3aaa831))
+
 ## [3.0.0](https://github.com/nikhilnayyar002/react-min/compare/v2.0.0...v3.0.0) (2021-09-26)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "react-min",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "webpack modern setup",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
