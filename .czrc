@@ -5,32 +5,32 @@
     "feat": {
       "description": "Features",
       "_icon": "✨",
-      "_hidden": "false"
+      "_hidden": false
     },
     "fix": {
       "description": "Bug Fixes",
       "_icon": "🛠️",
-      "_hidden": "false"
+      "_hidden": false
     },
     "docs": {
       "description": "Docs",
       "_icon": "📝",
-      "_hidden": "true"
+      "_hidden": true
     },
     "perf": {
       "description": "Performance",
       "_icon": "⚡️",
-      "_hidden": "false"
+      "_hidden": false
     },
     "test": {
       "description": "Tests",
       "_icon": "☑️",
-      "_hidden": "true"
+      "_hidden": true
     },
     "chore": {
       "description": "Chore",
       "_icon": "⛏️",
-      "_hidden": "true"
+      "_hidden": true
     }
   }
 }
