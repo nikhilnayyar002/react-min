@@ -1,13 +1,13 @@
 import "@styles/index.css";
 
+import ReactDOM from "react-dom";
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 
-const unixEpochInMs = Date.now()
+export const unixEpochInMs = Date.now()
 
-function App() {
+export default function App(): JSX.Element {
     const [state] = useState(unixEpochInMs)
-
+    console.log(1)
     return (
         <div>
             <div>Hello WORLD</div>
@@ -16,9 +16,10 @@ function App() {
     )
 }
 
+
 ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
 );
