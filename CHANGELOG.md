@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/nikhilnayyar002/react-min/compare/v4.0.0...v4.0.1) (2021-10-09)
+
+
+### 🛠️ Bug Fixes
+
+* **deps:** update ([75d3472](https://github.com/nikhilnayyar002/react-min/commit/75d347287540c82226f66be2c05211251a60535f)), ([6933c10](https://github.com/nikhilnayyar002/react-min/commit/6933c104bf5f27a77a9dc2dedee672cf7665582d)), ([65d5d29](https://github.com/nikhilnayyar002/react-min/commit/65d5d298aac137395e25d47a02597d199da7bdfa))
+
 ## [4.0.0](https://github.com/nikhilnayyar002/react-min/compare/v3.0.0...v4.0.0) (2021-10-03)
 
 
