@@ -83,7 +83,10 @@ This command updates features dependencies.
   ```
 
 ## Updating the setup
-if yoy have made changes to any root files like `wm-config.js`, `webpack.dev.js` etc. that is you made custom changes. Then run the following command to review changes before overwriting your changes:
+
+You should generally update the setup after every release.
+
+If you have made changes to any root files like `wm-config.js`, `webpack.dev.js` etc. that is you made custom changes. Then run the following command to review changes before overwriting your changes:
 
 ```
 git merge master --no-ff --no-commit
@@ -93,10 +96,12 @@ Otherwise if you have not changed any of root files:
 
 ```
 git pull origin master
-npm ci
+npm i
 ```
 
->If you have installed any [optional features](#optional-features) then run [update](#update-all-features) command as well.
+If you have installed any [optional features](#optional-features) then run [update](#update-all-features) command as well.
+
+> Also you should avoid pulling `package-lock.json` if your dependencies in `package.json` are not exact as of **react-min**. Instead maintain your own  `package-lock.json`. Packages differ when you enable [optional features](#optional-features) that may install its own packages or user might install its own custom packages.
 
 ## Features
 
