@@ -5,31 +5,37 @@
     "feat": {
       "description": "Features",
       "_icon": "✨",
+      "_addIcon": false,
       "_hidden": false
     },
     "fix": {
       "description": "Bug Fixes",
       "_icon": "🛠️",
+      "_addIcon": false,
       "_hidden": false
     },
     "docs": {
       "description": "Docs",
       "_icon": "📝",
+      "_addIcon": false,
       "_hidden": true
     },
     "perf": {
       "description": "Performance",
       "_icon": "⚡️",
+      "_addIcon": false,
       "_hidden": false
     },
     "test": {
       "description": "Tests",
       "_icon": "☑️",
+      "_addIcon": false,
       "_hidden": true
     },
     "chore": {
       "description": "Chore",
       "_icon": "⛏️",
+      "_addIcon": false,
       "_hidden": true
     }
   }

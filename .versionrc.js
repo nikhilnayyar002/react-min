@@ -8,7 +8,7 @@ try {
   for (let type in obj.types) {
     types.push({
       "type": type,
-      "section": `${obj.types[type]._icon} ${obj.types[type].description}`,
+      "section": `${obj.types[type]._addIcon ? `${obj.types[type]._icon} ` : ""}${obj.types[type].description}`,
       "hidden": obj.types[type]._hidden
     })
   }
