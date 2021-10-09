@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/nikhilnayyar002/react-min/compare/v4.0.1...v5.0.0) (2021-10-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **.czrc:** default .czrc config now does not allow changelog generation with icons
+
+### Features
+
+* **.czrc:** add prop. _addIcon, refractor `CHANGELOG.md` ([c502c3d](https://github.com/nikhilnayyar002/react-min/commit/c502c3dce1050ab6453726a29f63d617c5424fd1))
+
 ### [4.0.1](https://github.com/nikhilnayyar002/react-min/compare/v4.0.0...v4.0.1) (2021-10-09)
 
 
