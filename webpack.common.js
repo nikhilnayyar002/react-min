@@ -108,6 +108,6 @@ module.exports = {
             files: path.resolve(__dirname, wmConfig.sourceDir),
             extensions: wmConfig.webpack.resolve.extensions
         }),
-        new webpack.EnvironmentPlugin(wmConfig.webpack.environmentVariablesInApp),
-    ]
+        wmConfig.webpack.environmentVariablesInApp.length && new webpack.EnvironmentPlugin(wmConfig.webpack.environmentVariablesInApp)
+    ].filter(Boolean)
 }
