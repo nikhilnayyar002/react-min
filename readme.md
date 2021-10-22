@@ -75,7 +75,10 @@ Adds [sass](https://sass-lang.com/)
   ```
   npm run wm -- disable-feat-sass
   ```
-
+### Enable multiple features (in single command)
+```
+npm run wm -- enable-feat-typescript enable-feat-sass
+```
 ### Update all features
 This command updates features dependencies.
   ```
@@ -89,19 +92,25 @@ You should generally update the setup after every release.
 If you have made changes to any root files like `wm-config.js`, `webpack.dev.js` etc. that is you made custom changes. Then run the following command to review changes before overwriting your changes:
 
 ```
-git merge master --no-ff --no-commit
+git fetch
+git merge origin/master --no-ff --no-commit
 ```
 
 Otherwise if you have not changed any of root files:
 
 ```
 git pull origin master
+```
+
+Install the dependencies:
+
+```
 npm i
 ```
 
 If you have installed any [optional features](#optional-features) then run [update](#update-all-features) command as well.
 
-> Also you should avoid pulling `package-lock.json` if your dependencies in `package.json` are not exact as of **react-min**. Instead maintain your own  `package-lock.json`. Packages differ when you enable [optional features](#optional-features) that may install its own packages or user might install its own custom packages.
+> Also you should avoid pulling `package-lock.json` if your dependencies in `package.json` are not exact as of **react-min/master**. Instead maintain your own  `package-lock.json`. Packages differ when you enable [optional features](#optional-features) that may install its own packages or user might install its own custom packages.
 
 ## Features
 
@@ -172,8 +181,9 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 * ⛏️ Chore(private): Code Styling, Refactor, changes that are categorised as other and does not bring any version update.
 * ☑️ Tests(private): add code to test your code
 
-## Important Discussions
+## Important Links
 * [Webpack generating duplicate code to save number of requests](https://github.com/webpack/webpack/issues/13768)
+* https://blog.logrocket.com/why-you-should-use-package-lock-json/
 
 ## devDependencies
 - babel
