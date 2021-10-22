@@ -74,7 +74,7 @@ function setOptionInConfig(setValue, arr, trueVal, falseVal) {
 
 function npmInstall(install, deps) {
     const str = install ? returnDepsStringForNpmInstallWithVersion(deps) : returnDepsStringForNpmInstall(deps)
-    execSync(`npm ${install ? "i" : "un"} --save-dev --save-exact ${str}`, { stdio: 'inherit' })
+    execSync(`npm ${install ? "i" : "un"} --save-dev ${str}`, { stdio: 'inherit' })
 }
 
 function getBooleanOption(name) {
@@ -144,6 +144,6 @@ args.forEach(arg => {
             console.log("No packages to update")
     }
     else {
-        throw "invalid argument passed"
+        throw "invalid argument passed: "+ arg
     }
 })
