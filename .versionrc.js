@@ -18,5 +18,19 @@ try {
 
 module.exports = {
   "releaseCommitMessageFormat": "release: {{currentTag}}",
-  "types": types
+  "types": types,
+  "bumpFiles": [
+    {
+      "filename": "package.json",
+      "type": "json"
+    },
+    {
+      "filename": "package-lock.json",
+      "type": "json"
+    },
+    {
+      "filename": "readme.md",
+      "updater": "std-ver-readme-bump.js"
+    }
+  ]
 }
