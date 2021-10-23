@@ -1,5 +1,8 @@
 # Webpack - Babel Setup
 
+![version](https://img.shields.io/badge/version-5.0.0-brightgreen)
+![supported node version](https://img.shields.io/badge/node-LTS-brightgreen)
+
 This is near to base setup for any other project.
 I only added react dependencies.
 

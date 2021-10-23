@@ -18,5 +18,11 @@ try {
 
 module.exports = {
   "releaseCommitMessageFormat": "release: {{currentTag}}",
-  "types": types
+  "types": types,
+  "bumpFiles": [
+    {
+      "filename": "readme.md",
+      "updater": "std-ver-readme-bump.js"
+    }
+  ]
 }
