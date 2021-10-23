@@ -1,4 +1,4 @@
-# Webpack - Babel Setup
+# react-min
 
 ![version](https://img.shields.io/badge/version-5.0.0-brightgreen)
 ![supported node version](https://img.shields.io/badge/node-LTS-brightgreen)
