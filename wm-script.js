@@ -117,48 +117,45 @@ function installTypescript(install) {
 
 // **************************************************************
 
-if (args.length === 1) {
-    const arg = args[0]
+// generate build
+if (args[0] === "build") {
+    console.log(chalk.blueBright(`Copying Files in ${wmConfig.publicDir} to ${wmConfig.outputDir} ...`))
+    fs.emptyDirSync(wmConfig.outputDir)
+    fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, })
+    console.log(chalk.blueBright("Done!"))
 
-    if (arg === "build") {
-
-        console.log(chalk.blueBright(`Copying Files in ${wmConfig.publicDir} to ${wmConfig.outputDir} ...`))
-        fs.emptyDirSync(wmConfig.outputDir)
-        fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, })
-        console.log(chalk.blueBright("Done!"))
-
-        console.log(chalk.blueBright("Building...", "\n"))
-        webpack({ ...webpackProdConfig, stats: "none" }, (err, stats) => {
-            if (err) {
-                console.log(err)
-            } else {
-                if (stats.hasWarnings()) {
-                    const warnings = stats.compilation.warnings
-                    console.log(chalk.yellowBright(`WARNINGS: ${warnings.length}`))
-                    warnings.forEach(value => console.log(value.message))
-                }
-                if (stats.hasErrors()) {
-                    const errors = stats.compilation.errors
-                    console.log(chalk.redBright(`ERRORS: ${errors.length}`))
-                    errors.forEach(value => console.log(value.message))
-
-                    console.log(chalk.redBright(`Build Failed`))
-                }
-                // log bundle assets 
-                else {
-                    const tableData = [["Asset", "Size (KB)"]]
-                    for (const [key, value] of stats.compilation.assetsInfo) {
-                        tableData.push([chalk[value.javascriptModule ? "greenBright" : "yellowBright"](key), (value.size / 1024).toFixed(2)])
-                    }
-                    console.log(table(tableData, {
-                        drawHorizontalLine: (lineIndex, rowCount) => lineIndex === 0 || lineIndex === 1 || lineIndex === rowCount
-                    }))
-                    console.log(chalk.blueBright(`Done! ${(stats.endTime - stats.startTime) / 1000}s`))
-                }
+    console.log(chalk.blueBright("Building...", "\n"))
+    webpack({ ...webpackProdConfig, stats: "none" }, (err, stats) => {
+        if (err) {
+            console.log(err)
+        } else {
+            if (stats.hasWarnings()) {
+                const warnings = stats.compilation.warnings
+                console.log(chalk.yellowBright(`WARNINGS: ${warnings.length}`))
+                warnings.forEach(value => console.log(value.message))
             }
-        });
-    }
-} else {
+            if (stats.hasErrors()) {
+                const errors = stats.compilation.errors
+                console.log(chalk.redBright(`ERRORS: ${errors.length}`))
+                errors.forEach(value => console.log(value.message))
+
+                console.log(chalk.redBright(`Build Failed`))
+            }
+            // log bundle assets 
+            else {
+                const tableData = [["Asset", "Size (KB)"]]
+                for (const [key, value] of stats.compilation.assetsInfo) {
+                    tableData.push([chalk[value.javascriptModule ? "greenBright" : "yellowBright"](key), (value.size / 1024).toFixed(2)])
+                }
+                console.log(table(tableData, {
+                    drawHorizontalLine: (lineIndex, rowCount) => lineIndex === 0 || lineIndex === 1 || lineIndex === rowCount
+                }))
+                console.log(chalk.blueBright(`Done! ${(stats.endTime - stats.startTime) / 1000}s`))
+            }
+        }
+    });
+}
+else {
     args.forEach(arg => {
         if ([features.sass.args.enableFeat, features.sass.args.disableFeat].includes(arg)) {
             setFeature(features.sass.name, arg === features.sass.args.enableFeat, getSass(), "true", "false", installSass)
