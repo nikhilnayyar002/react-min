@@ -1,5 +1,10 @@
-const fs = require("fs")
+const fs = require('fs-extra')
 const execSync = require('child_process').execSync;
+const webpack = require('webpack');
+const webpackProdConfig = require('./webpack.prod')
+const chalk = require('chalk');
+const { table } = require('table');
+const wmConfig = require('./wm-config')
 
 const configFileName = "wm-config.js"
 
@@ -112,38 +117,81 @@ function installTypescript(install) {
 
 // **************************************************************
 
-args.forEach(arg => {
-    if ([features.sass.args.enableFeat, features.sass.args.disableFeat].includes(arg)) {
-        setFeature(features.sass.name, arg === features.sass.args.enableFeat, getSass(), "true", "false", installSass)
-    }
-    else if ([features.typescript.args.enableFeat, features.typescript.args.disableFeat].includes(arg)) {
-        setFeature(features.typescript.name, arg === features.typescript.args.enableFeat, getTypescript(), "true", "false", installTypescript)
-    }
-    else if (arg === globalArgs.updateFeatAll) {
-        const updateList = {}
+if (args.length === 1) {
+    const arg = args[0]
 
-        const packageJson = fs.readFileSync('package.json', "utf8")
-        const devDependencies = JSON.parse(packageJson).devDependencies
-        if (!devDependencies) return
+    if (arg === "build") {
 
-        function checkUpdatesForDeps(deps) {
-            for (let type in deps)
-                if (devDependencies[type] && devDependencies[type] != deps[type])
-                    updateList[type] = deps[type]
+        console.log(chalk.blueBright(`Copying Files in ${wmConfig.publicDir} to ${wmConfig.outputDir} ...`))
+        fs.emptyDirSync(wmConfig.outputDir)
+        fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, })
+        console.log(chalk.blueBright("Done!"))
+
+        console.log(chalk.blueBright("Building...", "\n"))
+        webpack({ ...webpackProdConfig, stats: "none" }, (err, stats) => {
+            if (err) {
+                console.log(err)
+            } else {
+                if (stats.hasWarnings()) {
+                    const warnings = stats.compilation.warnings
+                    console.log(chalk.yellowBright(`WARNINGS: ${warnings.length}`))
+                    warnings.forEach(value => console.log(value.message))
+                }
+                if (stats.hasErrors()) {
+                    const errors = stats.compilation.errors
+                    console.log(chalk.redBright(`ERRORS: ${errors.length}`))
+                    errors.forEach(value => console.log(value.message))
+
+                    console.log(chalk.redBright(`Build Failed`))
+                }
+                // log bundle assets 
+                else {
+                    const tableData = [["Asset", "Size (KB)"]]
+                    for (const [key, value] of stats.compilation.assetsInfo) {
+                        tableData.push([chalk[value.javascriptModule ? "greenBright" : "yellowBright"](key), (value.size / 1024).toFixed(2)])
+                    }
+                    console.log(table(tableData, {
+                        drawHorizontalLine: (lineIndex, rowCount) => lineIndex === 0 || lineIndex === 1 || lineIndex === rowCount
+                    }))
+                    console.log(chalk.blueBright(`Done! ${(stats.endTime - stats.startTime) / 1000}s`))
+                }
+            }
+        });
+    }
+} else {
+    args.forEach(arg => {
+        if ([features.sass.args.enableFeat, features.sass.args.disableFeat].includes(arg)) {
+            setFeature(features.sass.name, arg === features.sass.args.enableFeat, getSass(), "true", "false", installSass)
         }
+        else if ([features.typescript.args.enableFeat, features.typescript.args.disableFeat].includes(arg)) {
+            setFeature(features.typescript.name, arg === features.typescript.args.enableFeat, getTypescript(), "true", "false", installTypescript)
+        }
+        else if (arg === globalArgs.updateFeatAll) {
+            const updateList = {}
 
-        if (getSass()[1] === "true")
-            checkUpdatesForDeps(features.sass.deps)
+            const packageJson = fs.readFileSync('package.json', "utf8")
+            const devDependencies = JSON.parse(packageJson).devDependencies
+            if (!devDependencies) return
 
-        if (getTypescript()[1] === "true")
-            checkUpdatesForDeps(features.typescript.deps)
+            function checkUpdatesForDeps(deps) {
+                for (let type in deps)
+                    if (devDependencies[type] && devDependencies[type] != deps[type])
+                        updateList[type] = deps[type]
+            }
 
-        if (Object.keys(updateList).length)
-            npmInstall(true, updateList)
-        else
-            console.log("No packages to update")
-    }
-    else {
-        throw "invalid argument passed: "+ arg
-    }
-})
+            if (getSass()[1] === "true")
+                checkUpdatesForDeps(features.sass.deps)
+
+            if (getTypescript()[1] === "true")
+                checkUpdatesForDeps(features.typescript.deps)
+
+            if (Object.keys(updateList).length)
+                npmInstall(true, updateList)
+            else
+                console.log("No packages to update")
+        }
+        else {
+            throw "invalid argument passed: " + arg
+        }
+    })
+}
