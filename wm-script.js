@@ -119,10 +119,9 @@ function installTypescript(install) {
 
 // generate build
 if (args[0] === "build") {
-    console.log(chalk.blueBright(`Copying Files in ${wmConfig.publicDir} to ${wmConfig.outputDir} ...`))
+    console.log(chalk.blueBright(`Copying Files ${wmConfig.publicDir} --> ${wmConfig.outputDir}...`))
     fs.emptyDirSync(wmConfig.outputDir)
     fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, })
-    console.log(chalk.blueBright("Done!"))
 
     console.log(chalk.blueBright("Building...", "\n"))
     webpack({ ...webpackProdConfig, stats: "none" }, (err, stats) => {
@@ -150,6 +149,15 @@ if (args[0] === "build") {
                 console.log(table(tableData, {
                     drawHorizontalLine: (lineIndex, rowCount) => lineIndex === 0 || lineIndex === 1 || lineIndex === rowCount
                 }))
+
+                console.log(
+                    `The project was built assuming it is hosted at ${chalk.yellowBright(wmConfig.webpack.publicPath)}.`,
+                    `\nYou can control this with the  ${chalk.yellowBright("publicPath")} variable in ${chalk.yellowBright("wm-config.js")}.`,
+                    `\nThe ${chalk.yellowBright("build")} folder is ready to be deployed.`,
+                    "\nYou may serve it with a static server:",
+                    "\n\nnpm install -g serve",
+                    "\nserve -s build"
+                )
                 console.log(chalk.blueBright(`Done! ${(stats.endTime - stats.startTime) / 1000}s`))
             }
         }

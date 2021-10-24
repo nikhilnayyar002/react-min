@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ESLintPlugin = require("eslint-webpack-plugin")
 const wmConfig = require('./wm-config')
 const CircularDependencyPlugin = require("circular-dependency-plugin")
+const { InterpolateHtmlPlugin } = require('./wm-helper')
 
 
 /********************************************************************* */
@@ -15,9 +16,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, wmConfig.outputDir),
-        publicPath: '/',
-
-
+        publicPath: wmConfig.webpack.publicPath,
         // clean the output dir before generating new output
         // we are manually cleaning in custom build script
         clean: false,
@@ -93,6 +92,7 @@ module.exports = {
             filename: path.resolve(__dirname, wmConfig.outputDir, wmConfig.outputDirHtmlFileName),
             inject: 'body' // inject bundle's inside body tag at the end
         }),
+        new InterpolateHtmlPlugin(wmConfig.specialEnvVariables),
         new CircularDependencyPlugin({
             // exclude detection of files based on a RegExp
             exclude: /node_modules/,

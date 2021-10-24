@@ -1,5 +1,11 @@
 const nets = require('os').networkInterfaces();
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping
+function escapeStringRegexp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
 
 // tsconfig path alias:
 //  "compilerOptions": {
@@ -38,3 +44,34 @@ exports.getClientIPAddresses = (clientPort, httpsMode = false) => {
                 temp.push(`${httpsMode ? "https" : "http"}://${net.internal ? "localhost" : net.address}:${clientPort}`)
     return temp
 }
+
+
+// https://github.com/facebook/create-react-app/blob/main/packages/react-dev-utils/InterpolateHtmlPlugin.js
+// https://github.com/jantimon/html-webpack-plugin/#events
+const interpolateHtmlPluginName = "InterpolateHtmlPlugin"
+class InterpolateHtmlPlugin {
+
+    constructor(replacements) {
+        this.replacements = replacements;
+    }
+
+    apply(compiler) {
+        compiler.hooks.compilation.tap(interpolateHtmlPluginName, (compilation) => {
+            HtmlWebpackPlugin.getHooks(compilation).afterTemplateExecution.tapAsync(
+                interpolateHtmlPluginName,
+                (data, cb) => {
+                    // Run HTML through a series of user-specified string replacements.
+                    Object.keys(this.replacements).forEach(key => {
+                        const value = this.replacements[key];
+                        data.html = data.html.replace(
+                            new RegExp('%' + escapeStringRegexp(key) + '%', 'g'),
+                            value
+                        );
+                    });
+                    cb(null, data)
+                }
+            )
+        })
+    }
+}
+exports.InterpolateHtmlPlugin = InterpolateHtmlPlugin
