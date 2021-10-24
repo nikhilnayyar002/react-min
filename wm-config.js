@@ -5,8 +5,8 @@ const { getClientIPAddresses, getWebpackAliasFromTsConfig } = require("./wm-help
 // *************************************************************************************************
 // dont change the values of variables. These are updated by feature commands
 
-const typescript = true
-const sass = true
+const typescript = false
+const sass = false
 
 // *************************************************************************************************
 const proxyServerOrigin1 = "http://localhost:5000"
