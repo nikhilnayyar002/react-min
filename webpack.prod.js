@@ -29,14 +29,14 @@ const o1 = mergeWithRules(use_rule)(webpackCommonConfig, {
 const o2 = merge(o1, {
     mode: 'production',
     output: {
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[id].[contenthash].js',
+        filename: `${wmConfig.assetsDirInsideOutputDir}/[name].[contenthash].js`,
+        chunkFilename: `${wmConfig.assetsDirInsideOutputDir}/[id].[contenthash].js`,
         assetModuleFilename: `${wmConfig.assetsDirInsideOutputDir}/[name].[contenthash].[ext]`, // https://webpack.js.org/guides/asset-modules/#custom-output-filename
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-            chunkFilename: '[id].[contenthash].[ext]'
+            filename: `${wmConfig.assetsDirInsideOutputDir}/[name].[contenthash].css`,
+            chunkFilename: `${wmConfig.assetsDirInsideOutputDir}/[id].[contenthash].[ext]`
         }),
     ],
     optimization: {
