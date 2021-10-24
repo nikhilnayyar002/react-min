@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 export const unixEpochInMs = Date.now()
 
-export default function App(): JSX.Element {
+function App() {
     const [state] = useState(unixEpochInMs)
     console.log(1)
     return (
@@ -15,7 +15,6 @@ export default function App(): JSX.Element {
         </div>
     )
 }
-
 
 ReactDOM.render(
   <React.StrictMode>
