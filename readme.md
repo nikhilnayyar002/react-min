@@ -47,7 +47,7 @@ Commands | Inf
 -|-
 start | dev mode.
 build | generate build files.
-wm | run `wm-script.js` script with arguments. See [Optional Features](#optional-features).
+wm | run `wm-script.js` script with arguments.
 speed-measure-dev | measure speed in dev mode.
 commit | run **commitizen**. creates standard commit.
 release | run **standard-version**. creates standard release.
