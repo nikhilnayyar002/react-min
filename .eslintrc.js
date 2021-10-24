@@ -14,11 +14,6 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended"
-    ],
-    "extends": [
-        "eslint:recommended",
         typescript && "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended"
@@ -34,7 +29,8 @@ module.exports = {
                 {
                     "functions": false
                 }
-            ]
+            ],
+            "no-undef": ["error"]
         } : {
             "no-use-before-define": [
                 "error",
@@ -47,7 +43,8 @@ module.exports = {
         "react/react-in-jsx-scope": "off"
     },
     "globals": {
-        "process": "readonly"
+        "process": "readonly",
+        "JSX": "readonly"
     },
     "settings": {
         "react": {

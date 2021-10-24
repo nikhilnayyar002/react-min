@@ -16,7 +16,11 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, wmConfig.outputDir),
         publicPath: '/',
-        clean: true, // clean the output dir before generating new output
+
+
+        // clean the output dir before generating new output
+        // we are manually cleaning in custom build script
+        clean: false,
         module: wmConfig.webpack.outputESModule, // https://webpack.js.org/configuration/output/#outputmodule
         pathinfo: false, // https://webpack.js.org/guides/build-performance/#output-without-path-info
     },
@@ -87,7 +91,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, wmConfig.publicDir, wmConfig.publicDirHtmlFileName),
             filename: path.resolve(__dirname, wmConfig.outputDir, wmConfig.outputDirHtmlFileName),
-            favicon: path.resolve(__dirname, wmConfig.publicDir, wmConfig.outputDirFavicomFileName),
             inject: 'body' // inject bundle's inside body tag at the end
         }),
         new CircularDependencyPlugin({

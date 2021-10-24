@@ -45,10 +45,14 @@ const wmConfig = {
     assetsDirInsideOutputDir: "assets", // Eg: if value is "assets" & outputDir is "build" then folder will be "build/assets"
     publicDirHtmlFileName: "index.html",
     outputDirHtmlFileName: "index.html",
-    outputDirFavicomFileName: "favicon.ico",
     entryFilenameJs,
     entryFilenameTs,
     webpack: {
+        // Public path for generated bundles & assets. Eg:
+        // 1. "/" = "/main.3r343.js"
+        // 2. "/myPage" = "/myPage/main.3r343.js"
+        // 3. "http://cdn.com" = "http://cdn.com/main.3r343.js"
+        publicPath: "/",
         entryFilename: typescript ? entryFilenameTs : entryFilenameJs,
         inlineAssetMaxSize: 6 * 1024, // in Bytes
         resolve: {

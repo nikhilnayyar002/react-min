@@ -189,13 +189,16 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 * https://blog.logrocket.com/why-you-should-use-package-lock-json/
 
 ## devDependencies
-- babel
-  - core: "@babel/core"
-  - general preset: "@babel/preset-env"
-  - preset for react: "@babel/preset-react" 
+
+### General
+
+- Babel
+  - "@babel/core"
+  - "@babel/preset-env"
+  - "@babel/preset-react" 
 - Eslint
-  - core: "eslint"
-  - Plugin
+  - "eslint"
+  - Plugins
     - "eslint-plugin-react"
     - "eslint-plugin-react-hooks"
 - Other Packages
@@ -203,6 +206,9 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
   - "cz-conventional-changelog"
   - "standard-version"
   - "dotenv-flow"
+  - "chalk"
+  - "fs-extra"
+  - "table"
 - Webpack
   - "webpack"
   - "webpack-cli"
@@ -228,3 +234,22 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
     - "css-loader"
     - "style-loader"
     - "@svgr/webpack"
+
+### Typescript
+- Babel
+  - "@babel/preset-typescript"
+- Eslint
+  - "@typescript-eslint/parser"
+  - Plugins
+    - "@typescript-eslint/eslint-plugin"
+- Other Packages
+  - "@types/react"
+  - "@types/react-dom"
+  - "typescript"
+
+### Sass
+- Other Packages
+  - "sass"
+- Webpack
+  - Loaders
+    - "sass-loader"
