@@ -13,9 +13,9 @@ I only added react dependencies.
 * `git clone `
 * `npm ci`
 
-### Create folders & files
+### Create files
 
-* create folder `src` folder and add `src/index.js` file.
+* create `src/index.js`.
   ```js
   import ReactDOM from "react-dom";
   
@@ -28,7 +28,7 @@ I only added react dependencies.
     document.getElementById("root")
   );
   ```
-* create `public` folder. add `public/favicon.ico` (if you dont have one create a empty file and name it). add `public/index.html`
+* create `public/index.html`
   ```html
   <!DOCTYPE html>
   <html lang="en">
@@ -61,12 +61,12 @@ Enable/Disable optional features in the project. The feature setup is already ad
   ```
   npm run wm -- enable-feat-typescript
   ```
-  Replace `index.js` with `index.tsx` (default name defined in `wm-config.js`).
+  Replace `index.js` with `index.tsx` (filename's are defined in `wm-config.js`).
 * disable: 
   ```
   npm run wm -- disable-feat-typescript
   ```
-  Replace `index.tsx` with `index.js` (default name defined in `wm-config.js`).
+  Replace `index.tsx` with `index.js` (filename's are defined in `wm-config.js`).
 
 ### sass
 Adds [sass](https://sass-lang.com/)
@@ -78,15 +78,16 @@ Adds [sass](https://sass-lang.com/)
   ```
   npm run wm -- disable-feat-sass
   ```
-### Enable multiple features (in single command)
+### Enable/Disable multiple features (in single command)
 ```
 npm run wm -- enable-feat-typescript enable-feat-sass
+npm run wm -- disable-feat-typescript disable-feat-sass
 ```
 ### Update all features
-This command updates features dependencies.
-  ```
-  npm run wm -- update-feat-all
-  ```
+This command update every feature dependencies.
+```
+npm run wm -- update-feat-all
+```
 
 ## Updating the setup
 
@@ -97,7 +98,6 @@ If you have made changes to any root files like `wm-config.js`, `webpack.dev.js`
 ```
 git fetch
 git merge origin/master --no-ff --no-commit
-git checkout -- package-lock.json
 ```
 
 Otherwise if you have not changed any of root files:
@@ -171,7 +171,7 @@ If you have installed any [optional features](#optional-features) then run [upda
 * edit eslint (`.eslintrc.js`)
 * update typescript (`tsconfig.json`). add custom modules types in `index.d.ts` file.
 * `publicPath` can be changed in `wm-config.js`. `publicPath` is similar to [homepage field in CRA](https://create-react-app.dev/docs/deployment/#building-for-relative-paths).
-* `publicPath` can be assessed in index.html and in code. [See](https://create-react-app.dev/docs/using-the-public-folder/).
+* `publicPath` can be included in index.html and in code. [See](https://create-react-app.dev/docs/using-the-public-folder/).
   ```
   // index.html
    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -196,6 +196,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 ## Important Links
 * [Webpack generating duplicate code to save number of requests](https://github.com/webpack/webpack/issues/13768)
 * https://blog.logrocket.com/why-you-should-use-package-lock-json/
+* [Guide](./guide.md)
 
 ## Important Notes
 
