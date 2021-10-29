@@ -90,7 +90,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, wmConfig.publicDir, wmConfig.publicDirHtmlFileName),
             filename: path.resolve(__dirname, wmConfig.outputDir, wmConfig.outputDirHtmlFileName),
-            inject: 'body' // inject bundle's inside body tag at the end
+            inject: 'body', // inject bundle's inside body tag at the end
+            scriptLoading: wmConfig.webpack.outputESModule ? "module" : "defer"
         }),
         new InterpolateHtmlPlugin(wmConfig.specialEnvVariables),
         new CircularDependencyPlugin({
