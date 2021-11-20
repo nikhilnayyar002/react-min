@@ -35,12 +35,12 @@ const features = {
             disableFeat: "disable-feat-typescript"
         },
         deps: {
-            "@types/react": "^17.0.33",
-            "@types/react-dom": "^17.0.10",
-            "@babel/preset-typescript": "^7.15.0",
-            "@typescript-eslint/eslint-plugin": "^4.33.0",
-            "@typescript-eslint/parser": "^4.33.0",
-            "typescript": "^4.4.4",
+            "@types/react": "^17.0.35",
+            "@types/react-dom": "^17.0.11",
+            "@babel/preset-typescript": "^7.16.0",
+            "@typescript-eslint/eslint-plugin": "^5.4.0",
+            "@typescript-eslint/parser": "^5.4.0",
+            "typescript": "^4.5.2",
         }
     }
 }
