@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/nikhilnayyar002/react-min/compare/v5.0.0...v5.1.0) (2021-11-20)
+
+
+### Features
+
+* **esm:** support type=module for script tag ([36d1851](https://github.com/nikhilnayyar002/react-min/commit/36d1851a90cc2b1727f012b05aab609abd6bedfe))
+* **publicpath:** %PUBLIC_URL% in index.html file ([18fb583](https://github.com/nikhilnayyar002/react-min/commit/18fb5834ccb6abeb11dc1a23da462320ffce78e1))
+
+
+### Bug Fixes
+
+* **build:** copy public dir contents to output dir ([5f15248](https://github.com/nikhilnayyar002/react-min/commit/5f1524835f0780e174c645749cfdb5aedcb62224))
+* **bump:** version does not bump in package files ([ea2c2d7](https://github.com/nikhilnayyar002/react-min/commit/ea2c2d7c3cd8acfa63b0ab8e88d234f2b9bda7d1))
+* **eslintrc:** remove duplicate, set "no-undef" on ([c6734e2](https://github.com/nikhilnayyar002/react-min/commit/c6734e299482f8da1943ff46c2de6953e263ab2d))
+* **types:** process is not defined ([4827f10](https://github.com/nikhilnayyar002/react-min/commit/4827f10e201456b66457cc9e2d2a56011970b8ca))
+* **wm-config:** features are enabled by mistake ([68c171e](https://github.com/nikhilnayyar002/react-min/commit/68c171ea25888787f3ef46e9f4057aceda26ad91))
+* **wm-script:** no exact deps, invalid argument ([f9be127](https://github.com/nikhilnayyar002/react-min/commit/f9be127ab765d8c961a793c9085eae52508abe31)), unable to run feature cmds ([3135a94](https://github.com/nikhilnayyar002/react-min/commit/3135a940830496583b03e6234bbc37bc696923fd))
+* dependencies updated
+
 ## [5.0.0](https://github.com/nikhilnayyar002/react-min/compare/v4.0.1...v5.0.0) (2021-10-09)
 
 
