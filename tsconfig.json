@@ -1,39 +1,36 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "noEmit": true,
-        "baseUrl": ".",
-        "paths": {
-          "@styles/*": [
-            "src/styles/*"
-          ],
-          "@assets/*": [
-            "src/assets/*"
-          ]
-        },
-        "module": "ESNext",
-        "target": "ES6",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "types": ["node"],
-        "sourceMap": true,
-        "jsx": "preserve",
-        "moduleResolution": "node",
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "resolveJsonModule": true,
-        "noImplicitThis": true,
-        "noImplicitAny": true,
-        "noFallthroughCasesInSwitch": true,
-        "isolatedModules": true
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ]
     },
-    "include": [
-        "src",
-        "index.d.ts"
-    ]
+    "module": "ESNext",
+    "target": "ESNext",
+    "types": [
+      "node"
+    ],
+    "sourceMap": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "src",
+    "index.d.ts"
+  ]
 }
