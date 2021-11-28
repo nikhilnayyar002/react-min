@@ -220,9 +220,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
   - "cz-conventional-changelog"
   - "standard-version"
   - "dotenv-flow"
-  - "chalk"
   - "fs-extra"
-  - "table"
 - Webpack
   - "webpack"
   - "webpack-cli"
