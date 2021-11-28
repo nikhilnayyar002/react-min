@@ -103,6 +103,7 @@ const wmConfig = {
                         warnings: false
                     },
                 },
+                historyApiFallback: true
             }
         },
         prod: {
