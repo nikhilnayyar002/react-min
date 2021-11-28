@@ -46,8 +46,7 @@ exports.getClientIPAddresses = (clientPort, httpsMode = false) => {
 // https://github.com/facebook/create-react-app/blob/main/packages/react-dev-utils/InterpolateHtmlPlugin.js
 // https://github.com/jantimon/html-webpack-plugin/#events
 const interpolateHtmlPluginName = "InterpolateHtmlPlugin"
-class InterpolateHtmlPlugin {
-
+exports[interpolateHtmlPluginName] = class {
     constructor(replacements) {
         this.replacements = replacements;
     }
@@ -71,7 +70,57 @@ class InterpolateHtmlPlugin {
         })
     }
 }
-exports.InterpolateHtmlPlugin = InterpolateHtmlPlugin
+
+// https://github.com/cascornelissen/event-hooks-webpack-plugin
+const eventHooksPluginName = "EventHooksPlugin"
+exports[eventHooksPluginName] = class {
+    constructor(hooks) {
+        this.hooks = hooks;
+    }
+
+    apply(compiler) {
+        const hooks = this.hooks;
+
+        Object.keys(hooks).forEach((hook) => {
+            const hookFunction = hooks[hook]
+            let errorMessage = ""
+
+            if (typeof hookFunction !== "function") errorMessage = `${eventHooksPluginName}: provide a function for the ${hook}!!`
+            if (!Object.keys(compiler.hooks).includes(hook)) errorMessage = `${eventHooksPluginName}: Invalid hook name`
+
+            if (errorMessage)
+                compiler.hooks.make.tap(eventHooksPluginName, (compilation) => compilation.errors.push(new Error(errorMessage)))
+            else
+                compiler.hooks[hook].tap(eventHooksPluginName, hookFunction)
+        });
+    }
+};
+
+// https://github.com/danillouz/clean-terminal-webpack-plugin
+const cleanTerminalPluginName = "CleanTerminalPlugin"
+exports[cleanTerminalPluginName] = class {
+    constructor({ message }) {
+        this.message = message;
+        this.firstRun = true;
+    }
+
+    apply(compiler) {
+        compiler.hooks.beforeCompile.tap(cleanTerminalPluginName, () => {
+            if (this.firstRun) {
+                this.firstRun = false;
+                return
+            }
+            this.clearConsole();
+        });
+    }
+
+    clearConsole() {
+        const clear = '\x1B[2J\x1B[3J\x1B[H';
+        const output = this.message ? `${clear + this.message}\n\n` : clear;
+
+        process.stdout.write(output);
+    }
+};
 
 // https://stackoverflow.com/a/50325607/11216153
 exports.chalk = (() => {

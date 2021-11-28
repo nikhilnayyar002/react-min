@@ -1,12 +1,11 @@
 const path = require('path')
 const { use_options_rule, use_rule } = require('./webpack.rules')
 const { mergeWithRules, merge } = require('webpack-merge')
-const EventHooksPlugin = require("event-hooks-webpack-plugin")
-const CleanTerminalPlugin = require("clean-terminal-webpack-plugin")
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
 const wmConfig = require('./wm-config')
 const webpackCommonConfig = require('./webpack.common')
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin")
+const { CleanTerminalPlugin, EventHooksPlugin } = require("./wm-helper")
 
 /********************************************************************* */
 
