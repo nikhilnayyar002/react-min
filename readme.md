@@ -114,7 +114,11 @@ npm i
 
 If you have installed any [optional features](#optional-features) then run [update](#update-all-features) command as well.
 
-> Also you should avoid pulling `package-lock.json` if your dependencies in `package.json` are not exact as of **react-min/master**. Instead maintain your own  `package-lock.json`. Packages differ when you enable [optional features](#optional-features) that may install its own packages or user might install its own custom packages.
+> Also you should avoid pulling `package-lock.json` if your dependencies in `package.json` are not exact as of **react-min/master**. Instead maintain your own  `package-lock.json`. Packages differ when you enable [optional features](#optional-features) that may install its own packages or user might install its own custom packages. \
+> To remove `package-lock.json` from merge conflict use:
+> ```
+> git checkout head -- package-lock.json
+> ```
 
 ## Features
 
@@ -189,7 +193,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 * ✨ Features (minor)(public): when you add functionality in a backwards compatible manner
 * ⚡️ Performance (patch)(public): internal performance improvements
 * 🛠️ Bug Fixes (patch)(public): when you make backwards compatible bug fixes. internal dependency updates "fix(deps)" etc
-* 📝 Docs(public): project documentation updates
+* 📝 Docs(public): project documentation updates. Use "docs(X.X.X)" for doc update related to a version.
 * ⛏️ Chore(private): Code Styling, Refactor, changes that are categorised as other and does not bring any version update.
 * ☑️ Tests(private): add code to test your code
 
@@ -207,63 +211,58 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 ### General
 
 - Babel
-  - "@babel/core"
-  - "@babel/preset-env"
-  - "@babel/preset-react" 
+  - [@babel/core](https://github.com/babel/babel)
+  - presets
+    - [@babel/preset-env](https://github.com/babel/babel/tree/main/packages/babel-preset-env)
+    - [@babel/preset-react](https://github.com/babel/babel/tree/main/packages/babel-preset-react)
 - Eslint
-  - "eslint"
-  - Plugins
-    - "eslint-plugin-react"
-    - "eslint-plugin-react-hooks"
+  - [eslint](https://github.com/eslint/eslint)
+  - plugins
+    - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
+    - [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 - Other Packages
-  - "commitizen"
-  - "cz-conventional-changelog"
-  - "standard-version"
-  - "dotenv-flow"
-  - "chalk"
-  - "fs-extra"
-  - "table"
+  - [commitizen](https://github.com/commitizen/cz-cli)
+  - [standard-version](https://github.com/conventional-changelog/standard-version)
+  - [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow)
+  - [fs-extra](https://github.com/jprichardson/node-fs-extra)
 - Webpack
-  - "webpack"
-  - "webpack-cli"
-  - "webpack-dev-server"
-  - "webpack-merge"
+  - [webpack](https://github.com/webpack/webpack)
+  - [webpack-cli](https://github.com/webpack/webpack-cli)
+  - [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+  - [webpack-merge](https://github.com/survivejs/webpack-merge)
   - Plugins
     - **important**
-      - @pmmmwh/react-refresh-webpack-plugin
+      - [@pmmmwh/react-refresh-webpack-plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin)
         - peer
-          - "react-refresh"
-      - "circular-dependency-plugin"
-      - "css-minimizer-webpack-plugin"
-      - "eslint-webpack-plugin"
-      - "html-webpack-plugin"
-      - "mini-css-extract-plugin"
-      - "terser-webpack-plugin"
+          - [react-refresh](https://github.com/facebook/react/tree/main/packages/react-refresh)
+      - [circular-dependency-plugin](https://github.com/aackerman/circular-dependency-plugin)
+      - [css-minimizer-webpack-plugin](https://github.com/webpack-contrib/css-minimizer-webpack-plugin)
+      - [eslint-webpack-plugin](https://github.com/webpack-contrib/eslint-webpack-plugin)
+      - [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
+      - [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
+      - [terser-webpack-plugin](https://github.com/webpack-contrib/terser-webpack-plugin)
     - **not important**
-      - "event-hooks-webpack-plugin"
-      - "speed-measure-webpack-plugin"
-      - "clean-terminal-webpack-plugin"
+      - [speed-measure-webpack-plugin](https://github.com/stephencookdev/speed-measure-webpack-plugin)
   - Loaders
-    - "babel-loader"
-    - "css-loader"
-    - "style-loader"
-    - "@svgr/webpack"
+    - [babel-loader](https://github.com/babel/babel-loader)
+    - [css-loader](https://github.com/webpack-contrib/css-loader)
+    - [style-loader](https://github.com/webpack-contrib/style-loader)
+    - [@svgr/webpack](https://github.com/gregberge/svgr)
 
-### Typescript
+### Typescript Feature
+- [typescript](https://github.com/microsoft/TypeScript)
 - Babel
-  - "@babel/preset-typescript"
+  - [@babel/preset-typescript](https://github.com/babel/babel/tree/main/packages/babel-preset-typescript)
 - Eslint
-  - "@typescript-eslint/parser"
+  - [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser)
   - Plugins
-    - "@typescript-eslint/eslint-plugin"
-- Other Packages
-  - "@types/react"
-  - "@types/react-dom"
-  - "typescript"
+    - [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin)
+- @types
+  - @types/react
+  - @types/react-dom
 
-### Sass
-- Other Packages
-  - "sass"
+### Sass Feature
+- [sass](https://github.com/sass)
 - Webpack
   - Loaders
-    - "sass-loader"
+    - [sass-loader](https://github.com/webpack-contrib/sass-loader)

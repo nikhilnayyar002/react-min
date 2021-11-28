@@ -2,9 +2,8 @@ const fs = require('fs-extra')
 const execSync = require('child_process').execSync;
 const webpack = require('webpack');
 const webpackProdConfig = require('./webpack.prod')
-const chalk = require('chalk');
-const { table } = require('table');
 const wmConfig = require('./wm-config')
+const { chalk, printTable } = require('./wm-helper')
 
 const configFileName = "wm-config.js"
 
@@ -121,7 +120,7 @@ function installTypescript(install) {
 if (args[0] === "build") {
     console.log(chalk.blueBright(`Copying Files ${wmConfig.publicDir} --> ${wmConfig.outputDir}...`))
     fs.emptyDirSync(wmConfig.outputDir)
-    fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, })
+    fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, filter: (src) => !src.endsWith(wmConfig.publicDirHtmlFileName) })
 
     console.log(chalk.blueBright("Building...", "\n"))
     webpack({ ...webpackProdConfig, stats: "none" }, (err, stats) => {
@@ -146,12 +145,11 @@ if (args[0] === "build") {
                 for (const [key, value] of stats.compilation.assetsInfo) {
                     tableData.push([chalk[value.javascriptModule ? "greenBright" : "yellowBright"](key), (value.size / 1024).toFixed(2)])
                 }
-                console.log(table(tableData, {
-                    drawHorizontalLine: (lineIndex, rowCount) => lineIndex === 0 || lineIndex === 1 || lineIndex === rowCount
-                }))
+                console.log("")
+                printTable(tableData)
 
                 console.log(
-                    `The project was built assuming it is hosted at ${chalk.yellowBright(wmConfig.webpack.publicPath)}.`,
+                    `\nThe project was built assuming it is hosted at ${chalk.yellowBright(wmConfig.webpack.publicPath)}.`,
                     `\nYou can control this with the  ${chalk.yellowBright("publicPath")} variable in ${chalk.yellowBright("wm-config.js")}.`,
                     `\nThe ${chalk.yellowBright("build")} folder is ready to be deployed.`,
                     "\nYou may serve it with a static server:",
