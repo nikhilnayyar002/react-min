@@ -59,8 +59,7 @@ const wmConfig = {
     sourceDir: "src",
     publicDir: "public",
     assetsDirInsideOutputDir: "assets", // Eg: if value is "assets" & outputDir is "build" then folder will be "build/assets"
-    publicDirHtmlFileName: "index.html",
-    outputDirHtmlFileName: "index.html",
+    publicDirHtmlFileName: "index.html", // this will also be used as output dir filename
     entryFilenameJs,
     entryFilenameTs,
     specialEnvVariables,

@@ -120,7 +120,7 @@ function installTypescript(install) {
 if (args[0] === "build") {
     console.log(chalk.blueBright(`Copying Files ${wmConfig.publicDir} --> ${wmConfig.outputDir}...`))
     fs.emptyDirSync(wmConfig.outputDir)
-    fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, })
+    fs.copySync(wmConfig.publicDir, wmConfig.outputDir, { dereference: true, filter: (src) => !src.endsWith(wmConfig.publicDirHtmlFileName) })
 
     console.log(chalk.blueBright("Building...", "\n"))
     webpack({ ...webpackProdConfig, stats: "none" }, (err, stats) => {
@@ -147,7 +147,7 @@ if (args[0] === "build") {
                 }
                 console.log("")
                 printTable(tableData)
-                
+
                 console.log(
                     `\nThe project was built assuming it is hosted at ${chalk.yellowBright(wmConfig.webpack.publicPath)}.`,
                     `\nYou can control this with the  ${chalk.yellowBright("publicPath")} variable in ${chalk.yellowBright("wm-config.js")}.`,

@@ -89,7 +89,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, wmConfig.publicDir, wmConfig.publicDirHtmlFileName),
-            filename: path.resolve(__dirname, wmConfig.outputDir, wmConfig.outputDirHtmlFileName),
+            filename: path.resolve(__dirname, wmConfig.outputDir, wmConfig.publicDirHtmlFileName),
             inject: 'body', // inject bundle's inside body tag at the end
             scriptLoading: wmConfig.webpack.outputESModule ? "module" : "defer"
         }),
