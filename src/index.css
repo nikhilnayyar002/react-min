@@ -1,0 +1,6 @@
+#css-svg-sample {
+  background-image: url(./react.svg);
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+}
