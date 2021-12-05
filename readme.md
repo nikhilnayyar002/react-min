@@ -262,7 +262,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
   - @types/react-dom
 
 ### Sass Feature
-- [sass](https://github.com/sass)
+- [sass](https://github.com/sass/dart-sass)
 - Webpack
   - Loaders
     - [sass-loader](https://github.com/webpack-contrib/sass-loader)
