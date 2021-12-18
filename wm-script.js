@@ -23,8 +23,8 @@ const features = {
             disableFeat: "disable-feat-sass"
         },
         deps: {
-            "sass-loader": "^12.3.0",
-            "sass": "^1.44.0",
+            "sass-loader": "^12.4.0",
+            "sass": "^1.45.0",
         }
     },
     typescript: {
@@ -36,10 +36,10 @@ const features = {
         deps: {
             "@types/react": "^17.0.37",
             "@types/react-dom": "^17.0.11",
-            "@babel/preset-typescript": "^7.16.0",
-            "@typescript-eslint/eslint-plugin": "^5.5.0",
-            "@typescript-eslint/parser": "^5.5.0",
-            "typescript": "^4.5.2",
+            "@babel/preset-typescript": "^7.16.5",
+            "@typescript-eslint/eslint-plugin": "^5.7.0",
+            "@typescript-eslint/parser": "^5.7.0",
+            "typescript": "^4.5.4",
         }
     }
 }
