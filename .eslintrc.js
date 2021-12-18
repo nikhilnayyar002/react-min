@@ -29,8 +29,7 @@ module.exports = {
                 {
                     "functions": false
                 }
-            ],
-            "no-undef": ["error"]
+            ]
         } : {
             "no-use-before-define": [
                 "error",

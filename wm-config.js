@@ -27,7 +27,7 @@ const publicPath = "/"
 // if no extenstion is present in module path then following extentions will be tried to resolve the module as a file.
 // https://webpack.js.org/concepts/module-resolution/#module-paths
 // https://stackoverflow.com/questions/34678314/webpack-cant-find-module-if-file-named-jsx
-const extensions = ['.tsx', '.ts', "jsx", '.js']
+const extensions = ['.tsx', '.ts', ".jsx", '.js']
 
 // https://create-react-app.dev/docs/supported-browsers-features/#configuring-supported-browsers
 const browserslist = {
