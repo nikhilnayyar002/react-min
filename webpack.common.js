@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin")
-const ESLintPlugin = require("eslint-webpack-plugin")
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const wmConfig = require('./wm-config')
 const CircularDependencyPlugin = require("circular-dependency-plugin")
 const { InterpolateHtmlPlugin } = require('./wm-helper')
@@ -108,10 +108,29 @@ module.exports = {
             // set the current working directory for displaying module paths
             cwd: process.cwd(),
         }),
-        new ESLintPlugin({
-            exclude: path.resolve(__dirname, "node_modules"),
-            files: path.resolve(__dirname, wmConfig.sourceDir),
-            extensions: wmConfig.webpack.resolve.extensions
+        // new ESLintPlugin({
+        //     exclude: path.resolve(__dirname, "node_modules"),
+        //     files: path.resolve(__dirname, wmConfig.sourceDir),
+        //     extensions: wmConfig.webpack.resolve.extensions
+        // }),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                diagnosticOptions: {
+                    semantic: true,
+                    syntactic: true,
+                },
+                mode: "write-references",
+                enabled: wmConfig.typescript
+            },
+            eslint: {
+                files: path.resolve(__dirname, wmConfig.sourceDir),
+                options: {
+                    extensions: wmConfig.webpack.resolve.extensions
+                }
+            },
+            logger: {
+                issues: "webpack-infrastructure",
+            }
         }),
         wmConfig.webpack.environmentVariablesInApp.length && new webpack.EnvironmentPlugin(wmConfig.webpack.environmentVariablesInApp)
     ].filter(Boolean)
