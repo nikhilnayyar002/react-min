@@ -52,6 +52,7 @@ module.exports = {
              *  https://react-svgr.com/docs/webpack/#handle-svg-in-css-sass-or-less
              *  https://github.com/gregberge/svgr/issues/551#issuecomment-883073902
              *  https://webpack.js.org/configuration/module/#ruleoneof
+             *  https://github.com/gregberge/svgr/pull/650
              */
             {
                 test: /\.svg$/,
