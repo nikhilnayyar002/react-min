@@ -1,6 +1,6 @@
 # react-min
 
-![version](https://img.shields.io/badge/version-5.1.0-brightgreen)
+![version](https://img.shields.io/badge/version-6.0.0-brightgreen)
 ![supported node version](https://img.shields.io/badge/node-LTS-brightgreen)
 
 This is near to base setup for any other project.
@@ -187,6 +187,7 @@ If you have installed any [optional features](#optional-features) then run [upda
 - edit `.versionrc.js` file used by **standard-version**.
 - edit babel setup in `wm-config.js` (`browserslist`, `wmConfig.babel`)
 - edit eslint (`.eslintrc.js`)
+- edit prettier (`.prettierrc.json`)
 - update typescript (`tsconfig.json`). add custom modules types in `index.d.ts` file.
 - `publicPath` can be changed in `wm-config.js`. `publicPath` is similar to [homepage field in CRA](https://create-react-app.dev/docs/deployment/#building-for-relative-paths).
 - `publicPath` can be included in index.html and in code. [See](https://create-react-app.dev/docs/using-the-public-folder/).
@@ -241,6 +242,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
   - [standard-version](https://github.com/conventional-changelog/standard-version)
   - [dotenv-flow](https://github.com/kerimdzhanov/dotenv-flow)
   - [fs-extra](https://github.com/jprichardson/node-fs-extra)
+  - [prettier](https://github.com/prettier/prettier)
 - Webpack
   - [webpack](https://github.com/webpack/webpack)
   - [webpack-cli](https://github.com/webpack/webpack-cli)
@@ -257,6 +259,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
       - [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
       - [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
       - [terser-webpack-plugin](https://github.com/webpack-contrib/terser-webpack-plugin)
+      - [fork-ts-checker-webpack-plugin](https://github.com/TypeStrong/fork-ts-checker-webpack-plugin)
     - **not important**
       - [speed-measure-webpack-plugin](https://github.com/stephencookdev/speed-measure-webpack-plugin)
   - Loaders
