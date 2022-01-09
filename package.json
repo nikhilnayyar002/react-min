@@ -8,12 +8,13 @@
     "wm": "node wm-script.js",
     "speed-measure-dev": "webpack serve --config webpack.dev.js --env speedMeasure",
     "commit": "cz",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prettier": "prettier src public --write"
   },
   "author": "Nikhil Nayyar @nikhilnayyar002",
   "license": "ISC",
   "private": true,
-  "dependencies": {
+  "dependencies": { 
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -37,6 +38,7 @@
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.6",
+    "prettier": "^2.5.1",
     "react-refresh": "^0.11.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "standard-version": "^9.3.2",
