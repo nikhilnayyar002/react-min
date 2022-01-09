@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/nikhilnayyar002/react-min/compare/v5.1.0...v6.0.0) (2022-01-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint:** architecture for eslint config file changed.
+* add wm-util.js.
+"wm-util.js" is like library that provide reusable functionality
+"wm-helper.js" provides major functionality for "react min".
+
+### Features
+
+* **devserver:** serve index.html instead of 404 ([9def7b2](https://github.com/nikhilnayyar002/react-min/commit/9def7b2b2e245a2fe18330696cbc87fbbf61fd07))
+* **prettier:** add config & npm script ([3c24fbe](https://github.com/nikhilnayyar002/react-min/commit/3c24fbecda25089438e37867dfb097261aca32f9))
+* **typescript:** type checking during compilation ([97814bf](https://github.com/nikhilnayyar002/react-min/commit/97814bf818141c8a06a8929b10862228ba5449e2))
+
+
+### Bug Fixes
+
+* **deps:** update ([9463c1e](https://github.com/nikhilnayyar002/react-min/commit/9463c1e5313e48ea6df8e30e4dc6ccf4b7853664)), ([cecb04c](https://github.com/nikhilnayyar002/react-min/commit/cecb04ca0c1c3a2dbbc09e7858af2d0b319564b6)), ([6148648](https://github.com/nikhilnayyar002/react-min/commit/6148648cb1bab5fbe924212c5b1e77c948e5d181)), ([68ef180](https://github.com/nikhilnayyar002/react-min/commit/68ef18012779022c5b4aee26dbeb02bc19b298fc)), ([c9ba227](https://github.com/nikhilnayyar002/react-min/commit/c9ba22765cfb46c563e4f3689d333253b9f94c93)), ([5d21491](https://github.com/nikhilnayyar002/react-min/commit/5d21491ebd9bc9ef34d033a9b2c1cfbafb03a880)), ([f0c7e95](https://github.com/nikhilnayyar002/react-min/commit/f0c7e95ed8da803b488337f7f6aa4ea4fd64ef81))
+* **eslint:** use overrides for ts, tsx files ([b02a9e9](https://github.com/nikhilnayyar002/react-min/commit/b02a9e9083625c557e346f61f854da47ce1b7061))
+
+
+### Chore
+
+* remove table, chalk deps; add wm-util.js ([7c4c3cf](https://github.com/nikhilnayyar002/react-min/commit/7c4c3cfe31fb938994a988ea33b06cfc79458671))
+
 ## [5.1.0](https://github.com/nikhilnayyar002/react-min/compare/v5.0.0...v5.1.0) (2021-11-20)
 
 ### Features
