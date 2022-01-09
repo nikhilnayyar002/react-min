@@ -1,20 +1,20 @@
 /** images */
 
-declare module "*.avif"
-declare module "*.gif"
-declare module "*.apng"
-declare module '*.png'
-declare module "*.jpg"
-declare module "*.jpeg"
-declare module "*.jfif"
-declare module "*.pjpeg"
-declare module "*.pjp"
-declare module "*.svg"
-declare module "*.webp"
+declare module "*.avif";
+declare module "*.gif";
+declare module "*.apng";
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.jpeg";
+declare module "*.jfif";
+declare module "*.pjpeg";
+declare module "*.pjp";
+declare module "*.svg";
+declare module "*.webp";
 
 /** svg as react component */
-declare module "*.svg?react"
+declare module "*.svg?react";
 
 /** other */
 
-declare module "*.txt"
+declare module "*.txt";

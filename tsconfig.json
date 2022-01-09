@@ -4,18 +4,12 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ]
+      "@styles/*": ["src/styles/*"],
+      "@assets/*": ["src/assets/*"]
     },
     "module": "ESNext",
     "target": "ESNext",
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "sourceMap": true,
     "jsx": "preserve",
     "moduleResolution": "node",
@@ -29,8 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true
   },
-  "include": [
-    "src",
-    "index.d.ts"
-  ]
+  "include": ["src", "index.d.ts"]
 }

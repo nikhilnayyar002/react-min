@@ -1,36 +1,36 @@
-const fs = require("fs")
+const fs = require("fs");
 
-const types = []
+const types = [];
 
 try {
-  const data = fs.readFileSync('.czrc', "utf8")
-  const obj = JSON.parse(data)
+  const data = fs.readFileSync(".czrc", "utf8");
+  const obj = JSON.parse(data);
   for (let type in obj.types) {
     types.push({
-      "type": type,
-      "section": `${obj.types[type]._addIcon ? `${obj.types[type]._icon} ` : ""}${obj.types[type].description}`,
-      "hidden": obj.types[type]._hidden
-    })
+      type: type,
+      section: `${obj.types[type]._addIcon ? `${obj.types[type]._icon} ` : ""}${obj.types[type].description}`,
+      hidden: obj.types[type]._hidden,
+    });
   }
 } catch (err) {
-  console.error(err)
+  console.error(err);
 }
 
 module.exports = {
-  "releaseCommitMessageFormat": "release: {{currentTag}}",
-  "types": types,
-  "bumpFiles": [
+  releaseCommitMessageFormat: "release: {{currentTag}}",
+  types: types,
+  bumpFiles: [
     {
-      "filename": "package.json",
-      "type": "json"
+      filename: "package.json",
+      type: "json",
     },
     {
-      "filename": "package-lock.json",
-      "type": "json"
+      filename: "package-lock.json",
+      type: "json",
     },
     {
-      "filename": "readme.md",
-      "updater": "std-ver-readme-bump.js"
-    }
-  ]
-}
+      filename: "readme.md",
+      updater: "std-ver-readme-bump.js",
+    },
+  ],
+};
