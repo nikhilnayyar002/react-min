@@ -1,11 +1,7 @@
-const typescript = require('./wm-config').typescript
+const wmConfig = require("./wm-config");
 
 module.exports = {
     "root": true,
-    ...(typescript ? { "parser": "@typescript-eslint/parser" } : {}),
-    "plugins": [
-        typescript && "@typescript-eslint"
-    ].filter(Boolean),
     "env": {
         "browser": true,
         "es2021": true,
@@ -14,31 +10,21 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        typescript && "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended"
-    ].filter(Boolean),
+    ],
     "parserOptions": {
         "sourceType": "module",
         "requireConfigFile": false
     },
     "rules": {
-        ...(typescript ? {
-            "@typescript-eslint/no-use-before-define": [
-                "error",
-                {
-                    "functions": false
-                }
-            ]
-        } : {
-            "no-use-before-define": [
-                "error",
-                {
-                    "functions": false
-                }
-            ],
-            "no-unused-vars": "warn",
-        }),
+        "no-use-before-define": [
+            "error",
+            {
+                "functions": false
+            }
+        ],
+        "no-unused-vars": "warn",
         "react/react-in-jsx-scope": "off"
     },
     "globals": {
@@ -53,5 +39,15 @@ module.exports = {
     "ignorePatterns": [
         "/**/*.*",
         "!src/**/*.*"
-    ]
+    ],
+    "overrides": [{
+        "files": wmConfig.typescriptExts.map(t => "src/**/*" + t),
+        "parser": "@typescript-eslint/parser",
+        "plugins": ["@typescript-eslint"],
+        "extends": ["plugin:@typescript-eslint/recommended"],
+        "rules": {
+            "no-use-before-define": "off",
+            "no-unused-vars": "off"
+        },
+    }]
 }
