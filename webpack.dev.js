@@ -100,7 +100,10 @@ const o3 = merge(o2, {
     runtimeChunk: "single",
     chunkIds: "named",
     splitChunks: {
-      chunks: "all",
+      // https://stackoverflow.com/questions/66786783/combine-vendor-chunk-into-chunk-created-with-dynamic-import-in-webpack
+      chunks() {
+        return false;
+      },
       cacheGroups: {
         vendorsInitial: wmConfig.webpack.generateIntialVendorChunk
           ? {

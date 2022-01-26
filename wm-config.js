@@ -65,7 +65,12 @@ const wmConfig = {
       extensions,
     },
     outputESModule, // ouput ECMAScript module syntax whenever possible.
+    // dont include "initial" vendor chunk in "initial" main chunk. generate a separate "initial" vendor chunk
     generateIntialVendorChunk: true,
+    // dont include particular "async" vendor chunk of particular "async" main chunk inside that particular "async" main chunk.
+    // generate a "async" vendor chunk for that particular "async" main chunk.
+    // here "main" refers to user code and not "vendor" code
+    // also "asyncVendorChunkMinSize" will allow reusing a particular "async" vendor chunk between different "async" main chunks
     generateAsyncVendorChunk: true,
     asyncVendorChunkMinSize: 1024, // https://github.com/webpack/webpack/issues/13768
     dev: {
@@ -100,7 +105,8 @@ const wmConfig = {
       },
     },
     prod: {
-      combineStyleSheets: false,
+      generateIntialStyleVendorChunk: true, // similar to "generateIntialVendorChunk"
+      generateAsyncStyleVendorChunk: true, // similar to "generateAsyncVendorChunk"
     },
     // strings, add env variables to be available inside web application as process.env.[VAR]
     environmentVariablesInApp: [].concat(

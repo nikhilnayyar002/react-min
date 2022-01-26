@@ -36,7 +36,7 @@ const o2 = merge(o1, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: `${wmConfig.assetsDirInsideOutputDir}/[name].[contenthash].css`,
-      chunkFilename: `${wmConfig.assetsDirInsideOutputDir}/[id].[contenthash].[ext]`,
+      chunkFilename: `${wmConfig.assetsDirInsideOutputDir}/[id].[contenthash].css`,
     }),
   ],
   optimization: {
@@ -50,7 +50,10 @@ const o2 = merge(o1, {
     moduleIds: "deterministic",
     runtimeChunk: "single",
     splitChunks: {
-      chunks: "all",
+      // https://stackoverflow.com/questions/66786783/combine-vendor-chunk-into-chunk-created-with-dynamic-import-in-webpack
+      chunks() {
+        return false;
+      },
       cacheGroups: {
         vendorsInitial: wmConfig.webpack.generateIntialVendorChunk
           ? {
@@ -65,11 +68,19 @@ const o2 = merge(o1, {
               minSize: wmConfig.webpack.asyncVendorChunkMinSize,
             }
           : false,
-        styles: wmConfig.webpack.prod.combineStyleSheets
+        stylesInitial: wmConfig.webpack.prod.generateIntialStyleVendorChunk
           ? {
-              name: "styles",
               type: "css/mini-extract",
-              chunks: "all",
+              chunks: "initial",
+              test: /[\\/]node_modules[\\/]/,
+              enforce: true,
+            }
+          : false,
+        stylesAsync: wmConfig.webpack.prod.generateAsyncStyleVendorChunk
+          ? {
+              type: "css/mini-extract",
+              chunks: "async",
+              test: /[\\/]node_modules[\\/]/,
               enforce: true,
             }
           : false,
