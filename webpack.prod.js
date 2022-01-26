@@ -36,7 +36,7 @@ const o2 = merge(o1, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: `${wmConfig.assetsDirInsideOutputDir}/[name].[contenthash].css`,
-      chunkFilename: `${wmConfig.assetsDirInsideOutputDir}/[id].[contenthash].[ext]`,
+      chunkFilename: `${wmConfig.assetsDirInsideOutputDir}/[id].[contenthash].css`,
     }),
   ],
   optimization: {
