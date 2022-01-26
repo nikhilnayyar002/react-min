@@ -34,7 +34,7 @@ module.exports = {
   },
   ignorePatterns: ["/**/*.*", "!src/**/*.*"],
   overrides: [
-    {
+    wmConfig.typescript && {
       files: wmConfig.typescriptExts.map((t) => "src/**/*" + t),
       parser: "@typescript-eslint/parser",
       plugins: ["@typescript-eslint"],
@@ -44,5 +44,5 @@ module.exports = {
         "no-unused-vars": "off",
       },
     },
-  ],
+  ].filter(Boolean),
 };
