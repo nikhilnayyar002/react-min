@@ -6,6 +6,10 @@ const wmConfig = require("./wm-config");
 const webpackCommonConfig = require("./webpack.common");
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const { CleanTerminalPlugin, EventHooksPlugin } = require("./wm-helper");
+const { removeForkTsCheckerWebpackPlugin } = require("./wm-helper");
+
+/********************************************************************* */
+if (!wmConfig.typescriptErrorCheckInDev) removeForkTsCheckerWebpackPlugin(webpackCommonConfig);
 
 /********************************************************************* */
 

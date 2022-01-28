@@ -56,6 +56,10 @@ const wmConfig = {
   entryFilenameTs,
   specialEnvVariables,
   typescriptExts,
+  // typescript is enabled in IDE's and reports type errors when a file is opened.
+  // but one can also enable build tools like webpack to report typescript errors.
+  typescriptErrorCheckInDev: false,
+  typescriptErrorCheckInProd: true,
   webpack: {
     publicPath,
     entryFilename: typescript ? entryFilenameTs : entryFilenameJs,
