@@ -127,6 +127,7 @@ module.exports = {
         logger: {
           issues: "webpack-infrastructure",
         },
+        formatter: "basic",
       }),
     wmConfig.webpack.environmentVariablesInApp.length &&
       new webpack.EnvironmentPlugin(wmConfig.webpack.environmentVariablesInApp),

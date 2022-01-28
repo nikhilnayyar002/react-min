@@ -6,7 +6,7 @@ import React, { useState } from "react";
 export const unixEpochInMs = Date.now();
 
 function App() {
-  const [state] = useState(unixEpochInMs);
+  // const [state] = useState(unixEpochInMs);
   console.log(1);
   return (
     <div>
