@@ -9,7 +9,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 
 /********************************************************************* */
 
-module.exports = {
+module.exports = (/** @type {"development"|"production"} */ env) => ({
   entry: path.resolve(__dirname, wmConfig.sourceDir, wmConfig.webpack.entryFilename),
   experiments: {
     outputModule: wmConfig.webpack.outputESModule, // https://webpack.js.org/configuration/output/#outputmodule
@@ -116,6 +116,9 @@ module.exports = {
       extensions: wmConfig.webpack.resolve.extensions,
     }),
     wmConfig.typescript &&
+      (env === "production"
+        ? wmConfig.typescriptErrorCheckInProd
+        : env === "development" && wmConfig.typescriptErrorCheckInDev) &&
       new ForkTsCheckerWebpackPlugin({
         typescript: {
           diagnosticOptions: {
@@ -131,4 +134,4 @@ module.exports = {
     wmConfig.webpack.environmentVariablesInApp.length &&
       new webpack.EnvironmentPlugin(wmConfig.webpack.environmentVariablesInApp),
   ].filter(Boolean),
-};
+});

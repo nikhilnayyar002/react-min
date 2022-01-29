@@ -6,14 +6,10 @@ const wmConfig = require("./wm-config");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const { removeForkTsCheckerWebpackPlugin } = require("./wm-helper");
-
-/********************************************************************* */
-if (!wmConfig.typescriptErrorCheckInProd) removeForkTsCheckerWebpackPlugin(webpackCommonConfig);
 
 /********************************************************************* */
 
-const o1 = mergeWithRules(use_rule)(webpackCommonConfig, {
+const o1 = mergeWithRules(use_rule)(webpackCommonConfig("production"), {
   module: {
     rules: [
       {
