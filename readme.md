@@ -3,8 +3,26 @@
 ![version](https://img.shields.io/badge/version-6.0.0-brightgreen)
 ![supported node version](https://img.shields.io/badge/node-LTS-brightgreen)
 
-This is near to base setup for any other project.
-I only added react dependencies.
+- [react-min](#react-min)
+  - [Setup](#setup)
+    - [Install](#install)
+    - [Create files](#create-files)
+  - [Commands](#commands)
+  - [Optional Features](#optional-features)
+    - [typescript](#typescript)
+    - [sass](#sass)
+    - [Enable or Disable multiple features in single command](#enable-or-disable-multiple-features-in-single-command)
+    - [Update all features](#update-all-features)
+  - [Updating the setup](#updating-the-setup)
+  - [Features](#features)
+  - [Commit Guidelines](#commit-guidelines)
+    - [Commit types](#commit-types)
+  - [Important Links](#important-links)
+  - [Important Notes](#important-notes)
+  - [devDependencies](#devdependencies)
+    - [General](#general)
+    - [Typescript Feature](#typescript-feature)
+    - [Sass Feature](#sass-feature)
 
 ## Setup
 
@@ -51,6 +69,7 @@ I only added react dependencies.
 | speed-measure-dev | measure speed in dev mode.                          |
 | commit            | run **commitizen**. creates standard commit.        |
 | release           | run **standard-version**. creates standard release. |
+| prettier          | format files in `src` and `public`                  |
 
 ## Optional Features
 
@@ -82,7 +101,7 @@ Adds [sass](https://sass-lang.com/)
   npm run wm -- disable-feat-sass
   ```
 
-### Enable/Disable multiple features (in single command)
+### Enable or Disable multiple features in single command
 
 ```
 npm run wm -- enable-feat-typescript enable-feat-sass
@@ -200,6 +219,16 @@ If you have installed any [optional features](#optional-features) then run [upda
   process.env.PUBLIC_URL
   ```
 
+- typescript is enabled in IDE's and reports type errors when a file is opened. But one can also enable build tools like webpack to report typescript errors. Configeration is in `wm-config.js`:
+
+  ```js
+  {
+    ...,
+    typescriptErrorCheckInDev: false,
+    typescriptErrorCheckInProd: true,
+  }
+  ```
+
 ## Commit Guidelines
 
 This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-version](https://github.com/conventional-changelog/standard-version) for generating releases, tags & changelogs.
@@ -209,7 +238,7 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 - ✨ Features (minor)(public): when you add functionality in a backwards compatible manner
 - ⚡️ Performance (patch)(public): internal performance improvements
 - 🛠️ Bug Fixes (patch)(public): when you make backwards compatible bug fixes. internal dependency updates "fix(deps)" etc
-- 📝 Docs(public): project documentation updates. Use "docs(X.X.X)" for doc update related to a version.
+- 📝 Docs(patch)(public): project documentation updates. Use "docs(X.X.X)" for doc update related to a version.
 - ⛏️ Chore(private): Code Styling, Refactor, changes that are categorised as other and does not bring any version update.
 - ☑️ Tests(private): add code to test your code
 

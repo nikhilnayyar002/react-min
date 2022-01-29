@@ -18,7 +18,7 @@
       "description": "Docs",
       "_icon": "📝",
       "_addIcon": false,
-      "_hidden": true
+      "_hidden": false
     },
     "perf": {
       "description": "Performance",
