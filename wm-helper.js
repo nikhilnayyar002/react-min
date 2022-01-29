@@ -2,7 +2,6 @@ const nets = require("os").networkInterfaces();
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { escapeStringRegexp } = require("./wm-util");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 /**
  * tsconfig path alias:
@@ -190,6 +189,3 @@ exports.printTable = (table) => {
     }
   }
 };
-
-exports.removeForkTsCheckerWebpackPlugin = (webpackConfig) =>
-  (webpackConfig.plugins = webpackConfig.plugins.filter((o) => o.constructor.name !== ForkTsCheckerWebpackPlugin.name));

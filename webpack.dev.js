@@ -6,14 +6,10 @@ const wmConfig = require("./wm-config");
 const webpackCommonConfig = require("./webpack.common");
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const { CleanTerminalPlugin, EventHooksPlugin } = require("./wm-helper");
-const { removeForkTsCheckerWebpackPlugin } = require("./wm-helper");
-
-/********************************************************************* */
-if (!wmConfig.typescriptErrorCheckInDev) removeForkTsCheckerWebpackPlugin(webpackCommonConfig);
 
 /********************************************************************* */
 
-const o1 = mergeWithRules(use_options_rule)(webpackCommonConfig, {
+const o1 = mergeWithRules(use_options_rule)(webpackCommonConfig("development"), {
   module: {
     rules: [
       {
@@ -127,4 +123,5 @@ const o3 = merge(o2, {
   },
 });
 
-module.exports = (env) => (env.speedMeasure ? new SpeedMeasurePlugin().wrap(o3) : o3);
+module.exports = (/** @type {{ [key:String]:String ]}} */ env) =>
+  env.speedMeasure ? new SpeedMeasurePlugin().wrap(o3) : o3;
