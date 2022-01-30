@@ -127,9 +127,6 @@ module.exports = (/** @type {"development"|"production"} */ env) => ({
           },
           mode: "write-references",
         },
-        logger: {
-          issues: "webpack-infrastructure",
-        },
       }),
     wmConfig.webpack.environmentVariablesInApp.length &&
       new webpack.EnvironmentPlugin(wmConfig.webpack.environmentVariablesInApp),
