@@ -37,6 +37,12 @@
       "_icon": "⛏️",
       "_addIcon": false,
       "_hidden": true
+    },
+    "revert": {
+      "description": "Revert",
+      "_icon": "◀️",
+      "_addIcon": false,
+      "_hidden": true
     }
   }
 }
