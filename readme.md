@@ -237,10 +237,11 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
 
 - ✨ Features (minor)(public): when you add functionality in a backwards compatible manner
 - ⚡️ Performance (patch)(public): internal performance improvements
-- 🛠️ Bug Fixes (patch)(public): when you make backwards compatible bug fixes. internal dependency updates "fix(deps)" etc
-- 📝 Docs(patch)(public): project documentation updates. Use "docs(X.X.X)" for doc update related to a version.
-- ⛏️ Chore(private): Code Styling, Refactor, changes that are categorised as other and does not bring any version update.
-- ☑️ Tests(private): add code to test your code
+- 🛠️ Bug Fixes (patch)(public): when you make backwards compatible bug fixes like internal dependency updates "fix(deps)", important document corrections "fix(docs)" etc
+- 📝 Docs (public): project documentation updates. Use "docs(X.X.X)" for doc update related to a version.
+- 📝 Important Docs change (patch)(public): same as `Docs` but will also increment the patch.
+- ⛏️ Chore (private): Code Styling, Refactor, changes that are categorised as other and does not bring any version update.
+- ☑️ Tests (private): add code to test your code
 
 ## Important Links
 

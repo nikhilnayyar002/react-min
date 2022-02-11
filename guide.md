@@ -112,11 +112,12 @@ After successfully done we will have a new commit with subject:
 
 ## Mark a commit as unimportant so that you could remove it from changelog
 
-If a commit type is configered to be in included in changelog and if you dont want it to be included then add `-X` in starting of message when you run `npm run commit` to remind yourself to remove that committed type from generated changelog. For example the commit subject will then look like:
+If a commit type is configered to be in included in changelog and if you dont want it to be included then add `-:X` in starting of message when you run `npm run commit` to remind yourself to remove that committed type from generated changelog. For example the commit subject will then look like:
 
-`docs: -X unusual document updates`
+`<type>: -:X unusual document updates`
 
 ## Release Process
+Release should be made after adding changes in both code and docs.
 
 - `npm run release -- --skip.tag --skip.commit`
 - review changelog

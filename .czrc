@@ -18,6 +18,12 @@
       "description": "Docs",
       "_icon": "📝",
       "_addIcon": false,
+      "_hidden": true
+    },
+    "docs-i": {
+      "description": "Important Docs change",
+      "_icon": "📝",
+      "_addIcon": false,
       "_hidden": false
     },
     "perf": {
