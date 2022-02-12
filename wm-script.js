@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const webpackProdConfig = require("./webpack.prod");
 const wmConfig = require("./wm-config");
 const { chalk, printTable } = require("./wm-helper");
+const zlib = require("zlib");
 
 const configFileName = "wm-config.js";
 
@@ -141,11 +142,14 @@ if (args[0] === "build") {
       }
       // log bundle assets
       else {
-        const tableData = [["Asset", "Size (KB)"]];
+        const tableData = [["Asset", "Size (KB)", "GZip (KB)", "Brotli (KB)"]];
         for (const [key, value] of stats.compilation.assetsInfo) {
+          const fileContent = fs.readFileSync(`${wmConfig.outputDir}/${key}`);
           tableData.push([
             chalk[value.javascriptModule ? "greenBright" : "yellowBright"](key),
             (value.size / 1024).toFixed(2),
+            (zlib.gzipSync(fileContent).length / 1024).toFixed(2),
+            (zlib.brotliCompressSync(fileContent).length / 1024).toFixed(2),
           ]);
         }
         console.log("");
