@@ -1,6 +1,6 @@
 {
   "name": "react-min",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "webpack modern setup",
   "homepage": "https://github.com/nikhilnayyar002/react-min",
   "scripts": {

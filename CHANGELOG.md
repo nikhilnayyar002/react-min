@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/nikhilnayyar002/react-min/compare/v6.0.0...v6.1.0) (2022-02-12)
+
+
+### Features
+
+* **.czrc:** add type **docs-i** (Important Docs change) ([5d99774](https://github.com/nikhilnayyar002/react-min/commit/5d997744e917c8bf11a2a4c63479062d014c2466))
+* add revert commit type ([12019b7](https://github.com/nikhilnayyar002/react-min/commit/12019b70bba8f884ff55be88b71b7ce0d8a2fcef))
+* log gzip and Brotli size after build ([5560bd7](https://github.com/nikhilnayyar002/react-min/commit/5560bd7f220e98c41ac7934905f80e4d84292d0e))
+
+
+### Bug Fixes
+
+* **.eslintrc.js:** conditionally use typescript ([57f479f](https://github.com/nikhilnayyar002/react-min/commit/57f479f260a0d1e4ce374d89346132d54b164f50))
+* **deps:** update packages; `package-lock.json` updated, do `npm ci` ([6c3e0ce](https://github.com/nikhilnayyar002/react-min/commit/6c3e0ced26df3d1c270fd23f0e4b7ef851086def)), ([f7b0a9f](https://github.com/nikhilnayyar002/react-min/commit/f7b0a9f11d6abaedec9eba3bc17fb51e5ce22ad7)), ([17bd754](https://github.com/nikhilnayyar002/react-min/commit/17bd75409f9f62ee02d67904e40fe6526a8573c7)), ([c8b9f25](https://github.com/nikhilnayyar002/react-min/commit/c8b9f2569d4fb2bc4a8700f698e3c868d0ce11ee)), ([7efaf35](https://github.com/nikhilnayyar002/react-min/commit/7efaf35967584c38d21708a0f1b2923438c5b3e2))
+* **minicssextractplugin:** incorrect chunkFilename ([19c257c](https://github.com/nikhilnayyar002/react-min/commit/19c257cda4f40fa4f7fdbcfa3e8c0672407d564e))
+* **splitchunks:** async/inital chunks expectations ([0e3a2b4](https://github.com/nikhilnayyar002/react-min/commit/0e3a2b42046733211bef1a16387c8fbc15ef8912))
+
+
+### Performance
+
+* forkTsCheckerWebpackPlugin dev/prod settings ([8f1447d](https://github.com/nikhilnayyar002/react-min/commit/8f1447d7a0ef45b0ab395891be4ca4664d06afc9))
+
 ## [6.0.0](https://github.com/nikhilnayyar002/react-min/compare/v5.1.0...v6.0.0) (2022-01-09)
 
 
