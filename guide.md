@@ -47,14 +47,14 @@ git add -u . // adds modified/deleted files in the current directory
 git restore --staged . // unstage all files
 git restore --staged src/styles // unstage all files in src/styles
 git restore --staged src/index.tsx  // unstage src/index.tsx
-git restore . // discard unstaged files (only updated one i.e the ones which are modified/deleted) 
+git restore . // discard unstaged files (only updated one i.e the ones which are modified/deleted)
 git reset // unstage all files
 git reset src/styles // unstage all files in src/styles
 git reset src/index.tsx  // unstage src/index.tsx
 git reset --hard HEAD // throw away all files in index
 git reset --hard HEAD~1 // reset HEAD to parent commit
 git reset --soft HEAD~1 // reset HEAD to parent commit + current HEAD commit changes staged
-git reset HEAD~1 // reset HEAD to parent commit + current HEAD commit changes unstaged + all staged changes in index also gets unstaged 
+git reset HEAD~1 // reset HEAD to parent commit + current HEAD commit changes unstaged + all staged changes in index also gets unstaged
 git tag --delete tagname
 git push origin :tagname
 git rebase --onto <new-parent> <old-parent> // https://stackoverflow.com/questions/3810348/setting-git-parent-pointer-to-a-different-parent
@@ -75,7 +75,7 @@ git reset HEAD~1
 git reset --soft HEAD~1
 git checkout <name-of-your-branch>
 git branch -D temp-staged
-git branch -D temp-unstaged 
+git branch -D temp-unstaged
 
 //revert
 git revert --no-commit d4b4eba 13a97b2 // revert two commits
@@ -117,6 +117,7 @@ If a commit type is configered to be in included in changelog and if you dont wa
 `<type>: -:X unusual document updates`
 
 ## Release Process
+
 Release should be made after adding changes in both code and docs.
 
 - `npm run release -- --skip.tag --skip.commit`
@@ -129,7 +130,7 @@ Release should be made after adding changes in both code and docs.
 - `git push --follow-tags origin master`
 - publish github release
 
->Note: `npm run release -- --dry-run` can be used for see changes without actually making them. [See](https://github.com/conventional-changelog/standard-version#dry-run-mode)
+> Note: `npm run release -- --dry-run` can be used for see changes without actually making them. [See](https://github.com/conventional-changelog/standard-version#dry-run-mode)
 
 ## Standard version
 
@@ -223,9 +224,6 @@ By default, standard-version only records commit type `feat` and `fix` to CHANGE
   }
 }
 ```
-
-
-
 
 ### Merging branches
 
