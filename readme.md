@@ -123,8 +123,7 @@ You should generally update the setup after every release.
 If you have made changes to any root files like `wm-config.js`, `webpack.dev.js` etc. that is you made custom changes. Then run the following command to review changes before overwriting your changes:
 
 ```
-git fetch
-git merge origin/master --no-ff --no-commit
+git fetch && git merge origin/master --no-ff --no-commit
 ```
 
 Otherwise if you have not changed any of root files:

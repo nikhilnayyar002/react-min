@@ -124,8 +124,8 @@ Release should be made after adding changes in both code and docs.
 - review changelog
   - combine multiple lines stating fixes: package updates to one line.
   - run `git log --pretty=format:%s vX.X.X..HEAD --grep="revert:"` to find **revert** type commits between tag vX.X.X to HEAD (tag excluded, head included). Remove commits mentioned by **revert** type from generated changelog. Here vX.X.X represents previous tagged release.
-  - search for messages with `-X` in it. These are the commits you yourself marked as unimportant. See
-- stage changes and commit
+  - search for messages with `-:X` in it. These are the commits you yourself marked as unimportant. See
+- stage changes and commit with message **release: X.X.X**
 - `git tag -a vX.X.X -m "release: X.X.X"`
 - `git push --follow-tags origin master`
 - publish github release
