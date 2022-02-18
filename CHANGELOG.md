@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.1.1](https://github.com/nikhilnayyar002/react-min/compare/v6.1.0...v6.1.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* **deps:** update packages ([015d24e](https://github.com/nikhilnayyar002/react-min/commit/015d24ed7b80982db4844532fccc94f27e96f1bd)). After pull please do `npm ci` (or in case you have different packages installed as well then delete `package-lock.json` after pull, then resolve any merge conflicts in `package.json` and then do `npm i`).
+
 ## [6.1.0](https://github.com/nikhilnayyar002/react-min/compare/v6.0.0...v6.1.0) (2022-02-12)
 
 
