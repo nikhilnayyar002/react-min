@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/nikhilnayyar002/react-min/compare/v6.1.1...v7.0.0) (2022-02-19)
+
+### Migration
+
+remove `node_modules`. Do `npm install` again.
+
+### ⚠ BREAKING CHANGES
+
+* **package.json:**  `package.json` will now contain exact dependencies. `.npmrc` file added to install exact deps by default and prevent generating `package-lock.json` file.
+
+### Features
+
+* **package.json:** install exact dependencies ([7201396](https://github.com/nikhilnayyar002/react-min/commit/7201396b104d59d3712236b766bc32d2751fc6bd))
+
 ### [6.1.1](https://github.com/nikhilnayyar002/react-min/compare/v6.1.0...v6.1.1) (2022-02-18)
 
 
