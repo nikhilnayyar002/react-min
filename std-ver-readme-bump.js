@@ -1,4 +1,4 @@
-const versionRegex = /!\[version\]\([A-Za-z:/.\-_]*([\d.]*)[A-Za-z:/.-]*\)/g;
+const versionRegex = /!\[version\]\([A-Za-z:/.\-_]*([\d.]*)[A-Za-z:/.-]*\)/;
 
 module.exports.readVersion = function (contents) {
   const [, oldVersion] = versionRegex.exec(contents);
