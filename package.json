@@ -25,6 +25,8 @@
     "@babel/preset-react": "7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.4",
     "@svgr/webpack": "6.2.1",
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.13",
     "babel-loader": "8.2.3",
     "circular-dependency-plugin": "5.2.2",
     "commitizen": "4.2.4",
