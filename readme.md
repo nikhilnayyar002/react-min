@@ -36,13 +36,13 @@
 - create `src/index.js`.
 
   ```js
-  import ReactDOM from "react-dom";
+  import { createRoot } from 'react-dom/client';
 
   function App() {
     return "Hello WORLD";
   }
 
-  ReactDOM.render(<App />, document.getElementById("root"));
+  createRoot(document.getElementById("root")).render(<App />);
   ```
 
 - create `public/index.html`
