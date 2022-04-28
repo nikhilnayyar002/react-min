@@ -22,6 +22,7 @@ module.exports = {
     ],
     "no-unused-vars": "warn",
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
   },
   globals: {
     process: "readonly",
