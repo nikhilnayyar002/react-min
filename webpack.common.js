@@ -67,9 +67,11 @@ module.exports = (/** @type {"development"|"production"} */ env) => ({
           {
             type: "asset",
             parser: {
-              dataUrlCondition: {
-                maxSize: wmConfig.webpack.inlineAssetMaxSize,
-              },
+              dataUrlCondition: wmConfig.webpack.inlineSvgWhenAssetMaxSizeReached
+                ? {
+                    maxSize: wmConfig.webpack.inlineAssetMaxSize,
+                  }
+                : () => false,
             },
           },
         ],

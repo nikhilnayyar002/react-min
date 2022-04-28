@@ -64,6 +64,7 @@ const wmConfig = {
     publicPath,
     entryFilename: typescript ? entryFilenameTs : entryFilenameJs,
     inlineAssetMaxSize: 6 * 1024, // in Bytes
+    inlineSvgWhenAssetMaxSizeReached: true,
     resolve: {
       alias: getWebpackAliasFromTsConfig(tsConfig),
       extensions,

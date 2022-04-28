@@ -36,13 +36,13 @@
 - create `src/index.js`.
 
   ```js
-  import ReactDOM from "react-dom";
+  import { createRoot } from 'react-dom/client';
 
   function App() {
     return "Hello WORLD";
   }
 
-  ReactDOM.render(<App />, document.getElementById("root"));
+  createRoot(document.getElementById("root")).render(<App />);
   ```
 
 - create `public/index.html`
@@ -296,6 +296,9 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
     - [css-loader](https://github.com/webpack-contrib/css-loader)
     - [style-loader](https://github.com/webpack-contrib/style-loader)
     - [@svgr/webpack](https://github.com/gregberge/svgr)
+- @types
+  - @types/react
+  - @types/react-dom
 
 ### Typescript Feature
 
@@ -306,9 +309,6 @@ This repo use [commitizen](https://github.com/commitizen/cz-cli) & [standard-ver
   - [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/parser)
   - Plugins
     - [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin)
-- @types
-  - @types/react
-  - @types/react-dom
 
 ### Sass Feature
 

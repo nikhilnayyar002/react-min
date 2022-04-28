@@ -1,9 +1,9 @@
 import "@styles/index.scss";
 
-import ReactDOM from "react-dom";
-import React, { useState } from "react";
+import { createRoot } from 'react-dom/client';
+import { StrictMode, useState } from "react";
 
-export const unixEpochInMs = Date.now();
+const unixEpochInMs = Date.now();
 
 function App() {
   const [state] = useState(unixEpochInMs);
@@ -16,9 +16,5 @@ function App() {
   );
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const container = document.getElementById("root") as HTMLElement
+createRoot(container).render(<StrictMode><App /></StrictMode>);
