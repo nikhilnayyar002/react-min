@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/nikhilnayyar002/react-min/compare/v7.0.0...v7.1.0) (2022-04-28)
+
+
+### Features
+
+* react & react-dom types include as default ([9a4f3b2](https://github.com/nikhilnayyar002/react-min/commit/9a4f3b2d7d4b440271e51de1f370d8d9d7ad4d23))
+
+
+### Bug Fixes
+
+* **deps:** update packages. do clean install again ([3c00a82](https://github.com/nikhilnayyar002/react-min/commit/3c00a822fe823045103c16d485ea5f8aba79b42a)), ([222cc92](https://github.com/nikhilnayyar002/react-min/commit/222cc92569f0fcc576fc3a62e039975739665552))
+* **eslint:** change env from es2021 to es2022 ([da9e05c](https://github.com/nikhilnayyar002/react-min/commit/da9e05c047f637cc2029051f7c6dfcfc5690e5e1))
+
 ## [7.0.0](https://github.com/nikhilnayyar002/react-min/compare/v6.1.1...v7.0.0) (2022-02-19)
 
 ### Migration
