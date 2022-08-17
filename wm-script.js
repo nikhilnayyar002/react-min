@@ -26,7 +26,7 @@ const configFileName = "wm-config.js";
       },
       deps: {
         "sass-loader": "13.0.2",
-        sass: "1.53.0",
+        sass: "1.54.4",
       },
     },
     typescript: {
@@ -37,8 +37,8 @@ const configFileName = "wm-config.js";
       },
       deps: {
         "@babel/preset-typescript": "7.18.6",
-        "@typescript-eslint/eslint-plugin": "5.30.3",
-        "@typescript-eslint/parser": "5.30.3",
+        "@typescript-eslint/eslint-plugin": "5.33.1",
+        "@typescript-eslint/parser": "5.33.1",
         typescript: "4.7.4",
       },
     },
