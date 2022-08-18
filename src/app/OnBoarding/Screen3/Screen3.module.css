@@ -1,0 +1,43 @@
+.cardCont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1.5rem;
+  grid-gap: 2rem;
+}
+
+.card {
+  border: var(--border-light);
+  padding: 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: 3px 5px 12px 0px  var(--color-box-shadow-1);
+}
+
+.card svg {
+  width: 20px;
+  height: 20px;
+}
+
+.card p {
+  margin: 0.875rem 0;
+}
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card .heading {
+  font-weight: 700;
+}
+.card .text {
+  color: var(--color-dark-grey-blue);
+  font-size: 0.875rem;
+}
+
+.cardActive {
+  border: var(--border-primary);
+}
+.cardActive svg > * {
+  fill:  var(--color-primary);
+}

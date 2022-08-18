@@ -1,0 +1,16 @@
+.doneIcon {
+  background: var(--color-primary);
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+}
+.doneIcon img {
+  width: 30%;
+  height: 30%;
+}

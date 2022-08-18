@@ -1,0 +1,26 @@
+.root {
+  animation: 0.5s ease-out 0s 1 slideInFromLeft;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.form {
+  width: 26.5rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

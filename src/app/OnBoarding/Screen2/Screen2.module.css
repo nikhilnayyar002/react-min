@@ -1,0 +1,8 @@
+.workspaceUrlInpBeforeContent {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  background: #f5f5f5;
+  color: var(--color-grey);
+  padding: 1rem;
+}

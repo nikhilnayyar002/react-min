@@ -1,0 +1,21 @@
+.root {
+  text-align: center;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  background:  var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  padding: 1rem;
+  font-family: "Inter";
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+.root:hover,
+.root:focus {
+  background: #5944c9;
+}
+.root:disabled {
+  background: #8973ff;
+}

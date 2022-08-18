@@ -1,0 +1,36 @@
+@import url("./assets/fonts/inter/font.css");
+
+:root {
+  --color-primary: #6953dd;
+  --color-white: white;
+  --color-dark: #151b28;
+  --color-dark-grey-blue: #484f5c;
+  --color-grey: #696b72;
+  --color-blue-grey: #697285;
+  --color-light-grey: #82838b;
+  --color-dark-grey: #4c4f56;
+  --color-box-shadow-1: #ededed;
+
+  --border-light: 1px solid #dddddd;
+  --border-primary: 1px solid var(--color-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--color-dark);
+}
+
+#root {
+  min-height: 100%;
+}

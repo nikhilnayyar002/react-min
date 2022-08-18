@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  margin: 4rem 0;
+
+  width: 30rem;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+.circleCont {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  flex: 1 1 0px;
+}
+.circleCont:first-child > hr:first-child,
+.circleCont:last-child > hr:last-child {
+  visibility: hidden;
+}
+.circleCont > hr {
+  /* width: 2.5rem; */
+  border: var(--border-light);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+
+  flex: 1 1 0px;
+}
+.circleCont > div {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: var(--border-light);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 0 0 auto;
+}
+.circleContActive > hr {
+  border-color: var(--color-primary);
+}
+.circleContActive > div {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}

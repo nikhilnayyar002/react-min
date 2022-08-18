@@ -1,6 +1,6 @@
 require("dotenv-flow").config(); // load .env files
 const tsConfig = require("./tsconfig.json");
-const { getClientIPAddresses, getWebpackAliasFromTsConfig } = require("./wm-helper");
+const { getClientIPAddresses, getWebpackAliasFromTsConfig, getWebpackResolveModulesFromTsConfig } = require("./wm-helper");
 
 // *************************************************************************************************
 // dont change the values of variables. These are updated by feature commands
@@ -68,6 +68,7 @@ const wmConfig = {
     resolve: {
       alias: getWebpackAliasFromTsConfig(tsConfig),
       extensions,
+      modules: getWebpackResolveModulesFromTsConfig(tsConfig)
     },
     outputESModule, // ouput ECMAScript module syntax whenever possible.
     // dont include "initial" vendor chunk in "initial" main chunk. generate a separate "initial" vendor chunk
