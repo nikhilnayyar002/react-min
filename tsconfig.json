@@ -2,10 +2,10 @@
   "compilerOptions": {
     "allowJs": true,
     "noEmit": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@styles/*": ["src/styles/*"],
-      "@assets/*": ["src/assets/*"]
+      "@styles/*": ["styles/*"],
+      "@assets/*": ["assets/*"]
     },
     "module": "ESNext",
     "target": "ESNext",
