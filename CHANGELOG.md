@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.1.1](https://github.com/nikhilnayyar002/react-min/compare/v7.1.0...v7.1.1) (2022-10-03)
+
+
+### Bug Fixes
+
+* **deps:** update deps ([29d2a2e](https://github.com/nikhilnayyar002/react-min/commit/29d2a2e7de2e5b041e8aad6120edeb4b3513374d))
+* **deps:** update packages ([8558167](https://github.com/nikhilnayyar002/react-min/commit/8558167ca07103bf6a25ab07be93c4fde46e5d1a))
+* **deps:** update packages ([5dcf86a](https://github.com/nikhilnayyar002/react-min/commit/5dcf86adfcee65de29fc8d4d9e4207781ee4913b))
+* **eslint:** set no-debugger to warn ([51d5ba8](https://github.com/nikhilnayyar002/react-min/commit/51d5ba861ca9b398c827a1031414075bf1a66131))
+* **imports:** baseUrl & paths webpack tsconfig ([9596f78](https://github.com/nikhilnayyar002/react-min/commit/9596f780f3555c28fbf57c57b1471062af503ef3))
+
 ## [7.1.0](https://github.com/nikhilnayyar002/react-min/compare/v7.0.0...v7.1.0) (2022-04-28)
 
 
