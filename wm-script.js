@@ -25,8 +25,8 @@ const configFileName = "wm-config.js";
         disableFeat: "disable-feat-sass",
       },
       deps: {
-        "sass-loader": "13.0.2",
-        sass: "1.54.4",
+        "sass-loader": "13.2.0",
+        sass: "1.57.1",
       },
     },
     typescript: {
@@ -39,7 +39,7 @@ const configFileName = "wm-config.js";
         "@babel/preset-typescript": "7.18.6",
         "@typescript-eslint/eslint-plugin": "5.47.0",
         "@typescript-eslint/parser": "5.47.0",
-        typescript: "4.7.4",
+        typescript: "4.9.4",
       },
     },
   };
