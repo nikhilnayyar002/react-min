@@ -19,18 +19,30 @@ const { escapeStringRegexp } = require("./wm-util");
 exports.getWebpackAliasFromTsConfig = (tsConfig) => {
   let webpackAlias = {};
   const baseUrl = tsConfig?.compilerOptions?.baseUrl;
-  if (!baseUrl) throw "tsconfig.json baseUrl missing";
-  if (baseUrl !== ".") throw 'tsconfig.json baseUrl must have value "."';
-  const paths = tsConfig?.compilerOptions?.paths ?? {};
-  for (let p in paths) {
-    let a = p.substring(0, p.length - 2);
-    if (paths[p].length) {
-      let b = paths[p][0];
-      let c = b.substring(0, b.length - 1);
-      webpackAlias[a] = path.resolve(__dirname, c);
+  // if (!baseUrl) throw "tsconfig.json baseUrl missing";
+  const paths = tsConfig?.compilerOptions?.paths;
+
+  if (paths) {
+    // if (baseUrl !== ".") throw 'tsconfig.json baseUrl must have value "." when paths is also provided.';
+
+    for (let p in paths) {
+      let a = p.substring(0, p.length - 2);
+      if (paths[p].length) {
+        let b = paths[p][0];
+        let c = b.substring(0, b.length - 1);
+        webpackAlias[a] = path.resolve(__dirname, baseUrl || "", c);
+      }
     }
   }
   return webpackAlias;
+};
+
+exports.getWebpackResolveModulesFromTsConfig = (tsConfig) => {
+  const modules = ["node_modules"];
+  const baseUrl = tsConfig?.compilerOptions?.baseUrl;
+  if (baseUrl) modules.unshift(path.resolve(__dirname, baseUrl));
+
+  return modules;
 };
 
 exports.getClientIPAddresses = (clientPort, httpsMode = false) => {
