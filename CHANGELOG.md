@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.3.0](https://github.com/nikhilnayyar002/react-min/compare/v7.2.0...v7.3.0) (2023-06-06)
+
+
+### Features
+
+* **package-lock.json:** support lock file ([a2610fb](https://github.com/nikhilnayyar002/react-min/commit/a2610fb7d03f6dbfc1f56a547853fb3b7840a823))
+
 ## [7.2.0](https://github.com/nikhilnayyar002/react-min/compare/v7.1.1...v7.2.0) (2023-06-06)
 
 
