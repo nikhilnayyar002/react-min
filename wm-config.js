@@ -68,7 +68,8 @@ const wmConfig = {
     resolve: {
       alias: getWebpackAliasFromTsConfig(tsConfig),
       extensions,
-      modules: getWebpackResolveModulesFromTsConfig(tsConfig)
+      modules: getWebpackResolveModulesFromTsConfig(tsConfig),
+      symlinks: false // The dependency must be able to be resolved from the linked location of the symlinked file ie this repos node_modules
     },
     outputESModule, // ouput ECMAScript module syntax whenever possible.
     // dont include "initial" vendor chunk in "initial" main chunk. generate a separate "initial" vendor chunk

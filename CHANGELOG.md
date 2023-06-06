@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.2.0](https://github.com/nikhilnayyar002/react-min/compare/v7.1.1...v7.2.0) (2023-06-06)
+
+
+### Features
+
+* support npm linked libraries ([0e8ec1a](https://github.com/nikhilnayyar002/react-min/commit/0e8ec1af9f9ca417214b6f275326a7faa8d1e7d2))
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([fd0bcb9](https://github.com/nikhilnayyar002/react-min/commit/fd0bcb9fa5ab2e2da28387bd2e29f189dc7223f2))
+* **deps:** update dependencies ([177220b](https://github.com/nikhilnayyar002/react-min/commit/177220b5f50a458b95d1d19fd68ac59434ea88f4))
+* **deps:** update dependencies ([faa09a5](https://github.com/nikhilnayyar002/react-min/commit/faa09a5d32391131961d06a1372ed36218ad2592))
+
 ### [7.1.1](https://github.com/nikhilnayyar002/react-min/compare/v7.1.0...v7.1.1) (2022-10-03)
 
 

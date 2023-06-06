@@ -1,6 +1,6 @@
 # react-min
 
-![version](https://img.shields.io/badge/version-7.1.1-brightgreen)
+![version](https://img.shields.io/badge/version-7.2.0-brightgreen)
 ![supported node version](https://img.shields.io/badge/node-LTS-brightgreen)
 
 - [react-min](#react-min)
