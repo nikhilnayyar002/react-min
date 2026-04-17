@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.4.0](https://github.com/nikhilnayyar002/react-min/compare/v7.3.0...v7.4.0) (2026-04-17)
+
+
+### Features
+
+* add release-please ([ae63c51](https://github.com/nikhilnayyar002/react-min/commit/ae63c5199a2436ff874f7453ef62f1786033de90))
+
 ## [7.3.0](https://github.com/nikhilnayyar002/react-min/compare/v7.2.0...v7.3.0) (2023-06-06)
 
 
