@@ -2,6 +2,128 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/nikhilnayyar002/react-min/compare/react-min-v7.3.0...react-min-v8.0.0) (2026-04-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **package.json:** remove node_modules. do npm install. .npmrc config added to install exact deps by default and avoid generating package-lock file
+* **eslint:** architecture for eslint config file changed.
+* add wm-util.js. "wm-util.js" is like library that provide reusable functionality "wm-helper.js" provides major functionality for "react min".
+* **.czrc:** default .czrc config now does not allow changelog generation with icons
+* **typescript:** .eslintrc -> .eslintrc.js, entryFilenameJs & entryFilenameTs options added in wm-config.js
+* **commit:** .versionrc has been replace with .versionrc.js and commit types has been reduced from 11 to 6
+* src and public folder are removed.
+* .gitignore .env.*.local files, split config.js into wm-config.js & wm-helper.js.
+
+### enhance
+
+* refractor, update, add eslint react-hook ([bb33d10](https://github.com/nikhilnayyar002/react-min/commit/bb33d10dd767bc5644f85a2ae9237f0fbb95d387))
+
+
+### Features
+
+* **.czrc:** add prop. _addIcon ([c502c3d](https://github.com/nikhilnayyar002/react-min/commit/c502c3dce1050ab6453726a29f63d617c5424fd1))
+* **.czrc:** add type - Important Docs change ([5d99774](https://github.com/nikhilnayyar002/react-min/commit/5d997744e917c8bf11a2a4c63479062d014c2466))
+* add react and update packages ([c18e576](https://github.com/nikhilnayyar002/react-min/commit/c18e576784086f4ca04ba39563fed8e11a5f540e))
+* add release support ([e55e965](https://github.com/nikhilnayyar002/react-min/commit/e55e965cc1c545af58444a5b3bfb3d9872fcd875))
+* add release-please ([7ef8371](https://github.com/nikhilnayyar002/react-min/commit/7ef8371c6010857386195f66baa6147d265c2965))
+* add revert commit type ([12019b7](https://github.com/nikhilnayyar002/react-min/commit/12019b70bba8f884ff55be88b71b7ce0d8a2fcef))
+* **asset-txt:** import raw text file content ([72cf4c6](https://github.com/nikhilnayyar002/react-min/commit/72cf4c625d37841e27578392be17d9c9d6c8fb5c))
+* **commit:** refractor standard commit config ([5cc3cc7](https://github.com/nikhilnayyar002/react-min/commit/5cc3cc7f098210b0b131ed8d47e335f71bd0cf5a))
+* **devserver:** serve index.html instead of 404 ([9def7b2](https://github.com/nikhilnayyar002/react-min/commit/9def7b2b2e245a2fe18330696cbc87fbbf61fd07))
+* **env-var:** auto add REACT_MIN_* vars ([eaf546c](https://github.com/nikhilnayyar002/react-min/commit/eaf546c2da3dcc983a80de39e592caac1f6b86b7))
+* **esm:** support type=module for script tag ([36d1851](https://github.com/nikhilnayyar002/react-min/commit/36d1851a90cc2b1727f012b05aab609abd6bedfe))
+* log gzip and Brotli size after build ([5560bd7](https://github.com/nikhilnayyar002/react-min/commit/5560bd7f220e98c41ac7934905f80e4d84292d0e))
+* **package-lock.json:** support lock file ([a2610fb](https://github.com/nikhilnayyar002/react-min/commit/a2610fb7d03f6dbfc1f56a547853fb3b7840a823))
+* **package.json:** install exact dependencies ([7201396](https://github.com/nikhilnayyar002/react-min/commit/7201396b104d59d3712236b766bc32d2751fc6bd))
+* **prettier:** add config & npm script ([3c24fbe](https://github.com/nikhilnayyar002/react-min/commit/3c24fbecda25089438e37867dfb097261aca32f9))
+* **publicpath:** %PUBLIC_URL% in index.html file ([18fb583](https://github.com/nikhilnayyar002/react-min/commit/18fb5834ccb6abeb11dc1a23da462320ffce78e1))
+* react & react-dom types include as default ([9a4f3b2](https://github.com/nikhilnayyar002/react-min/commit/9a4f3b2d7d4b440271e51de1f370d8d9d7ad4d23))
+* remove public and src folder ([88618f4](https://github.com/nikhilnayyar002/react-min/commit/88618f45a57d87a19600771b1799e171d364ad2f))
+* **sourcemaps:** config style sourcemaps ([9604338](https://github.com/nikhilnayyar002/react-min/commit/9604338185146ffaf183fbf8652b80eec03d48dc))
+* **standard-version:** add doc type to release ([171d756](https://github.com/nikhilnayyar002/react-min/commit/171d756f5ff0c1da89f5f009ae242906af7d44da))
+* support npm linked libraries ([0e8ec1a](https://github.com/nikhilnayyar002/react-min/commit/0e8ec1af9f9ca417214b6f275326a7faa8d1e7d2))
+* **svg-component:** add svg as component support ([6ff9774](https://github.com/nikhilnayyar002/react-min/commit/6ff97748c0e06519b60d8885faff45c276d0aa92))
+* **typescript:** add typesript support ([2d5e753](https://github.com/nikhilnayyar002/react-min/commit/2d5e7539ad5f6710a49420597bdc5411dc71b969))
+* **typescript:** type checking during compilation ([97814bf](https://github.com/nikhilnayyar002/react-min/commit/97814bf818141c8a06a8929b10862228ba5449e2))
+* **typings:** add index.d.ts for custom types ([45f87a7](https://github.com/nikhilnayyar002/react-min/commit/45f87a7f98c2cb566b9c7fa15748cdc0b45e527c))
+* **webpack:** add plugin - detect circular depen. ([e686f2a](https://github.com/nikhilnayyar002/react-min/commit/e686f2ad46e2bbaa27a644b945337c2533d0fc64))
+* **wm-script:** on/off/update extra features ([8166f46](https://github.com/nikhilnayyar002/react-min/commit/8166f46b7cb898361aa1736e6e1010cb8c69ce10))
+* **wm-script:** pass multiple args ([79cf827](https://github.com/nikhilnayyar002/react-min/commit/79cf82742a5dd4c7e6f3e65e5a78a29950efcf25))
+
+
+### Bug Fixes
+
+* **.czrc:** change boolean strings to boolean ([051b62f](https://github.com/nikhilnayyar002/react-min/commit/051b62f5cd6f785797b9cc124a1fb1f460ee4b37))
+* **.eslintrc.js:** conditionally use typescript ([57f479f](https://github.com/nikhilnayyar002/react-min/commit/57f479f260a0d1e4ce374d89346132d54b164f50))
+* **build:** copy public dir contents to output dir ([5f15248](https://github.com/nikhilnayyar002/react-min/commit/5f1524835f0780e174c645749cfdb5aedcb62224))
+* **bump:** version does not bump in package files ([ea2c2d7](https://github.com/nikhilnayyar002/react-min/commit/ea2c2d7c3cd8acfa63b0ab8e88d234f2b9bda7d1))
+* **deps:** package-lock updated ; npm ci ([6c3e0ce](https://github.com/nikhilnayyar002/react-min/commit/6c3e0ced26df3d1c270fd23f0e4b7ef851086def))
+* **deps:** package-lock.json ([f7b0a9f](https://github.com/nikhilnayyar002/react-min/commit/f7b0a9f11d6abaedec9eba3bc17fb51e5ce22ad7))
+* **deps:** update ([9463c1e](https://github.com/nikhilnayyar002/react-min/commit/9463c1e5313e48ea6df8e30e4dc6ccf4b7853664))
+* **deps:** update dependencies ([fd0bcb9](https://github.com/nikhilnayyar002/react-min/commit/fd0bcb9fa5ab2e2da28387bd2e29f189dc7223f2))
+* **deps:** update dependencies ([177220b](https://github.com/nikhilnayyar002/react-min/commit/177220b5f50a458b95d1d19fd68ac59434ea88f4))
+* **deps:** update dependencies ([faa09a5](https://github.com/nikhilnayyar002/react-min/commit/faa09a5d32391131961d06a1372ed36218ad2592))
+* **deps:** update deps ([29d2a2e](https://github.com/nikhilnayyar002/react-min/commit/29d2a2e7de2e5b041e8aad6120edeb4b3513374d))
+* **deps:** update deps ([17bd754](https://github.com/nikhilnayyar002/react-min/commit/17bd75409f9f62ee02d67904e40fe6526a8573c7))
+* **deps:** update deps ([cecb04c](https://github.com/nikhilnayyar002/react-min/commit/cecb04ca0c1c3a2dbbc09e7858af2d0b319564b6))
+* **deps:** update deps ([2e05833](https://github.com/nikhilnayyar002/react-min/commit/2e05833ae9d499e5472936cf3c8e1831d0aea132))
+* **deps:** update deps ([6691cbb](https://github.com/nikhilnayyar002/react-min/commit/6691cbb5188898b3766041adc9160da675f07072))
+* **deps:** update deps ([0bb306f](https://github.com/nikhilnayyar002/react-min/commit/0bb306f8d6e25c6994dfd86226c3d858abfe2eb0))
+* **deps:** update deps ([16c6eb6](https://github.com/nikhilnayyar002/react-min/commit/16c6eb6cbe62ac167aa0576c6003469f17cf4e15))
+* **deps:** update deps ([dcfdbcc](https://github.com/nikhilnayyar002/react-min/commit/dcfdbcc44f19c133d58f5754be03ce65b96226fc))
+* **deps:** update feature deps ([75d3472](https://github.com/nikhilnayyar002/react-min/commit/75d347287540c82226f66be2c05211251a60535f))
+* **deps:** update normal deps ([6933c10](https://github.com/nikhilnayyar002/react-min/commit/6933c104bf5f27a77a9dc2dedee672cf7665582d))
+* **deps:** update packages ([8558167](https://github.com/nikhilnayyar002/react-min/commit/8558167ca07103bf6a25ab07be93c4fde46e5d1a))
+* **deps:** update packages ([5dcf86a](https://github.com/nikhilnayyar002/react-min/commit/5dcf86adfcee65de29fc8d4d9e4207781ee4913b))
+* **deps:** update packages ([222cc92](https://github.com/nikhilnayyar002/react-min/commit/222cc92569f0fcc576fc3a62e039975739665552))
+* **deps:** update packages ([015d24e](https://github.com/nikhilnayyar002/react-min/commit/015d24ed7b80982db4844532fccc94f27e96f1bd))
+* **deps:** update packages ([c8b9f25](https://github.com/nikhilnayyar002/react-min/commit/c8b9f2569d4fb2bc4a8700f698e3c868d0ce11ee))
+* **deps:** update packages ([7efaf35](https://github.com/nikhilnayyar002/react-min/commit/7efaf35967584c38d21708a0f1b2923438c5b3e2))
+* **deps:** update packages ([6148648](https://github.com/nikhilnayyar002/react-min/commit/6148648cb1bab5fbe924212c5b1e77c948e5d181))
+* **deps:** update packages ([68ef180](https://github.com/nikhilnayyar002/react-min/commit/68ef18012779022c5b4aee26dbeb02bc19b298fc))
+* **deps:** update packages ([c9ba227](https://github.com/nikhilnayyar002/react-min/commit/c9ba22765cfb46c563e4f3689d333253b9f94c93))
+* **deps:** update packages ([5d21491](https://github.com/nikhilnayyar002/react-min/commit/5d21491ebd9bc9ef34d033a9b2c1cfbafb03a880))
+* **deps:** update packages ([f2b54e7](https://github.com/nikhilnayyar002/react-min/commit/f2b54e71d39a1ed894b9161a3786fdb2dfdb7b85))
+* **deps:** update packages ([a72e182](https://github.com/nikhilnayyar002/react-min/commit/a72e1823fcd59277cfb8bd532069894e166e3bcd))
+* **deps:** update packages ([c49a4f9](https://github.com/nikhilnayyar002/react-min/commit/c49a4f9a77fd6d2e7e49eaab425d3d093499af2c))
+* **deps:** update packages ([65d5d29](https://github.com/nikhilnayyar002/react-min/commit/65d5d298aac137395e25d47a02597d199da7bdfa))
+* **deps:** update packages ([c902f9f](https://github.com/nikhilnayyar002/react-min/commit/c902f9f2b215d422c0bb032baaa5047521ac72b4))
+* **deps:** update packages ([645d42c](https://github.com/nikhilnayyar002/react-min/commit/645d42c15565dedbfc376e6eae9fbd40a61563de))
+* **deps:** update packages. do clean install again ([3c00a82](https://github.com/nikhilnayyar002/react-min/commit/3c00a822fe823045103c16d485ea5f8aba79b42a))
+* **deps:** update svgr from v5 to v6 ([f0c7e95](https://github.com/nikhilnayyar002/react-min/commit/f0c7e95ed8da803b488337f7f6aa4ea4fd64ef81))
+* **eslint:** change env from es2021 to es2022 ([da9e05c](https://github.com/nikhilnayyar002/react-min/commit/da9e05c047f637cc2029051f7c6dfcfc5690e5e1))
+* **eslintrc:** remove duplicate, set "no-undef" on ([c6734e2](https://github.com/nikhilnayyar002/react-min/commit/c6734e299482f8da1943ff46c2de6953e263ab2d))
+* **eslint:** set no-debugger to warn ([51d5ba8](https://github.com/nikhilnayyar002/react-min/commit/51d5ba861ca9b398c827a1031414075bf1a66131))
+* **eslint:** use overrides for ts, tsx files ([b02a9e9](https://github.com/nikhilnayyar002/react-min/commit/b02a9e9083625c557e346f61f854da47ce1b7061))
+* **imports:** baseUrl & paths webpack tsconfig ([9596f78](https://github.com/nikhilnayyar002/react-min/commit/9596f780f3555c28fbf57c57b1471062af503ef3))
+* **jsconfig.json:** replace with tsconfig.json ([23c4e63](https://github.com/nikhilnayyar002/react-min/commit/23c4e63a81ade65853505c639c5233527550dd84))
+* **minicssextractplugin:** incorrect chunkFilename ([19c257c](https://github.com/nikhilnayyar002/react-min/commit/19c257cda4f40fa4f7fdbcfa3e8c0672407d564e))
+* **splitchunks:** async/inital chunks expectations ([0e3a2b4](https://github.com/nikhilnayyar002/react-min/commit/0e3a2b42046733211bef1a16387c8fbc15ef8912))
+* **tsconfig:** add src only pattern ([3e2be3a](https://github.com/nikhilnayyar002/react-min/commit/3e2be3a457529f46fc00aaead48c32b8706f680c))
+* **types:** process is not defined ([4827f10](https://github.com/nikhilnayyar002/react-min/commit/4827f10e201456b66457cc9e2d2a56011970b8ca))
+* **wm-config:** features are enabled by mistake ([68c171e](https://github.com/nikhilnayyar002/react-min/commit/68c171ea25888787f3ef46e9f4057aceda26ad91))
+* **wm-script:** dont update package when not req ([ce9fa0e](https://github.com/nikhilnayyar002/react-min/commit/ce9fa0e0253652b0a5ae74760ba57207b3aaa831))
+* **wm-script:** no exact deps, invalid argument ([f9be127](https://github.com/nikhilnayyar002/react-min/commit/f9be127ab765d8c961a793c9085eae52508abe31))
+* **wm-script:** unable to run feature cmds ([3135a94](https://github.com/nikhilnayyar002/react-min/commit/3135a940830496583b03e6234bbc37bc696923fd))
+
+
+### Performance Improvements
+
+* forkTsCheckerWebpackPlugin dev/prod settings ([8f1447d](https://github.com/nikhilnayyar002/react-min/commit/8f1447d7a0ef45b0ab395891be4ca4664d06afc9))
+
+
+### Reverts
+
+* 171d756 ([3e88fee](https://github.com/nikhilnayyar002/react-min/commit/3e88feeb7aa0e0727cc6708d33599279d40fbe6a))
+* **release-1.3.1:** remove 1.3.1 from changelog ([cb83267](https://github.com/nikhilnayyar002/react-min/commit/cb83267f71fae38cc29bf2bed36c93b6e865d03d))
+
+
+### Miscellaneous Chores
+
+* remove table, chalk deps; add wm-util.js ([7c4c3cf](https://github.com/nikhilnayyar002/react-min/commit/7c4c3cfe31fb938994a988ea33b06cfc79458671))
+
 ## [7.3.0](https://github.com/nikhilnayyar002/react-min/compare/v7.2.0...v7.3.0) (2023-06-06)
 
 
