@@ -2,17 +2,16 @@
   "compilerOptions": {
     "allowJs": true,
     "noEmit": true,
-    "baseUrl": "src",
     "paths": {
-      "@styles/*": ["styles/*"],
-      "@assets/*": ["assets/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@assets/*": ["./src/assets/*"]
     },
     "module": "ESNext",
     "target": "ESNext",
     "types": ["node"],
     "sourceMap": true,
     "jsx": "preserve",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strict": true,
@@ -21,7 +20,8 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["src", "index.d.ts"]
+  "include": ["src","*.ts"]
 }
