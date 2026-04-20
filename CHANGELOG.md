@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/nikhilnayyar002/react-min/compare/v7.4.0...v8.0.0) (2026-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **master:** files have been changed deleted. right now code for react has also been added but will be removed soon
+
+### Features
+
+* add commitlint action ([9eb8cac](https://github.com/nikhilnayyar002/react-min/commit/9eb8cac7c2460ca9f1fe697b4b902aae5f6887f6))
+* **master:** upgrade setup ([fceaafe](https://github.com/nikhilnayyar002/react-min/commit/fceaafe6e7cdc0288bc59e40f013a5c1390fcfa4))
+
 ## [7.4.0](https://github.com/nikhilnayyar002/react-min/compare/v7.3.0...v7.4.0) (2026-04-17)
 
 
