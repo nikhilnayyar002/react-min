@@ -313,10 +313,48 @@ install [commitizen & adapter](#132-commitizen)
 | commit            | run **commitizen**. creates standard commit.        |
 
 # Updating packages
+```bash
+i will be using these cmds to check/update for packages
+
+npm outdated
+
+i will not use npm update command since i am using exact dependencies. I might be manually updating the packages
+```
 
 # Merging new changes
 ```bash
+git checkout release
+git pull
+git fetch upstream master
+git rebase upstream/master
+
+sometimes package-Lock.json can have severe conflicts if you have added say more packages
+if you cant solve the commits manually bcz its too severe then
+during rebase, the commit in which the conflict happens there you must remove package-Lock.json from merge conflict
+
+  git rm package-lock.json // removes file from merge conflict, delete it and add to staging
+  git restore --staged package-lock.json // move from staging to working diectory
+
+  then fix package.json in merge conflict if any
+  npm i // will genarate new package-Lock.json
+  git add package-lock.json
+
+restoring git tags. rebase will not move the tags. tags remain intact to original commits
+in order to move the last tag (it is required by release-please to create next release)
+know the last tag say it was v1.1.0
+
+  search for commit
+  git log --grep="chore(release): release 1.1.0"
+  will log -> commit f07c1821d2aea1d5118becefa9ce98f883199fc8 (HEAD -> release)
+
+  tag it -
+  git tag -f v1.1.0 f07c182
+  git push origin -f v1.1.0 
+
+// force push the release branch
+git push --force
 ```
+
 # Usefull commands
 ```bash
 ```
