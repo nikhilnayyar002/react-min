@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/nikhilnayyar002/react-min/compare/v8.0.1...v9.0.0) (2026-04-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **setup:** removed react. created react branch
+
+### Code Refactoring
+
+* **setup:** remove react & make code generic ([cbe3d79](https://github.com/nikhilnayyar002/react-min/commit/cbe3d79eb93467583643bd779ec845455b83ea95))
+
 ## [8.0.1](https://github.com/nikhilnayyar002/react-min/compare/v8.0.0...v8.0.1) (2026-04-21)
 
 
