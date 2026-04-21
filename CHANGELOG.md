@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.1](https://github.com/nikhilnayyar002/react-min/compare/v8.0.0...v8.0.1) (2026-04-21)
+
+
+### Bug Fixes
+
+* **package:** use exact package names ([c32b627](https://github.com/nikhilnayyar002/react-min/commit/c32b62795998ca6ea8f467a4c673b2e411e0db0c))
+
 ## [8.0.0](https://github.com/nikhilnayyar002/react-min/compare/v7.4.0...v8.0.0) (2026-04-20)
 
 
