@@ -11,9 +11,6 @@ declare module '*.pjp';
 declare module '*.svg';
 declare module '*.webp';
 
-/** svg as react component */
-declare module '*.svg?react';
-
 /** other */
 declare module '*.txt';
 
@@ -33,5 +30,3 @@ declare module 'circular-dependency-plugin' {
   }) => WebpackPluginInstance;
   export default CircularDependencyPlugin;
 }
-
-declare module 'react-refresh/babel';

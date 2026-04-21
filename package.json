@@ -22,19 +22,14 @@
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@babel/preset-env": "7.29.2",
-    "@babel/preset-react": "7.28.5",
     "@babel/preset-typescript": "7.28.5",
     "@commitlint/cli": "20.5.0",
     "@commitlint/config-conventional": "20.5.0",
     "@commitlint/types": "20.5.0",
     "@eslint/js": "10.0.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.6.2",
     "@stylistic/eslint-plugin": "5.10.0",
-    "@svgr/webpack": "8.1.0",
     "@types/fs-extra": "11.0.4",
     "@types/node": "25.6.0",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
     "ansi-escapes": "7.3.0",
     "babel-loader": "10.1.1",
     "chalk": "5.6.2",
@@ -43,14 +38,12 @@
     "css-minimizer-webpack-plugin": "8.0.0",
     "dotenv-flow": "4.1.0",
     "eslint": "10.2.1",
-    "eslint-plugin-react-hooks": "7.1.1",
     "eslint-webpack-plugin": "6.0.0",
     "fork-ts-checker-webpack-plugin": "9.1.0",
     "fs-extra": "11.3.4",
     "html-webpack-plugin": "5.6.7",
     "husky": "9.1.7",
     "mini-css-extract-plugin": "2.10.2",
-    "react-refresh": "0.18.0",
     "style-loader": "4.0.0",
     "terser-webpack-plugin": "5.4.0",
     "ts-node": "10.9.2",
@@ -60,9 +53,5 @@
     "webpack-cli": "7.0.2",
     "webpack-dev-server": "5.2.3",
     "webpack-merge": "6.0.1"
-  },
-  "dependencies": {
-    "react": "19.2.5",
-    "react-dom": "19.2.5"
   }
 }

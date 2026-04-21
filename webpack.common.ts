@@ -43,12 +43,6 @@ const commonConfig: (env: 'development' | 'production') => Configuration = env =
               cacheCompression: false,
               presets: [
                 [
-                  '@babel/preset-react',
-                  {
-                    runtime: 'automatic', // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
-                  },
-                ],
-                [
                   '@babel/preset-env',
                   {
                     targets: config.browserslist[env],
@@ -67,30 +61,15 @@ const commonConfig: (env: 'development' | 'production') => Configuration = env =
         test: /\.(eot|woff|woff2|ttf|png|jpe?g|gif|webp|avif)$/i,
         type: 'asset/resource',
       },
-      /** svg
-       *  https://react-svgr.com/docs/webpack/#handle-svg-in-css-sass-or-less
-       *  https://github.com/gregberge/svgr/issues/551#issuecomment-883073902
-       *  https://webpack.js.org/configuration/module/#ruleoneof
-       *  https://github.com/gregberge/svgr/pull/650
-       */
       {
         test: /\.svg$/,
-        oneOf: [
-          {
-            issuer: /\.[jt]sx?$/,
-            resourceQuery: /react/, // *.svg?react
-            use: ['@svgr/webpack'],
+        type: 'asset',
+        parser: {
+          // dataUrlCondition: () => false will disable inlining
+          dataUrlCondition: {
+            maxSize: config.inlineAssetMaxSize,
           },
-          {
-            type: 'asset',
-            parser: {
-              // dataUrlCondition: () => false will disable inlining
-              dataUrlCondition: {
-                maxSize: config.inlineAssetMaxSize,
-              },
-            },
-          },
-        ],
+        },
       },
       // css
       {
