@@ -4,7 +4,6 @@ import js from '@eslint/js'
 import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 import { config } from './my-config.js'
-import reactHooks from 'eslint-plugin-react-hooks'
 import stylistic from '@stylistic/eslint-plugin'
 
 const a = defineConfig([
@@ -24,7 +23,6 @@ const a = defineConfig([
       tseslint.configs.stylistic[2], // "stylistic" = [base, recommended, stylistic]
       // *************
 
-      reactHooks.configs.flat.recommended, // https://www.npmjs.com/package/eslint-plugin-react-hooks
       // stylistic.configs.recommended, // https://eslint.style/rules
     ],
     plugins: {

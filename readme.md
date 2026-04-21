@@ -1,25 +1,32 @@
 
 - [1. Introduction](#1-introduction)
-  - [1.1. Files](#11-files)
-  - [1.2. packages](#12-packages)
-    - [1.2.1. devDependencies](#121-devdependencies)
-    - [1.2.2. dependencies](#122-dependencies)
-  - [1.3. Concept related to commits](#13-concept-related-to-commits)
-    - [1.3.1. commitlint](#131-commitlint)
-    - [1.3.2. commitizen](#132-commitizen)
-    - [1.3.3. release-please](#133-release-please)
-  - [1.4. Bundling concepts](#14-bundling-concepts)
-- [Setup](#setup)
-  - [Commands](#commands)
-- [Updating packages](#updating-packages)
-- [Merging new changes](#merging-new-changes)
-- [Usefull commands](#usefull-commands)
-- [Included Features](#included-features)
-- [Important Links](#important-links)
+  - [1.1. Branches](#11-branches)
+  - [1.2. Files](#12-files)
+  - [1.3. packages](#13-packages)
+    - [1.3.1. devDependencies](#131-devdependencies)
+  - [1.4. Concept related to commits](#14-concept-related-to-commits)
+    - [1.4.1. commitlint](#141-commitlint)
+    - [1.4.2. commitizen](#142-commitizen)
+    - [1.4.3. release-please](#143-release-please)
+  - [1.5. Bundling concepts](#15-bundling-concepts)
+- [2. Setup](#2-setup)
+- [3. Commands](#3-commands)
+- [4. Updating packages](#4-updating-packages)
+- [5. Merging new changes](#5-merging-new-changes)
+- [6. Usefull commands](#6-usefull-commands)
+- [7. Included Features](#7-included-features)
+- [8. Important Links](#8-important-links)
 
 # 1. Introduction
 
-## 1.1. Files
+## 1.1. Branches
+
+- **master** : Use this branch for generic code
+- **react** : Use this branch to start with react.
+
+The codes below have been written for master branch. If you want to use **react** branch for example then replace **master** branch in any code below with **react**.
+
+## 1.2. Files
 
 - webpack configs
   ```
@@ -65,18 +72,14 @@
   helper.ts // shared code as helper functions and utils
   ```
 
-## 1.2. packages
+## 1.3. packages
 
-### 1.2.1. devDependencies
+### 1.3.1. devDependencies
 ```
 babel-
 "@babel/core"
 "@babel/preset-env"
-"@babel/preset-react"
 "@babel/preset-typescript"
-
-babel plugins -
-"react-refresh" // react-refresh/babel plugin for babel
 
 commitlint -
 "@commitlint/cli"
@@ -86,11 +89,9 @@ eslint & eslint plugins -
 "eslint"
 "@eslint/js"
 "@stylistic/eslint-plugin"
-"eslint-plugin-react-hooks"
 "typescript-eslint"
 
 webpack plugins -
-"@pmmmwh/react-refresh-webpack-plugin"
 "circular-dependency-plugin"
 "css-minimizer-webpack-plugin" // compress css
 "eslint-webpack-plugin"
@@ -101,7 +102,6 @@ webpack plugins -
 
 webpack loaders -
 "babel-loader"
-"@svgr/webpack"
 "css-loader" // only loads css files
 "style-loader" // injects css loaded into dom at runtime 
 
@@ -109,8 +109,6 @@ types -
 "@commitlint/types"
 "@types/fs-extra"
 "@types/node"
-"@types/react"
-"@types/react-dom"
 
 helper modules -
 "ansi-escapes" // used to clear console (helper.ts)
@@ -132,16 +130,9 @@ webpack -
 "webpack-dev-server"
 ```
 
-### 1.2.2. dependencies
+## 1.4. Concept related to commits
 
-```
-"react"
-"react-dom"
-```
-
-## 1.3. Concept related to commits
-
-### 1.3.1. commitlint
+### 1.4.1. commitlint
 ```
 commitlint -  setup commitlint and husky
     https://commitlint.js.org/guides/getting-started.html
@@ -150,7 +141,7 @@ commitlint.config.ts -
     https://github.com/conventional-changelog/commitlint/tree/master/docs/reference
     https://github.com/conventional-changelog/commitlint/blob/master/docs/reference/configuration.md#typescript-configuration
 ```
-### 1.3.2. commitizen
+### 1.4.2. commitizen
 ```
 commitizen - install globally - npm install commitizen -g
     https://github.com/commitizen/cz-cli
@@ -161,7 +152,7 @@ install adapter globally - npm install @commitlint/cz-commitlint inquirer@9 -g
 cz-commitlint adapter uses prompt config from commitlint.config.ts
 ```
 
-### 1.3.3. release-please
+### 1.4.3. release-please
 ```
 release-please was intially setup in this repo as
     release-please bootstrap --token=TOKEN  --repo-url=nikhilnayyar002/react-min --initial-version=7.3.0 --release-type=node
@@ -172,15 +163,16 @@ release-please docs -
     https://github.com/googleapis/release-please/blob/main/docs/customizing.md#pull-requests
 
     config -
-        schema - https://github.com/googleapis/release-please/blob/main/schemas/config.json
         https://github.com/googleapis/release-please/blob/main/docs/manifest-releaser.md
-        "changelog-sections" in config (https://github.com/googleapis/release-please/blob/712fcf01effd08d7b0e7b1fd3861f2cb388bc8d1/schemas/config.json#L31) determine the commit prefix types
+        "changelog-sections" in config determine the commit prefix types
+          https://github.com/googleapis/release-please/blob/main/docs/manifest-releaser.md?plain=1#L186
+          https://github.com/googleapis/release-please/blob/main/schemas/config.json#L31
 
 release-please action
     https://github.com/googleapis/release-please-action
 ```
 
-## 1.4. Bundling concepts
+## 1.5. Bundling concepts
 ```
 [static NM] tiny-spring -> main
 [static NM] react -> main
@@ -250,7 +242,7 @@ move react, react-dom and their dependencies into cachegroup named react (for al
 css follows same rules. To include css in cacheGroups see https://webpack.js.org/plugins/mini-css-extract-plugin
 ```
 
-# Setup
+# 2. Setup
 ```bash
 fork the repo
 
@@ -303,7 +295,7 @@ install vscode extensions -
 
 install [commitizen & adapter](#132-commitizen)
 
-## Commands
+# 3. Commands
 
 | Commands          | Inf                                                 |
 | ----------------- | --------------------------------------------------- |
@@ -312,7 +304,7 @@ install [commitizen & adapter](#132-commitizen)
 | lintfix           | fix the code with eslint                            |
 | commit            | run **commitizen**. creates standard commit.        |
 
-# Updating packages
+# 4. Updating packages
 ```bash
 i will be using these cmds to check/update for packages
 
@@ -321,7 +313,7 @@ npm outdated
 i will not use npm update command since i am using exact dependencies. I might be manually updating the packages
 ```
 
-# Merging new changes
+# 5. Merging new changes
 ```bash
 git config --global rerere.enabled true
 git checkout release
@@ -378,30 +370,12 @@ git fetch upstream master
 > git add package-lock.json
 > ```
 
-# Usefull commands
+# 6. Usefull commands
 ```bash
 ```
 
-# Included Features
+# 7. Included Features
 - read .env file for adding environment variables
-- add svg as component: Append `?react` after file path in import statement in order for this to work.
-
-  ```js
-  import MySvg from "@assets/react.svg?react";
-  import mySvg from "@assets/react.svg";
-
-  function App() {
-    return (
-      <>
-        <MySvg width="200" height="200" viewBox="0 0 3500 3500" />
-        <img src={mySvg} width="200" height="200" />
-      </>
-    );
-  }
-  ```
-
-  > Second svg is not imported as component but will be resolved as string by webpack.
-
 - import other files:
 
   ```js
@@ -421,7 +395,6 @@ git fetch upstream master
   }
   ```
 
-# Important Links
+# 8. Important Links
 
 - [Webpack generating duplicate code to save number of requests](https://github.com/webpack/webpack/issues/13768)
-- 

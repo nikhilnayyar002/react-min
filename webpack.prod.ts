@@ -56,17 +56,6 @@ const o2: Configuration = {
     splitChunks: {
       chunks: "all",
       // minSize: 20 * 1024, // (before min+gz)
-      cacheGroups: {
-        // bundle all react stuff in one chunk 
-        react: {
-          name: "react", // combine all the generated chunks into one named chunk
-          chunks: "all", // generate chunk that can be imported for both intial and async chunks
-          enforce: true, // ignore all the conditions for generating the chunk
-          // https://github.com/facebook/react/blob/main/packages/react-dom/package.json
-          // https://github.com/facebook/react/blob/main/packages/react/package.json
-          test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
-        }
-      }
     },
   },
 };

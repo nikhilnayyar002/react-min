@@ -1,30 +1,12 @@
 import { mergeWithRules, merge } from 'webpack-merge';
-import { mergeLoaderOptionRule, prependLoaderRule } from './webpack.rules.ts';
+import { prependLoaderRule } from './webpack.rules.ts';
 import commonConfig from './webpack.common.ts';
 import type { Configuration } from 'webpack';
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
-import { babelTestFilesRegex, config } from './my-config.js';
+import { config } from './my-config.js';
 import { CleanTerminalPlugin, EventHooksPlugin, getClientIPAddresses } from './helper.ts';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
-const o1 = mergeWithRules(mergeLoaderOptionRule)(commonConfig('development'), {
-  module: {
-    rules: [
-      {
-        test: babelTestFilesRegex,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              plugins: [config.hotModuleReload && import.meta.resolve('react-refresh/babel')].filter(Boolean),
-            },
-          },
-        ],
-      },
-    ],
-  },
-});
-const o2 = mergeWithRules(prependLoaderRule)(o1, {
+const o1 = mergeWithRules(prependLoaderRule)(commonConfig('development'), {
   module: {
     rules: [
       {
@@ -37,7 +19,7 @@ const o2 = mergeWithRules(prependLoaderRule)(o1, {
 
 const proxyServerOrigin = process.env['SERVER_PROXY_URL'] ? process.env['SERVER_PROXY_URL'] : 'http://localhost:5000';
 
-const o3: Configuration & DevServerConfiguration = {
+const o2: Configuration & DevServerConfiguration = {
   mode: 'development',
   output: {
     filename: '[name].bundle.js',
@@ -89,7 +71,6 @@ const o3: Configuration & DevServerConfiguration = {
     new CleanTerminalPlugin(
       `${['Client is available at:', ...getClientIPAddresses(config.clientPort, config.enableHTTPSInDevelopment)].join('\n')}`,
     ),
-    config.hotModuleReload && new ReactRefreshWebpackPlugin(),
   ].filter(Boolean),
   optimization: {
     minimize: false,
@@ -101,4 +82,4 @@ const o3: Configuration & DevServerConfiguration = {
   },
 };
 
-export default merge(o2, o3);
+export default merge(o1, o2);

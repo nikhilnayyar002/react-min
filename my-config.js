@@ -6,7 +6,7 @@ dotenvFlow.config() // load .env files
 const config = {
   outputDir: 'build', // where webpack will output code
   sourceDir: 'src',
-  entryFile: 'src/index.tsx', // source file to start bundling from
+  entryFile: 'src/index.ts', // source file to start bundling from
   publicDir: 'public', // folder containing files you simply want to be copied inside build folder
   htmlFileTemplate: 'index.html', // template to use for html
   htmlFileOutput: 'build/index.html', // output path for html after build
