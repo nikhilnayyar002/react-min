@@ -283,10 +283,7 @@ git branch --set-upstream-to=origin/release
 on github set default branch to release
 
 create TOKEN https://github.com/settings/tokens
-add this token as env secret  https://github.com/lonelybud/react-min/settings/secrets/actions
-    name it release_please
-    value TOKEN
-
+ 
 npm i release-please -g
 release-please bootstrap --token=TOKEN --repo-url=username/react-min --initial-version=1.0.0 --release-type=node --target-branch=release
 pr will be open, squash and merge it
