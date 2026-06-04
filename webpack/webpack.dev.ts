@@ -3,7 +3,7 @@ import { mergeLoaderOptionRule, prependLoaderRule } from './webpack.rules.ts';
 import commonConfig from './webpack.common.ts';
 import type { Configuration } from 'webpack';
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
-import { babelTestFilesRegex, config } from './my-config.js';
+import { babelTestFilesRegex, config } from '../my-config.js';
 import { CleanTerminalPlugin, EventHooksPlugin, getClientIPAddresses } from './helper.ts';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
@@ -101,4 +101,4 @@ const o3: Configuration & DevServerConfiguration = {
   },
 };
 
-export default merge(o2, o3);
+export default merge<Configuration & DevServerConfiguration>(o2, o3);

@@ -1,5 +1,5 @@
 import type { Configuration } from 'webpack';
-import { babelTestFilesRegex, config, specialEnvVarKeys } from './my-config.js';
+import { babelTestFilesRegex, config, specialEnvVarKeys } from '../my-config.js';
 import path from 'node:path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { InterpolateHtmlPlugin } from './helper.ts';

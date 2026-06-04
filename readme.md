@@ -21,9 +21,12 @@
 
 ## 1.1. Files
 
-- webpack configs
+- webpack directory
   ```
-  webpack.*.ts
+  webpack/*.ts // webpack config's
+  helper.ts // shared code as helper functions and utils
+  build.ts // webpack build
+  dev.ts // webpack serve
   ```
 - eslint
   ```
@@ -38,12 +41,11 @@
   tsconfig.json
   declarations.d.ts // declarations
   ```
-- my shared configs & scripts
+- my shared configs
   ```
   my-config.js
-  my-script.ts
   ```
-- directories
+- other directories
   ```
   public // contains index.html template & files that will be copied to build
   src // source code folder of entry file to start bundling from
@@ -58,29 +60,60 @@
   .release-please-manifest.json
   release-please-config.json
   ```
+- npm config
+  ```
+  .npmrc
+  ```
+- markdown files
+  ```
+  CHANGELOG.md
+  readme.md
+  ```
 - others
   ```
   .env
   .gitignore
-  helper.ts // shared code as helper functions and utils
+  .gitattributes
   ```
 
 ## 1.2. packages
 
+during deployment minified build should be created. In that phase only packages required should be installed. They will be in dependencies.
+All packages required for development only gets included in devDependencies.
+
 ### 1.2.1. devDependencies
 ```
-babel-
-"@babel/core"
-"@babel/preset-env"
-"@babel/preset-react"
-"@babel/preset-typescript"
-
 babel plugins -
 "react-refresh" // react-refresh/babel plugin for babel
 
 commitlint -
 "@commitlint/cli"
 "@commitlint/config-conventional"
+
+webpack plugins -
+"@pmmmwh/react-refresh-webpack-plugin"
+
+webpack loaders -
+"style-loader" // injects css loaded into dom at runtime 
+
+types -
+"@commitlint/types"
+
+commit hooks -
+"husky"
+
+webpack -
+"webpack-dev-server"
+```
+
+### 1.2.2. dependencies
+
+```
+babel-
+"@babel/core"
+"@babel/preset-env"
+"@babel/preset-react"
+"@babel/preset-typescript"
 
 eslint & eslint plugins -
 "eslint"
@@ -89,8 +122,11 @@ eslint & eslint plugins -
 "eslint-plugin-react-hooks"
 "typescript-eslint"
 
+react-
+"react"
+"react-dom"
+
 webpack plugins -
-"@pmmmwh/react-refresh-webpack-plugin"
 "circular-dependency-plugin"
 "css-minimizer-webpack-plugin" // compress css
 "eslint-webpack-plugin"
@@ -103,10 +139,8 @@ webpack loaders -
 "babel-loader"
 "@svgr/webpack"
 "css-loader" // only loads css files
-"style-loader" // injects css loaded into dom at runtime 
 
 types -
-"@commitlint/types"
 "@types/fs-extra"
 "@types/node"
 "@types/react"
@@ -117,26 +151,13 @@ helper modules -
 "chalk" // used to add colors (my-script.ts)
 "dotenv-flow" // load env files (my-config.js)
 "fs-extra" // do bulk file operations (my-script.ts)
-"ts-node" // help node parse typescript files (https://webpack.js.org/guides/typescript/#ways-to-use-typescript-in-webpackconfigts)
 "webpack-merge" // merge webpack configs
 
-commit hooks -
-"husky"
-
 typescript -
-"typescript"
+"typescript" // core package
 
 webpack -
 "webpack" // core bundler
-"webpack-cli" // webpack CLI (https://webpack.js.org/guides/installation/#local-installation)
-"webpack-dev-server"
-```
-
-### 1.2.2. dependencies
-
-```
-"react"
-"react-dom"
 ```
 
 ## 1.3. Concept related to commits
@@ -155,7 +176,7 @@ commitlint.config.ts -
 commitizen - install globally - npm install commitizen -g
     https://github.com/commitizen/cz-cli
 
-install adapter globally - npm install @commitlint/cz-commitlint inquirer@9 -g
+install adapter globally - npm install @commitlint/cz-commitlint inquirer@12 -g
     https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/cz-commitlint
 
 cz-commitlint adapter uses prompt config from commitlint.config.ts
@@ -182,70 +203,69 @@ release-please action
 
 ## 1.4. Bundling concepts
 ```
-[static NM] tiny-spring -> main
-[static NM] react -> main
-[static NM] react-dom -> main
-[static src] app3 -> main
-[static NM] tiny-spring -> app3
-[static NM] react -> app3
+[node_module] tiny-spring -> main
+[node_module] react -> main
+[node_module] react-dom -> main
+[static] app3 -> main
+[node_module] tiny-spring -> app3
+[node_module] react -> app3
 [dynamic] app -> main
 [dynamic] app2 -> main
-    -   if size of all static NM imports < 20Kb
-            then main chunk will contain all static NM imports
-        else 
-            new chunk say X will be generated to include all the static NM imports
-            other static import code (not from NM) will be included in in main chunk
-    -   any async chunks that includes any of the NM modules present in chunk X or chunk main 
-            will reuse it from X or main and will not any create duplicate chunks
-    -   if size of app3 when included in main exceeds certain size
-            webpack will give warning
-    
+  - if size of all node_module imports < 20Kb
+      then main chunk will contain all node_module imports
+    else 
+      new chunk say X will be generated to include all the node_module imports
+  - static import source code will be included in main chunk
+      if size of app3 when included in main exceeds certain size webpack will give warning
+  - any async chunks that includes any of the NM modules present in chunk X (or chunk main)
+      will reuse it from X (or main) and will not any create duplicate chunks
 
 [dynamic] app -> main
 [dynamic] app2 -> main
-[static NM] tiny-spring -> app
-[static NM] react -> app
-[static NM] tiny-spring -> app2
-[static NM] react-dom -> app2
-    -   app will be generated as async chunk say X1
-        app2 will be generated as async chunk say X2
-    -   if size of static NM imports < 20Kb
-            then async chunk X will contain all static NM imports
-        else
-            new chunk say Y will be generated to include all the static NM imports
-            other static import code (not from NM) will be included in chunk X
-    -   X1 has tiny-spring & react NM's
-        tiny-spring & react are generated in an async chunk say Y1
-            react.production.js is included inside as internal dependency
-        X2 has tiny-spring & react-dom
-        tiny-spring already present in Y1 is reused
-        react-dom is generated in an async chunk say Y2
-            react.production.js is included inside as internal dependency
-            webpack duplicated it (its also present in Y1) bcz app2 havent imported react
+[node_module] tiny-spring -> app
+[node_module] react -> app
+[node_module] tiny-spring -> app2
+[node_module] react-dom -> app2
+  - app will be generated as async chunk say X1
+    app2 will be generated as async chunk say X2
+  - if size of node_module imports < 20Kb
+      then async chunk X will contain all node_module imports
+    else
+      new chunk say Y will be generated to include all the node_module imports
+  - static import source code will be included in chunk X
+  - X1 has tiny-spring & react
+      tiny-spring & react are generated in an async chunk say Y1
+    X2 has tiny-spring & react-dom
+      tiny-spring already present in Y1 is reused
+      react-dom is generated in an async chunk say Y2
+        react-dom has peer dependency react (so react.production.js is included)
+          because app2 havent imported react otherwise webpack would have reused Y1
+            also react size < 10KB so webpack decided to inline
 
-[static NM] tiny-spring -> app
-[static NM] react -> app
-[static NM] tiny-spring -> app2
-[static NM] react -> app2
-[static NM] react-dom -> app2
-    -   X1 has tiny-spring & react NM's
-        tiny-spring & react are generated in an async chunk say Y1
-            react.production.js is included inside as internal dependency
-        X2 has tiny-spring, react & react-dom
-        tiny-spring & react already present in Y1 is reused
-        react-dom is generated in an async chunk say Y2
-            react.production.js & react-jsx-runtime.production.js internal dependencies
-            is reused from Y1 and are not duplicated 
+[node_module] tiny-spring -> app
+[node_module] react -> app
+[node_module] tiny-spring -> app2
+[node_module] react -> app2
+[node_module] react-dom -> app2
+  - X1 has tiny-spring & react NM's
+      tiny-spring & react are generated in an async chunk say Y1
+    X2 has tiny-spring, react & react-dom
+      tiny-spring & react already present in Y1 is reused
+      react-dom is generated in an async chunk say Y2
+        react-dom has peer dependency react
+          now react.production.js is reused from Y1 bcz app2 have imported react
+
+Note @babel/preset-react plugin automatically imports react/jsx-runtime in react components
+  see https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+  so react-jsx-runtime.production.js will also get included 
 
 move react, react-dom and their dependencies into cachegroup named react (for all chunk types)
     -   X1 has tiny-spring
-        tiny-spring  < 20Kb so tiny-spring is included in X1.
+          tiny-spring  < 20Kb so tiny-spring is included in X1.
         X2 has tiny-spring
-        tiny-spring  < 20Kb so tiny-spring is included in X1.
-    -   react, react-dom and their dependencies 
-        combined togther into one chunk named react
-        can be inported & reused in all chunk types(intial and async)
-
+          tiny-spring  < 20Kb so tiny-spring is included in X2.
+    -   react, react-dom and their dependencies (react-dom has dependency schedular) combined togther into one chunk named react
+          can be inported & reused in all chunk types(intial and async)
 
 css follows same rules. To include css in cacheGroups see https://webpack.js.org/plugins/mini-css-extract-plugin
 ```
